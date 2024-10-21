@@ -16,6 +16,8 @@ import json
 import logging
 import time
 
+
+
 try:
     from PIL import Image, ImageDraw, ImageFont
     image_lib_avail = True
@@ -49,8 +51,16 @@ versionDictionary = {
     "151d5eeac148cbede3acba28823c65a34369d31b61c54bdd8ad049767d1c3697": version_displayString_1_5,
     "5335860d13214484eeb1260db8fe322efc87983b425ac5a5f8b0fcdf9588f40a": version_displayString_1_6,
     "b88458bf2c25d3a34ab57ee149f36cfdc6b8a5138d5c6ed147fbea008b4659db": version_displayString_1_7,
-    "08bd07ab3313e3f00b922538516a61b5846cde34c74ebc0020cd1a0b557dd54b": version_displayString_1_71
+    "08bd07ab3313e3f00b922538516a61b5846cde34c74ebc0020cd1a0b557dd54b": version_displayString_1_71,
+    "cbe966565b403e9165174ad970d51f21ccd0ebdc6a8faa1a80fba4523dd2b236": version_displayString_1_6,
+    "ac22b49617e2b76a09e29efc3879e0258042179002eeee8ec0e6dc82a598a49e": version_displayString_1_6,
+    "95f994efb39f44476c2c275a98165afa295ecda31c7baed55300bdd8bacdf449": version_displayString_1_6,
+    "9596c44c8c2ac7b21cc8fea5ae05db69d3fff73c6a9fa68ae10115c7aeece509": version_displayString_1_6
 }
+
+     #fc155b08d778b74f54e63749fb79c8e2b66bb182efaec2e0b852f0eeff8f1d0f
+     #08bd07ab3313e3f00b922538516a61b5846cde34c74ebc0020cd1a0b557dd54b
+     # v1.71 SHA256 : fb772d3af075f60cf26a0b923d428bfa35907fff168f55aaa328fd89e21cbb2b
 
 ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
 
@@ -431,6 +441,7 @@ def bisrv_getFirmwareVersion(index_path):
         sha256hasher.update(bisrv_content)
         bisrvHash = sha256hasher.hexdigest()
         print(f"Hash: {bisrvHash}")
+
         version = versionDictionary.get(bisrvHash)
         return version
         
@@ -485,12 +496,19 @@ def changeGameShortcut(drive, console, position, game):
         xfgle_file_handle = open(xfgle_filepath, "w", encoding="utf-8")
         for line in lines:
             xfgle_file_handle.write(line)
-        xfgle_file_handle.close()       
+        xfgle_file_handle.close() 
+
+
+        #WRITE CONSOLE AND POSITION TO THE INI if its a MULTICORE ZFB
+
+
     except (OSError, IOError) as e:
-        logging.error(f"Tadpole_functions~changeGameShortcut: Failed changing the shortcut file. {str(e)}")
+        logging.error(f"tadpole_functions~changeGameShortcut: Failed changing the shortcut file. {str(e)}")
         return False
   
     return -1
+
+
 
 # NOTE: this doesn't really work as the shortcuts persist visually so removing
 # will just mean the links don't go to anything
@@ -526,7 +544,13 @@ def changeGameShortcut(drive, console, position, game):
 
 #returns the position of the game's shortcut on the main screen.  If it isn't a shortcut, it returns 0  
 def getGameShortcutPosition(drive, console, game):
-        
+    
+
+    # CHECK game in section [drive]
+    #if found get the position and return
+
+
+
     try:
         gamePath = os.path.join(drive, console, game)
         #Read in all the existing shortcuts from file
@@ -542,7 +566,7 @@ def getGameShortcutPosition(drive, console, game):
         # see if this game is listed.  If so get its position
         for i, gameShortcutLine in enumerate(lines):
             if gameShortcutLine == savedShortcut:
-                print("Found " + savedShortcut + "as shortcut")
+                #print("Found " + savedShortcut + "as shortcut")
                 #now we found the match of the raw location, now we need to return the position from console
                 #from xfgle, the positions start with 3 random lines, and then go down in order from FC -> SNES -> ... -> Arcade
                 if(console == "FC" ):
@@ -986,8 +1010,8 @@ def createZFBFile(drive, pngPath, romPath):
 
 def deleteROM(ROMfilePath):
     logging.info(f"Tadpole_functions~ Deleting ROM: {ROMfilePath}")
-    ext = os.path.splitext(ROMfilePath)[1]   
-    if(ext == ".zfb"): #ROM is arcade, need to also delete the zip file in bin
+    ext = os.path.splitext(ROMfilePath)[1]
+    if(ext.lower() == ".zfb"): #ROM is arcade, need to also delete the zip file in bin
         print("Arcade ROM")
         base = os.path.dirname(ROMfilePath)
         arcadezip = extractFileNameFromZFB(ROMfilePath)
@@ -1288,7 +1312,10 @@ def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite):
             romName, romExtension = os.path.splitext(romFullName)
             #Strip the . as frogtool doesn't use it in its statics
             romExtension = romExtension.lstrip('.')
-            sys_zxx_ext = frogtool.zxx_ext[system]
+            if romExtension == "zfb" and system != "ARCADE":
+                sys_zxx_ext = "zfb"
+            else:
+                sys_zxx_ext = frogtool.zxx_ext[system]
             #If its not supported, return
             if romExtension not in frogtool.supported_rom_ext:
                 return False
@@ -1490,3 +1517,4 @@ class BatteryPatcher:
             print("An error occurred: %s" % str(e))
             return False
 
+    

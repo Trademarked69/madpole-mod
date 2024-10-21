@@ -18,7 +18,7 @@ class GameShortcutIconsDialog(QDialog):
     Args:
         drive (str): Path to root of froggy drive.
     """
-    def __init__(self, drive, console, table):
+    def __init__(self, drive, console, table , mslist):
         super().__init__()
         self.drive = drive
         self.console = console
@@ -41,8 +41,25 @@ class GameShortcutIconsDialog(QDialog):
         table.setRowCount(len(files))
         files.sort()
         for i, shortcut in enumerate(self.game_shortcut_list): 
+
+            p = mslist[i]
+            p = p.strip()
+            if(p != ""):
+                position = i+1
+                if position != 0:
+                    temp_game_shortcut_list[position-1] = p.rsplit( ".", 1 )[ 0 ]
+                    continue
+
             for j, game in enumerate(files):
                 # set previously saved shortcuts
+                
+                fe = game.rsplit( ".", 1 )[ 1 ]
+                print(f"File is {game} and i is {i} and extension is {fe}")
+                #if fe.toLower() == "zfb":
+                
+                
+                    
+                
                 position = tadpole_functions.getGameShortcutPosition(self.drive, self.console, game)
                 # save this list globally beacuse we want to use it in other places
                 if position != 0:

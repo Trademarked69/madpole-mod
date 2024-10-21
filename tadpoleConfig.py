@@ -3,12 +3,12 @@ import string
 import configparser
 
 class TadpoleConfig():
-    _static_TadpoleFolder = os.path.join(os.path.expanduser('~'), '.tadpole')
-    _static_TadpoleConfigFile = os.path.join(_static_TadpoleFolder, 'tadpole.ini')
+    _static_TadpoleFolder = os.getcwd() #os.path.join(os.path.expanduser('~'), '.tadpole')
+    _static_TadpoleConfigFile = os.path.join(_static_TadpoleFolder, 'madpole.ini')
     # [tadpole]
-    _static_general = "tadpole"
+    _static_general = "madpole"
     _static_general_userDirectory = "user_directory"
-    _static_general_userDirectory_DEFAULT = ""
+    _static_general_userDirectory_DEFAULT = os.getcwd()
     # [thumbnails]
     _static_thumbnails = "Thumbnails"
     _static_thumbnails_view = "ViewInTable"
@@ -18,10 +18,13 @@ class TadpoleConfig():
     _static_thumbnails_download = "download"
     _static_thumbnails_download_DEFAULT = "0"
 
+
+
+
     
     def __init__(self):
         super().__init__()
-        print(f"establishing tadpole config")
+        print(f"establishing madpole config")
         self.config = configparser.ConfigParser()
         #if not os.path.exists(self._static_TadpoleFolder):
         #    os.makedirs(self._static_TadpoleFolder, exist_ok=True)
@@ -45,6 +48,8 @@ class TadpoleConfig():
             self.config[self._static_general] = {}
         if not self.config.has_option(self._static_general, self._static_general_userDirectory):
             self.config[self._static_general][self._static_general_userDirectory] = self._static_general_userDirectory_DEFAULT
+
+
         # [Thumbnails]
         if not self.config.has_section(self._static_thumbnails):
             self.config[self._static_thumbnails] = {}
@@ -57,7 +62,12 @@ class TadpoleConfig():
         # Update the config out to file
         with open(self._static_TadpoleConfigFile, 'w') as newConfigFile:
             self.config.write(newConfigFile)
+
+
+        
     
+    
+
     def setVariable(self, section, option, value):
         #Check the section exists, if it doesnt then create it
         if not self.config.has_section(section):

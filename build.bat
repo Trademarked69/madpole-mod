@@ -13,4 +13,4 @@ if not exist "venv\Lib\site-packages\PIL" (
 if not exist "venv\Lib\site-packages\PyQt5" (
     venv\Scripts\python -m pip install PyQt5
 )
-pyinstaller tadpole.py -n tadpole-%ver%.exe -F --icon frog.ico --clean --noconsole --version-file versioninfo --add-data="frog.ico;." --add-data="README.md;."
+pyinstaller madpole.py -n madpole_v0.1.exe -F --icon madpole.ico --clean --noconsole --version-file versioninfo --add-data="madpole.ico;." --add-data="README.md;."

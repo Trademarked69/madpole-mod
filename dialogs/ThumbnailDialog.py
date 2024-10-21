@@ -115,6 +115,7 @@ class ROMCoverViewer(QLabel):
             file_name = QFileDialog.getOpenFileName(self, 'Open file', '',
                                                     "Image files (*.gif *jpeg *.jpg *.png *.webp);;All Files (*.*)")[0]
             if len(file_name) > 0:  # confirm if user selected a file
+                print("FIRST : filname = " + file_name)
                 self.load_image(file_name)
 
     def load_from_ROM_inMemory(self, pathToROM: str):
