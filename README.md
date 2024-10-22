@@ -8,8 +8,8 @@ Madpole does everything Tadpole does , but has some fixes and additions and <a h
  + Shortcuts can be changed properly<br>
  + Proper name shows in Change Shortcut Icons Dialog<br>
 
-<h3>2. Thumnails for Multicore ZFBs</h3>
- + Thumnails now show in roms table<br>
+<h3>2. Thumbnails for Multicore ZFBs</h3>
+ + Thumbnails now show in roms table<br>
  + Thumbnail can be added/changed from rom table<br>
 
 <h3>3. Deleting Roms</h3>
@@ -30,7 +30,7 @@ Madpole does everything Tadpole does , but has some fixes and additions and <a h
  + Change core of selected roms (ie from nes to nesq) and rom files are also moved to the new core folder. You can copy instead of moving by checking "Copy roms to new core folder". Sytem Check is enforced by default (it will not let you  change core from nesq to snes because they are different systems<br>
 
  <h3>6. OPT Editor</h3>
- You can now edit multicore or other common core's opt files using selection based interface ie select an opt, select option and then choose an option from all the possible options. You can also reset an OPT to default values. <br>
+ You can now edit multicore or other common core's opt files using selection based interface ie select an opt, select option and then choose a value from all the possible values. You can also reset an OPT to default values. <br>
  
  <h3>7. Status Bar Info</h3>
   + Fixed deselection bug in rom table on console change. <br>
@@ -39,10 +39,10 @@ Madpole does everything Tadpole does , but has some fixes and additions and <a h
   + Status bar will also show no. of selected roms<br>
 
  <h3>8. SECTION Editor</h3>
-  + You can edit how many sections you want to be displayed on you sf2000 and which section to start on boot. Unfortunately the order of the sections cant be chanhed yet.<br>
+  + You can edit how many sections you want to be displayed on you sf2000 and which section to start on boot. Unfortunately the order of the sections cant be changed yet.<br>
 
  <h3>9. New Hashes</h3>
-  + Now you can change bot logo for multicore bisrv.asd. Added hashes for multicore 0.10 official, Leonordo' save 3, pr 'n'eo build , Latest changes compiled by me build. It will now enable you to change Boot Logo and Apply battery Fix for these builds.<br>
+  + Now you can change boot logo for multicore bisrv.asd. Added hashes for multicore 0.10 official, Leonordo' save 3, pr 'n'eo build , Latest changes compiled by me build. It will now enable you to change Boot Logo and Apply battery Fix for these builds.<br>
 
 <h2>IMPORTANT NOTES</h2>
 + User directory is set to the path of Madpole.exe by default if you havent set it yet and if theres no SD card.<br>
