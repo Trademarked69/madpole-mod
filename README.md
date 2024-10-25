@@ -3,8 +3,8 @@ Madpole is a fork of Tadpole by faanJD. Tadpole was developed by EricGoldstein. 
 Madpole does everything Tadpole does , but has some fixes and additions and <a href="https://github.com/fjdogar/multicore_rom_helper">MRH </a> integrated into it for doing multicore things which are listed below. You will find the original Tadpole readme at the end of the following info.
 
 <h2>FIXES</h2>
-<h3>1. Shortcuts For Multocore ZFBs</h3>
- + Shorcuts can be set properly<br>
+<h3>1. Home Screen Shortcuts For Multocore Roms</h3>
+ + The Four Main Shorcuts can now be set properly<br>
  + Shortcuts can be changed properly<br>
  + Proper name shows in Change Shortcut Icons Dialog<br>
 
