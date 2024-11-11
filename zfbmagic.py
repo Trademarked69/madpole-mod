@@ -49,9 +49,17 @@ def zfb_from_null(core ,  file_name, output_folder  , apptxt , pretxt , addext ,
     fname_noext = os.path.splitext(os.path.basename(file_path))[0]
     file_ext = os.path.splitext(file_name)[1][1:]
 
-    fname = fname_noext + file_ext
+    print(f"File path : {file_path} \n File Name : {file_name}")
+
+    print (f"F no ext before : {fname_noext}")
+
+
+
+    fname = fname_noext + "." + file_ext
 
     fname_noext = os.path.splitext(os.path.basename(file_name))[0]
+    print (f"F no ext after : {fname_noext}")
+    print(f"extenion is {file_ext}")
     placeholder_data = b'\x00' * 0xEA00 + b'\x00\x00\x00\x00' + f"{core};{fname}.gba".encode('utf-8') + b'\x00\x00'
     zfb_filename = os.path.join(output_folder , pretxt + fname_noext + apptxt + addext + existadd + '.zfb')
     with open(zfb_filename, 'wb') as zfb:
@@ -82,7 +90,7 @@ def zfb_from_image(img , input_folder , core ,  file_name, output_folder , apptx
 
     zfb_filename = os.path.join(output_folder , pretxt + fname_noext + apptxt + addext + existadd + '.zfb')
 
-    fname = fname_noext + file_ext
+    fname = fname_noext + "." + file_ext
 
     # Write the image data to the .zfb file
     try:
