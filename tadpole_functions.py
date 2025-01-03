@@ -88,11 +88,6 @@ class InvalidURLError(Exception):
     pass
    
 def changeBootLogo(index_path, newLogoFileName, msgBox):
-    # Confirm we arent going to brick the firmware by finding a known version
-    sfVersion = bisrv_getFirmwareVersion(index_path)
-    print(f"Found Version: {sfVersion}")
-    if sfVersion == None:
-        return False  
     # Load the new Logo
     msgBox.setText("Uploading new boot logo...")
     msgBox.showProgress(25, True)
