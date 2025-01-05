@@ -14,13 +14,18 @@ except ImportError:
     image_lib_avail = False
 
 systems = {
-    "ARCADE": ["mswb7.tax", "msdtc.nec", "mfpmp.bvs"],
-    "FC":     ["rdbui.tax", "fhcfg.nec", "nethn.bvs"],
-    "GB":     ["vdsdc.tax", "umboa.nec", "qdvd6.bvs"],
-    "GBA":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs"],
-    "GBC":    ["pnpui.tax", "wjere.nec", "mgdel.bvs"],
-    "MD":     ["scksp.tax", "setxa.nec", "wmiui.bvs"],
-    "SFC":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs"]
+    "FC":      ["m01.ta", "m01.ne", "m01.bv"],
+    "SFC":     ["m02.ta", "m02.ne", "m02.bv"],
+    "MD":      ["m03.ta", "m03.ne", "m03.bv"],
+    "GB":      ["m04.ta", "m04.ne", "m04.bv"],
+    "GBC":     ["m05.ta", "m05.ne", "m05.bv"],
+    "GBA":     ["m06.ta", "m06.ne", "m06.bv"],
+    "ARCADE":  ["m07.ta", "m07.ne", "m07.bv"],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
 }
 
 supported_rom_ext = [
@@ -28,7 +33,7 @@ supported_rom_ext = [
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
 zxx_ext = {
-    "ARCADE": "zfb", "FC": "zfc", "GB": "zgb", "GBA": "zgb", "GBC": "zgb", "MD": "zmd", "SFC": "zsf"
+    "ARCADE": "zfb", "FC": "zfc", "GB": "zgb", "GBA": "zgb", "GBC": "zgb", "MD": "zmd", "SFC": "zsf", "MENU8": "zfb", "MENU9": "zfb", "MENU10": "zfb", "MENU11": "zfb", "MENU12": "zfb"
 }
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"

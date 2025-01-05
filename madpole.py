@@ -773,7 +773,12 @@ the thumbnail for you. ")
                 "GB":     "Nintendo - Game Boy",
                 "GBC":    "Nintendo - Game Boy Color",
                 "GBA":    "Nintendo - Game Boy Advance", 
-                "ARCADE": ""
+                "ARCADE": "",
+                "MENU8": "",
+                "MENU9": "",
+                "MENU10": "",
+                "MENU11": "",
+                "MENU12": ""
             }
             msgBox.setText("Downloading thumbnails...")
             msgBox.show()
@@ -1644,7 +1649,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
         #print(" the current drive is " + self.combobox_drive.currentText())
         #print("the ini path is " + mshortConfigFile)
         #print(mshortConfigFile)
-        sects = ["ARCADE" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD"]
+        sects = ["ARCADE" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD", "MENU8", "MENU9", "MENU10", "MENU11", "MENU12"]
         if not os.path.exists(mshortConfigFile):
             #Config file not found, create a new one            
             with open(mshortConfigFile, 'w') as newConfigFile:

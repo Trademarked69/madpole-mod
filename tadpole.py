@@ -587,7 +587,12 @@ the thumbnail for you. ")
                 "GB":     "Nintendo - Game Boy",
                 "GBC":    "Nintendo - Game Boy Color",
                 "GBA":    "Nintendo - Game Boy Advance", 
-                "ARCADE": ""
+                "ARCADE": "",
+                "MENU8": "",
+                "MENU9": "",
+                "MENU10": "",
+                "MENU11": "",
+                "MENU12": ""
             }
             msgBox.setText("Downloading thumbnails...")
             msgBox.show()

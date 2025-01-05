@@ -28,14 +28,19 @@ except ImportError:
 
 # This dictionary is in the following format:
 # "System": []
-systems = {  
-    "FC":     ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1],
-    "SFC":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2],
-    "MD":     ["scksp.tax", "setxa.nec", "wmiui.bvs",3],
-    "GB":     ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
-    "GBC":    ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
-    "GBA":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
-    "ARCADE": ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7]
+systems = {
+    "FC":      ["m01.ta", "m01.ne", "m01.bv",1],
+    "SFC":     ["m02.ta", "m02.ne", "m02.bv",2],
+    "MD":      ["m03.ta", "m03.ne", "m03.bv",3],
+    "GB":      ["m04.ta", "m04.ne", "m04.bv",4],
+    "GBC":     ["m05.ta", "m05.ne", "m05.bv",5],
+    "GBA":     ["m06.ta", "m06.ne", "m06.bv",6],
+    "ARCADE":  ["m07.ta", "m07.ne", "m07.bv",7],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv",8],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv",9],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv",10],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv",11],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv",12]
 }
 
 supported_save_ext = [
