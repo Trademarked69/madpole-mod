@@ -14,18 +14,18 @@ except ImportError:
     image_lib_avail = False
 
 systems = {
-    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
-    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
-    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
-    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
-    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
-    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
-    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
-    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
-    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
-    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
-    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
-    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
+    "NES":   ["m01.ta", "m01.ne", "m01.bv"],
+    "SNES":   ["m02.ta", "m02.ne", "m02.bv"],
+    "SEGA":   ["m03.ta", "m03.ne", "m03.bv"],
+    "GG":   ["m04.ta", "m04.ne", "m04.bv"],
+    "PKMN":   ["m05.ta", "m05.ne", "m05.bv"],
+    "GB":   ["m06.ta", "m06.ne", "m06.bv"],
+    "GBC":   ["m07.ta", "m07.ne", "m07.bv"],
+    "GBA":   ["m08.ta", "m08.ne", "m08.bv"],
+    "WSWAN":   ["m09.ta", "m09.ne", "m09.bv"],
+    "ARCADE":  ["m10.ta", "m10.ne", "m10.bv"],
+    "PICO8":  ["m11.ta", "m11.ne", "m11.bv"],
+    "PORTS":  ["m12.ta", "m12.ne", "m12.bv"]
 }
 
 supported_rom_ext = [
@@ -33,7 +33,7 @@ supported_rom_ext = [
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
 zxx_ext = {
-    "MENU1": "zfb", "MENU2": "zfb", "MENU3": "zfb", "MENU4": "zfb", "MENU5": "zfb", "MENU6": "zfb", "MENU7": "zfb", "MENU8": "zfb", "MENU9": "zfb", "MENU10": "zfb", "MENU11": "zfb", "MENU12": "zfb"
+    "NES": "zfb", "SNES": "zfb", "SEGA": "zfb", "GG": "zfb", "PKMN": "zfb", "GB": "zfb", "GBC": "zfb", "GBA": "zfb", "WSWAN": "zfb", "ARCADE": "zfb", "PICO8": "zfb", "PORTS": "zfb"
 }
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"

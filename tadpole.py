@@ -581,18 +581,18 @@ the thumbnail for you. ")
             ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
             art_Type = "/Named_Snaps/"
             ROMArt_console = {  
-                "MENU1": "",
-                "MENU2": "",
-                "MENU3": "",
-                "MENU4": "",
-                "MENU5": "",
-                "MENU6": "", 
-                "MENU7": "",
-                "MENU8": "",
-                "MENU9": "",
-                "MENU10": "",
-                "MENU11": "",
-                "MENU12": ""
+                "NES": "",
+                "SNES": "",
+                "SEGA": "",
+                "GG": "",
+                "PKMN": "",
+                "GB": "", 
+                "GBC": "",
+                "GBA": "",
+                "WSWAN": "",
+                "ARCADE": "",
+                "PICO8": "",
+                "PORTS": ""
             }
             msgBox.setText("Downloading thumbnails...")
             msgBox.show()
