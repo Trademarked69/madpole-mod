@@ -581,13 +581,13 @@ the thumbnail for you. ")
             ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
             art_Type = "/Named_Snaps/"
             ROMArt_console = {  
-                "FC":     "Nintendo - Nintendo Entertainment System",
-                "SFC":    "Nintendo - Super Nintendo Entertainment System",
-                "MD":     "Sega - Mega Drive - Genesis",
-                "GB":     "Nintendo - Game Boy",
-                "GBC":    "Nintendo - Game Boy Color",
-                "GBA":    "Nintendo - Game Boy Advance", 
-                "ARCADE": "",
+                "MENU1": "",
+                "MENU2": "",
+                "MENU3": "",
+                "MENU4": "",
+                "MENU5": "",
+                "MENU6": "", 
+                "MENU7": "",
                 "MENU8": "",
                 "MENU9": "",
                 "MENU10": "",

@@ -14,13 +14,13 @@ except ImportError:
     image_lib_avail = False
 
 systems = {
-    "FC":      ["m01.ta", "m01.ne", "m01.bv"],
-    "SFC":     ["m02.ta", "m02.ne", "m02.bv"],
-    "MD":      ["m03.ta", "m03.ne", "m03.bv"],
-    "GB":      ["m04.ta", "m04.ne", "m04.bv"],
-    "GBC":     ["m05.ta", "m05.ne", "m05.bv"],
-    "GBA":     ["m06.ta", "m06.ne", "m06.bv"],
-    "ARCADE":  ["m07.ta", "m07.ne", "m07.bv"],
+    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
+    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
+    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
+    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
+    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
+    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
+    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
     "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
     "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
     "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
@@ -33,7 +33,7 @@ supported_rom_ext = [
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
 zxx_ext = {
-    "ARCADE": "zfb", "FC": "zfc", "GB": "zgb", "GBA": "zgb", "GBC": "zgb", "MD": "zmd", "SFC": "zsf", "MENU8": "zfb", "MENU9": "zfb", "MENU10": "zfb", "MENU11": "zfb", "MENU12": "zfb"
+    "MENU1": "zfb", "MENU2": "zfb", "MENU3": "zfb", "MENU4": "zfb", "MENU5": "zfb", "MENU6": "zfb", "MENU7": "zfb", "MENU8": "zfb", "MENU9": "zfb", "MENU10": "zfb", "MENU11": "zfb", "MENU12": "zfb"
 }
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"
