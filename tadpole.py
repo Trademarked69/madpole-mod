@@ -581,18 +581,27 @@ the thumbnail for you. ")
             ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
             art_Type = "/Named_Snaps/"
             ROMArt_console = {  
-                "NES": "",
-                "SNES": "",
-                "SEGA": "",
-                "GG": "",
-                "PKMN": "",
-                "GB": "", 
-                "GBC": "",
-                "GBA": "",
-                "WSWAN": "",
-                "ARCADE": "",
-                "PICO8": "",
-                "PORTS": ""
+                "FC":     "Nintendo - Nintendo Entertainment System",
+                "NES":     "Nintendo - Nintendo Entertainment System",
+                "SFC":    "Nintendo - Super Nintendo Entertainment System",
+                "SNES":    "Nintendo - Super Nintendo Entertainment System",
+                "MD":     "Sega - Mega Drive - Genesis",
+                "GEN":     "Sega - Mega Drive - Genesis",
+                "SMS":     "Sega - Master System - Mark III",
+                "MS":     "Sega - Master System - Mark III",
+                "MARK3":     "Sega - Master System - Mark III",
+                "GG":     "Sega - Game Gear",
+                "GB":     "Nintendo - Game Boy",
+                "GBC":    "Nintendo - Game Boy Color",
+                "GBA":    "Nintendo - Game Boy Advance", 
+                "WS":    "Bandai - WonderSwan", 
+                "WSC":    "Bandai - WonderSwan Color", 
+                "WSWAN":    "Bandai - WonderSwan", 
+                "WSWANC":    "Bandai - WonderSwan Color", 
+                "NGP":    "SNK - Neo Geo Pocket", 
+                "NGPC":    "SNK - Neo Geo Pocket Color", 
+                "PCE":    "NEC - PC Engine - TurboGrafx 16", 
+                "ARCADE": ""
             }
             msgBox.setText("Downloading thumbnails...")
             msgBox.show()
@@ -712,6 +721,79 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         newDrive = self.combobox_drive.currentText()
         console = self.combobox_console.currentText()
         logging.info(f"Combobox for drive changed to ({newDrive})")
+        try:
+            index_path_foldernamx = os.path.join(newDrive,"Resources","FoldernamX.ini")
+
+            # Initialize an empty list to store the filtered data
+            filtered_foldernamx = []
+
+            # Open the file for reading
+            with open(index_path_foldernamx, "r") as file:
+            # Read each line
+                for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
+                    # Strip leading/trailing whitespace
+                    stripped_line = line.strip()
+
+                    # Skip irrelevant data
+                    if i in [1, 2, 3, 4, 17, 18, 19]:
+                        continue
+
+                    # Remove "FF8000" from the line and strip again
+                    stripped_line = stripped_line.replace("FF8000", "").strip()
+        
+                    # If the line is not empty after removing "FF8000", add it to the list
+                    if stripped_line:
+                        filtered_foldernamx.append(stripped_line)
+                
+                for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
+                    if i < len(filtered_foldernamx):
+                        tadpole_functions.systems[filtered_foldernamx[i]] = tadpole_functions.systems.pop(key_to_pop)
+                        frogtool.systems[filtered_foldernamx[i]] = frogtool.systems.pop(key_to_pop)                        
+
+                window.combobox_console.clear()
+                for console in tadpole_functions.systems.keys():
+                    window.combobox_console.addItem(QIcon(), console, console)
+        except Exception:
+            print("Couldn't find", index_path_foldernamx)
+            try:
+                index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
+
+                # Initialize an empty list to store the filtered data
+                filtered_foldername = []
+
+                # Open the file for reading
+                with open(index_path_foldername, "r") as file:
+                # Read each line
+                    for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
+                        # Strip leading/trailing whitespace
+                        stripped_line = line.strip()
+
+                        # Skip irrelevant data
+                        if i in [1, 2, 3, 4, 12, 13, 14, 15, 16]:
+                            continue
+
+                        # Remove "FF8000" from the line and strip again
+                        stripped_line = stripped_line.replace("FF8000", "").strip()
+        
+                        # If the line is not empty after removing "FF8000", add it to the list
+                        if stripped_line:
+                            filtered_foldername.append(stripped_line)
+                
+                    for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
+                        if i < len(filtered_foldername):
+                            tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
+                            frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
+
+                    keys_to_remove = ["MENU8", "MENU9", "MENU10", "MENU11", "MENU12"]
+                    for key in keys_to_remove:
+                        tadpole_functions.systems.pop(key, None)
+                        frogtool.systems.pop(key, None)
+
+                    window.combobox_console.clear()
+                    for console in tadpole_functions.systems.keys():
+                        window.combobox_console.addItem(QIcon(), console, console)
+            except Exception:
+                print("Couldn't find", index_path_foldername)
         if (newDrive != static_NoDrives):
             RunFrogTool(newDrive,console)
 

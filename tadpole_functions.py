@@ -29,18 +29,18 @@ except ImportError:
 # This dictionary is in the following format:
 # "System": []
 systems = {
-    "NES":   ["m01.ta", "m01.ne", "m01.bv",1],
-    "SNES":   ["m02.ta", "m02.ne", "m02.bv",2],
-    "SEGA":   ["m03.ta", "m03.ne", "m03.bv",3],
-    "GG":   ["m04.ta", "m04.ne", "m04.bv",4],
-    "PKMN":   ["m05.ta", "m05.ne", "m05.bv",5],
-    "GB":   ["m06.ta", "m06.ne", "m06.bv",6],
-    "GBC":   ["m07.ta", "m07.ne", "m07.bv",7],
-    "GBA":   ["m08.ta", "m08.ne", "m08.bv",8],
-    "WSWAN":   ["m09.ta", "m09.ne", "m09.bv",9],
-    "ARCADE":  ["m10.ta", "m10.ne", "m10.bv",10],
-    "PICO8":  ["m11.ta", "m11.ne", "m11.bv",11],
-    "PORTS":  ["m12.ta", "m12.ne", "m12.bv",12]
+    "MENU1":   ["m01.ta", "m01.ne", "m01.bv",1],
+    "MENU2":   ["m02.ta", "m02.ne", "m02.bv",2],
+    "MENU3":   ["m03.ta", "m03.ne", "m03.bv",3],
+    "MENU4":   ["m04.ta", "m04.ne", "m04.bv",4],
+    "MENU5":   ["m05.ta", "m05.ne", "m05.bv",5],
+    "MENU6":   ["m06.ta", "m06.ne", "m06.bv",6],
+    "MENU7":   ["m07.ta", "m07.ne", "m07.bv",7],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv",8],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv",9],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv",10],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv",11],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv",12]
 }
 
 supported_save_ext = [

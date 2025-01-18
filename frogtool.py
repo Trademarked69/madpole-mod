@@ -13,19 +13,34 @@ except ImportError:
     ImageDraw = None
     image_lib_avail = False
 
+systems_default = {
+    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
+    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
+    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
+    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
+    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
+    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
+    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
+}
+
 systems = {
-    "NES":   ["m01.ta", "m01.ne", "m01.bv"],
-    "SNES":   ["m02.ta", "m02.ne", "m02.bv"],
-    "SEGA":   ["m03.ta", "m03.ne", "m03.bv"],
-    "GG":   ["m04.ta", "m04.ne", "m04.bv"],
-    "PKMN":   ["m05.ta", "m05.ne", "m05.bv"],
-    "GB":   ["m06.ta", "m06.ne", "m06.bv"],
-    "GBC":   ["m07.ta", "m07.ne", "m07.bv"],
-    "GBA":   ["m08.ta", "m08.ne", "m08.bv"],
-    "WSWAN":   ["m09.ta", "m09.ne", "m09.bv"],
-    "ARCADE":  ["m10.ta", "m10.ne", "m10.bv"],
-    "PICO8":  ["m11.ta", "m11.ne", "m11.bv"],
-    "PORTS":  ["m12.ta", "m12.ne", "m12.bv"]
+    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
+    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
+    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
+    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
+    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
+    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
+    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
 }
 
 supported_rom_ext = [
@@ -33,7 +48,7 @@ supported_rom_ext = [
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
 zxx_ext = {
-    "NES": "zfb", "SNES": "zfb", "SEGA": "zfb", "GG": "zfb", "PKMN": "zfb", "GB": "zfb", "GBC": "zfb", "GBA": "zfb", "WSWAN": "zfb", "ARCADE": "zfb", "PICO8": "zfb", "PORTS": "zfb"
+    "FC": "zfc", "NES": "zfc", "SFC": "zsf", "SNES": "zsf", "MD": "zmd", "GEN": "zmd", "SEGA": "zmd", "GB": "zgb", "GBC": "zgb", "GBA": "zgb", "ARCADE": "zfb"
 }
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"
@@ -156,7 +171,11 @@ def convert_zip_image_pairs_to_zxx(roms_path, system):
     img_files = list(filter(check_img, img_files))
     zip_files = os.scandir(roms_path)
     zip_files = list(filter(check_zip, zip_files))
-    sys_zxx_ext = zxx_ext[system]
+    try:
+        sys_zxx_ext = zxx_ext[system]
+    except Exception:
+            print("Default to zfb")
+            sys_zxx_ext = "zfb"
     if not img_files or not zip_files:
         return
     print(f"Found image and zip files, looking for matches to combine to {sys_zxx_ext}")
