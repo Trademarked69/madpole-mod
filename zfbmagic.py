@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QMessageBox
 def find_matching_ext(ifold , core,file_name,isRom):
         
     fn = os.path.splitext(os.path.basename(file_name))[0]
-    input_path = ifold + "\\" + fn
+    input_path = os.path.join(ifold, fn)
 
     #fname_noext = os.path.splitext(os.path.basename(input_folder))[0]
     file_ext = os.path.splitext(file_name)[1][1:]
@@ -119,15 +119,15 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
     
     else:
         input_fold = wdir.strip()
-        input_folder = os.path.join(input_fold , "ROMS\\" + core)
+        input_folder = os.path.join(input_fold, "ROMS", core)
     
 
     if justzfb:
         input_folder = input_fold
-        output_folder = input_fold + "\\zfbs"
+        output_folder = os.path.join(input_fold, "zfbs")
     else:
         #input_folder = os.path.join(input_fold , "ROMS\\" + core)
-        output_folder = wdir.strip() + "\\" +  sdir
+        output_folder = os.path.join(wdir.strip(), sdir)
 
     addext = ""
     
@@ -229,8 +229,8 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
 
             
             crn = fname_noext + "." + rom_ext
-            cri = input_folder + "\\" + crn
-            cro = wdir + f"\\ROMS\\{core}\\" + crn
+            cri = os.path.join(input_folder, crn)
+            cro = os.path.join(wdir, "ROMS", core, crn)
 
             if len(files) > 0 and not justzfb and doMove:
                 print("copying file from")
@@ -264,7 +264,7 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
 
             else:
 
-                tfp = os.getcwd() + "\\placeholders\\" + pdir
+                tfp = os.path.join(os.getcwd(), "placeholders", pdir)
                 print("the placeholder dir n file is " + tfp)
 
                 try:

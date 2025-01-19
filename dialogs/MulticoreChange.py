@@ -188,8 +188,8 @@ class MulticoreChange(QDialog):
 
                     moved = True
                     if not self.movechk.isChecked():
-                        rompath = os.path.join(self.tpConf.cDir , f"ROMS\\{oldCore}\\{romName}")
-                        newpath = os.path.join(self.tpConf.cDir , f"ROMS\\{newCore}")
+                        rompath = os.path.join(self.tpConf.cDir , "ROMS", oldCore, romName)
+                        newpath = os.path.join(self.tpConf.cDir , "ROMS", newCore)
                         if os.path.exists(rompath):
                             #move file
                             if not os.path.isdir(newpath):

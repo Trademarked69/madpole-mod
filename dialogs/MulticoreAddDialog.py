@@ -103,10 +103,11 @@ class MulticoreAddDialog(QDialog):
 
         wdir = self.tpConf.cDir
 
-        bpath = wdir + "\\bios\\bisrv.asd"
+        bpath = os.path.join(wdir, "bios", "bisrv.asd")
         #print(f"root dir is {wdir} \n Bpath is {bpath}")
         if not os.path.exists(bpath):
             QMessageBox.information(self , "BIOS" , "BIOS not found. Please Select proper root directory.")
+            print("BIOS not found", bpath)
             return
 
         core = self.core.toPlainText().strip()
@@ -158,7 +159,7 @@ class MulticoreAddDialog(QDialog):
 
     def build_pfiles(self):
 
-        pdir_root =  os.getcwd() + "\\placeholders" #self.pdir_root
+        pdir_root = os.path.join(os.getcwd(), "placeholders") #self.pdir_root
         self.phCombo.setFixedHeight(85)
         #pdir = self.phCombo
         if not os.path.isdir(pdir_root):

@@ -200,7 +200,7 @@ class SectionEdit(QDialog):
         print("\n\nTHE DATA IS \n\n")
         print(sdata)
 
-        opath = self.tpConf.cDir + "\\Resources\\"
+        opath = os.path.join(self.tpConf.cDir, "Resources")
         ofile = os.path.join(opath , "Foldername.ini")
         nfile = os.path.join(opath , "Foldername_backup.ini")
 
@@ -231,10 +231,8 @@ class SectionEdit(QDialog):
     def loadValues(self):
 
         fdata = {}
-
-        cDir = self.tpConf.cDir
-
-        cDir += "\\Resources\\Foldername.ini"
+	
+        cDir = os.path.join(self.tpConf.cDir, "Resources", "Foldername.ini")
 
         #print(f"Directory is {cDir}")
 

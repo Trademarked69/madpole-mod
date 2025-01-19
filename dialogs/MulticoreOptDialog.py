@@ -149,7 +149,7 @@ class MulticoreOptDialog(QDialog):
         optfile = self.optfile.currentText()
         self.oldoptfile = optfile
         conf = configparser.ConfigParser()
-        optp = self.tpConf.cDir + "\\cores\\config\\" + optfile + ".opt"
+        optp = os.path.join(self.tpConf.cDir, "cores", "config", optfile + ".opt")
 
         with open(optp) as lines:
             lines = chain(("[top]",), lines)  # This line does the trick.
@@ -231,7 +231,7 @@ class MulticoreOptDialog(QDialog):
         next(buf)
 
         optfile = self.optfile.currentText()
-        optp = self.tpConf.cDir + "\\cores\\config\\" + optfile + ".opt"
+        optp = os.path.join(self.tpConf.cDir, "cores", "config", optfile + ".opt")
 
         try:
             with open(optp, 'w') as fd:

@@ -34,7 +34,7 @@ class MulticoreDialog(QDialog):
         self.mdirCombo = QComboBox()
         wdir = tpConf.cDir #tpConf.getLocalUserDirectory() #self.combobox_drive.currentText() #self.combobox_console.currentText()
         try:
-            self.mdirCombo.addItems([f.name for f in os.scandir(wdir +"\\ROMS") if f.is_dir() and f.name != "save" and f.name != "mnt" ])
+            self.mdirCombo.addItems([f.name for f in os.scandir(wdir +"ROMS") if f.is_dir() and f.name != "save" and f.name != "mnt" ])
         except:
             self.mdirCombo.addItems([])
         #mdirCombo.addItems(["uploading a folder from your PC", "automatically downloading over the internet"])
@@ -93,7 +93,7 @@ class MulticoreDialog(QDialog):
 
     def build_pfiles(self):
 
-        pdir_root =  os.getcwd() + "\\placeholders" #self.pdir_root
+        pdir_root = os.path.join(os.getcwd(), "placeholders") #self.pdir_root
         self.phCombo.setFixedHeight(85)
         #pdir = self.phCombo
         if not os.path.isdir(pdir_root):
@@ -128,10 +128,11 @@ class MulticoreDialog(QDialog):
     def doProcess(self):
         wdir = self.tpConf.cDir
 
-        bpath = wdir + "\\bios\\bisrv.asd"
+        bpath = os.path.join(wdir, "bios", "bisrv.asd")
         #print(f"root dir is {wdir} \n Bpath is {bpath}")
         if not os.path.exists(bpath):
             QMessageBox.information(self , "BIOS" , "BIOS not found. Please Select proper root directory.")
+            print("BIOS not found", bpath)
             return
 
         core = self.mdirCombo.currentText()
