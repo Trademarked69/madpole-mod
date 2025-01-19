@@ -911,6 +911,9 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         try:
             index_path_foldernamx = os.path.join(newDrive,"Resources","FoldernamX.ini")
 
+            frogtool.systems = frogtool.systems_default
+            tadpole_functions.systems = tadpole_functions.systems_default
+
             # Initialize an empty list to store the filtered data
             filtered_foldernamx = []
 
@@ -936,14 +939,13 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
                     if i < len(filtered_foldernamx):
                         tadpole_functions.systems[filtered_foldernamx[i]] = tadpole_functions.systems.pop(key_to_pop)
                         frogtool.systems[filtered_foldernamx[i]] = frogtool.systems.pop(key_to_pop)                        
-
-                window.combobox_console.clear()
-                for console in tadpole_functions.systems.keys():
-                    window.combobox_console.addItem(QIcon(), console, console)
         except Exception:
             print("Couldn't find", index_path_foldernamx)
             try:
                 index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
+
+                frogtool.systems = frogtool.systems_old_default
+                tadpole_functions.systems = tadpole_functions.systems_old_default
 
                 # Initialize an empty list to store the filtered data
                 filtered_foldername = []
@@ -970,17 +972,13 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
                         if i < len(filtered_foldername):
                             tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
                             frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
-
-                    keys_to_remove = ["MENU8", "MENU9", "MENU10", "MENU11", "MENU12"]
-                    for key in keys_to_remove:
-                        tadpole_functions.systems.pop(key, None)
-                        frogtool.systems.pop(key, None)
-
-                    window.combobox_console.clear()
-                    for console in tadpole_functions.systems.keys():
-                        window.combobox_console.addItem(QIcon(), console, console)
             except Exception:
                 print("Couldn't find", index_path_foldername)
+                frogtool.systems = frogtool.systems_old_default
+                tadpole_functions.systems = tadpole_functions.systems_old_default
+        window.combobox_console.clear()
+        for console in tadpole_functions.systems.keys():
+            window.combobox_console.addItem(QIcon(), console, console)
         if (newDrive != static_NoDrives):
             RunFrogTool(newDrive,console)
 

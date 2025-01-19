@@ -28,7 +28,17 @@ except ImportError:
 
 # This dictionary is in the following format:
 # "System": []
-systems = {
+systems_old_default = {    
+    "MENU1":   ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1],
+    "MENU2":   ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2],
+    "MENU3":   ["scksp.tax", "setxa.nec", "wmiui.bvs",3],
+    "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
+    "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
+    "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
+    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7]
+}
+
+systems_default = {
     "MENU1":   ["m01.ta", "m01.ne", "m01.bv",1],
     "MENU2":   ["m02.ta", "m02.ne", "m02.bv",2],
     "MENU3":   ["m03.ta", "m03.ne", "m03.bv",3],
@@ -41,6 +51,16 @@ systems = {
     "MENU10":  ["m10.ta", "m10.ne", "m10.bv",10],
     "MENU11":  ["m11.ta", "m11.ne", "m11.bv",11],
     "MENU12":  ["m12.ta", "m12.ne", "m12.bv",12]
+}
+
+systems = {    
+    "MENU1":   ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1],
+    "MENU2":   ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2],
+    "MENU3":   ["scksp.tax", "setxa.nec", "wmiui.bvs",3],
+    "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
+    "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
+    "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
+    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7]
 }
 
 supported_save_ext = [

@@ -13,6 +13,16 @@ except ImportError:
     ImageDraw = None
     image_lib_avail = False
 
+systems_old_default = {
+    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs"],
+    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs"],
+    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs"],
+    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs"],
+    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs"],
+    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs"],
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs"]
+}
+
 systems_default = {
     "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
     "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
@@ -29,18 +39,13 @@ systems_default = {
 }
 
 systems = {
-    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
-    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
-    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
-    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
-    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
-    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
-    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
-    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
-    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
-    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
-    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
-    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
+    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs"],
+    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs"],
+    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs"],
+    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs"],
+    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs"],
+    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs"],
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs"]
 }
 
 supported_rom_ext = [
