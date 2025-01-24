@@ -14,38 +14,38 @@ except ImportError:
     image_lib_avail = False
 
 systems_old_default = {
-    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs"],
-    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs"],
-    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs"],
-    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs"],
-    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs"],
-    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs"]
+    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],
+    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],
+    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],
+    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
+    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
+    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"]
 }
 
 systems_default = {
-    "MENU1":   ["m01.ta", "m01.ne", "m01.bv"],
-    "MENU2":   ["m02.ta", "m02.ne", "m02.bv"],
-    "MENU3":   ["m03.ta", "m03.ne", "m03.bv"],
-    "MENU4":   ["m04.ta", "m04.ne", "m04.bv"],
-    "MENU5":   ["m05.ta", "m05.ne", "m05.bv"],
-    "MENU6":   ["m06.ta", "m06.ne", "m06.bv"],
-    "MENU7":   ["m07.ta", "m07.ne", "m07.bv"],
-    "MENU8":   ["m08.ta", "m08.ne", "m08.bv"],
-    "MENU9":   ["m09.ta", "m09.ne", "m09.bv"],
-    "MENU10":  ["m10.ta", "m10.ne", "m10.bv"],
-    "MENU11":  ["m11.ta", "m11.ne", "m11.bv"],
-    "MENU12":  ["m12.ta", "m12.ne", "m12.bv"]
+    "MENU1":   ["m01.ta", "m01.ne", "m01.bv", "m01.mm"],
+    "MENU2":   ["m02.ta", "m02.ne", "m02.bv", "m02.mm"],
+    "MENU3":   ["m03.ta", "m03.ne", "m03.bv", "m03.mm"],
+    "MENU4":   ["m04.ta", "m04.ne", "m04.bv", "m04.mm"],
+    "MENU5":   ["m05.ta", "m05.ne", "m05.bv", "m05.mm"],
+    "MENU6":   ["m06.ta", "m06.ne", "m06.bv", "m06.mm"],
+    "MENU7":   ["m07.ta", "m07.ne", "m07.bv", "m07.mm"],
+    "MENU8":   ["m08.ta", "m08.ne", "m08.bv", "m08.mm"],
+    "MENU9":   ["m09.ta", "m09.ne", "m09.bv", "m09.mm"],
+    "MENU10":  ["m10.ta", "m10.ne", "m10.bv", "m10.mm"],
+    "MENU11":  ["m11.ta", "m11.ne", "m11.bv", "m11.mm"],
+    "MENU12":  ["m12.ta", "m12.ne", "m12.bv", "m12.mm"]
 }
 
 systems = {
-    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs"],
-    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs"],
-    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs"],
-    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs"],
-    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs"],
-    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs"]
+    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],
+    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],
+    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],
+    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
+    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
+    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"]
 }
 
 supported_rom_ext = [

@@ -1269,34 +1269,9 @@ def convertPNGtoResourceRGB565(srcPNG, resourceFileName, drive):
 
 #returns a string to the current resource file for each system
 def getBackgroundResourceFileforConsole(drive, system):
-    if system == "SFC":
-        resourceFile = "drivr.ers"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "FC":
-        resourceFile = "fixas.ctp"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "MD":
-        resourceFile = "icuin.cpl"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "GB":
-        resourceFile = "xajkg.hsp"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "GBC":
-        resourceFile = "qwave.bke"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "GBA":
-        resourceFile = "irftp.ctp"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
-    elif system == "ARCADE":
-        resourceFile = "hctml.ers"
-        resourcePath = os.path.join(drive, 'Resources', resourceFile)
-        return (resourcePath)
+    resourceFile = frogtool.systems[system][3]
+    resourcePath = os.path.join(drive, 'Resources', resourceFile)
+    return (resourcePath)
 
 def copy_files(source, destination, progressBar):
     total_files = 0

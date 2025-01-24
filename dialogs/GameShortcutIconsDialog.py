@@ -290,27 +290,8 @@ by matching the name of the game and a folder you select?  You can change the ic
 
     def Finish(self):
         #Save this working TMP PNG to the right resource file
-        if self.console == "SFC":
-            resourceFile = "drivr.ers"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "FC":
-            resourceFile = "fixas.ctp"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "MD":
-            resourceFile = "icuin.cpl"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "GB":
-            resourceFile = "xajkg.hsp"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "GBC":
-            resourceFile = "qwave.bke"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "GBA":
-            resourceFile = "irftp.ctp"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
-        elif self.console == "ARCADE":
-            resourceFile = "hctml.ers"
-            tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
+        resourceFile = frogtool.systems[self.console][3]
+        tadpole_functions.convertPNGtoResourceRGB565(self.workingPNGPath, resourceFile, self.drive)
         #Last thing, let's get rid of the text under the icons.
         #The user has confirmed they want these and now they aren't the same
         #TODO: Confirm users are happy removing shortcut labels some beta testing
