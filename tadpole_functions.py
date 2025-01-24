@@ -35,7 +35,8 @@ systems_old_default = {
     "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
     "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
     "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
-    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7]
+    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7],
+    "MENU8":   ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8]
 }
 
 systems_default = {
@@ -60,7 +61,8 @@ systems = {
     "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
     "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
     "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
-    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7]
+    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7],
+    "MENU8":   ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8]
 }
 
 supported_save_ext = [

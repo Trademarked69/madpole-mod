@@ -20,7 +20,8 @@ systems_old_default = {
     "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
     "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
     "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"]
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],
+    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"]
 }
 
 systems_default = {
@@ -45,7 +46,8 @@ systems = {
     "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
     "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
     "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"]
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],
+    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"]
 }
 
 supported_rom_ext = [

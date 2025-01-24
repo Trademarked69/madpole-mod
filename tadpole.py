@@ -50,6 +50,7 @@ from pathlib import Path
 import configparser
 import webbrowser
 import subprocess
+import re
 
 basedir = os.path.dirname(__file__)
 static_NoDrives = "N/A"
@@ -773,7 +774,12 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
                 for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
                     if i < len(filtered_foldername):
                         tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
-                        frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop)                        
+                        frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop)     
+
+                # Remove MENU8 in case its not gb300 v2                   
+                if FoldernamX == 0:
+                    tadpole_functions.systems.pop("MENU8")
+                    frogtool.systems.pop("MENU8")                   
         except Exception:
             # Not sf2000 drive
             frogtool.systems = frogtool.systems_old_default
