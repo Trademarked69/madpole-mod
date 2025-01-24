@@ -918,12 +918,12 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         logging.info(f"Combobox for drive changed to ({newDrive})")
         self.initMulticoreShortcuts()
         try:
-            FoldernamX = 0
+            MaxEntries = 8
             if os.path.exists(os.path.join(newDrive,"Resources","FoldernamX.ini")):
                 index_path_foldername = os.path.join(newDrive,"Resources","FoldernamX.ini")
                 frogtool.systems = frogtool.systems_default
                 tadpole_functions.systems = tadpole_functions.systems_default
-                FoldernamX = 1
+                MaxEntries = 12
             elif os.path.exists(os.path.join(newDrive,"Resources","Foldername.ini")):
                 print("Could not find", os.path.join(newDrive,"Resources","FoldernamX.ini"))
                 index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
@@ -943,7 +943,7 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
                 for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
 
                     # Skip irrelevant data
-                    if FoldernamX == 1:
+                    if MaxEntries == 12:
                         if i in [1, 2, 3, 17, 18, 19]:
                             continue
                     else:
@@ -965,16 +965,34 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
 
                     filtered_foldername.append(line.strip())
                 
-                # Replace with folder names from foldername.ini
-                for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
-                    if i < len(filtered_foldername):
-                        tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
-                        frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
+                # Get the number of menu entries from the first number of the third to last line
+                num_newlines = 0
+                with open(index_path_foldername, 'rb') as f:
+                    try:
+                        f.seek(-2, os.SEEK_END)    
+                        while num_newlines < 3:
+                            f.seek(-2, os.SEEK_CUR)
+                            if f.read(1) == b'\n':
+                                num_newlines += 1
+                    except OSError:
+                        f.seek(0)
+                    third_to_last_line = f.readline().decode()
+                    entries = int(third_to_last_line.split()[0]) - 1 # Extract the first number
+                            
+            # Replace with folder names from foldername.ini
+            for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
+                if i < len(filtered_foldername):
+                    tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
+                    frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
 
-                # Remove MENU8 in case its not gb300 v2                   
-                if FoldernamX == 0:
-                    tadpole_functions.systems.pop("MENU8")
-                    frogtool.systems.pop("MENU8")
+            # Remove any menu greater than the specified menu entries 
+            if entries < MaxEntries:
+                for key in list(frogtool.systems.keys()):
+                    menu_number = int(key[4:])  # Extract number from "MENUx"
+                    if menu_number > entries:
+                        tadpole_functions.systems.pop(key)
+                        frogtool.systems.pop(key)
+        
         except Exception:
             # Not sf2000 drive
             frogtool.systems = frogtool.systems_old_default
