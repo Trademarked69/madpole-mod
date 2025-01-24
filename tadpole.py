@@ -722,73 +722,62 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         console = self.combobox_console.currentText()
         logging.info(f"Combobox for drive changed to ({newDrive})")
         try:
-            index_path_foldernamx = os.path.join(newDrive,"Resources","FoldernamX.ini")
-
-            frogtool.systems = frogtool.systems_default
-            tadpole_functions.systems = tadpole_functions.systems_default
+            FoldernamX = 0
+            if os.path.exists(os.path.join(newDrive,"Resources","FoldernamX.ini")):
+                index_path_foldername = os.path.join(newDrive,"Resources","FoldernamX.ini")
+                frogtool.systems = frogtool.systems_default
+                tadpole_functions.systems = tadpole_functions.systems_default
+                FoldernamX = 1
+            elif os.path.exists(os.path.join(newDrive,"Resources","Foldername.ini")):
+                print("Could not find", os.path.join(newDrive,"Resources","FoldernamX.ini"))
+                index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
+                frogtool.systems = frogtool.systems_old_default
+                tadpole_functions.systems = tadpole_functions.systems_old_default
+            else:
+                print("Could not find", os.path.join(newDrive,"Resources","Foldername.ini"))
+                frogtool.systems = frogtool.systems_old_default
+                tadpole_functions.systems = tadpole_functions.systems_old_default
 
             # Initialize an empty list to store the filtered data
-            filtered_foldernamx = []
+            filtered_foldername = []
 
             # Open the file for reading
-            with open(index_path_foldernamx, "r") as file:
+            with open(index_path_foldername, "r") as file:
             # Read each line
                 for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
-                    # Strip leading/trailing whitespace
-                    stripped_line = line.strip()
 
                     # Skip irrelevant data
-                    if i in [1, 2, 3, 4, 17, 18, 19]:
-                        continue
-
-                    # Remove "FF8000" from the line and strip again
-                    stripped_line = stripped_line.replace("FF8000", "").strip()
-        
-                    # If the line is not empty after removing "FF8000", add it to the list
-                    if stripped_line:
-                        filtered_foldernamx.append(stripped_line)
-                
-                for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
-                    if i < len(filtered_foldernamx):
-                        tadpole_functions.systems[filtered_foldernamx[i]] = tadpole_functions.systems.pop(key_to_pop)
-                        frogtool.systems[filtered_foldernamx[i]] = frogtool.systems.pop(key_to_pop)                        
-        except Exception:
-            print("Couldn't find", index_path_foldernamx)
-            try:
-                index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
-
-                frogtool.systems = frogtool.systems_old_default
-                tadpole_functions.systems = tadpole_functions.systems_old_default
-
-                # Initialize an empty list to store the filtered data
-                filtered_foldername = []
-
-                # Open the file for reading
-                with open(index_path_foldername, "r") as file:
-                # Read each line
-                    for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
-                        # Strip leading/trailing whitespace
-                        stripped_line = line.strip()
-
-                        # Skip irrelevant data
-                        if i in [1, 2, 3, 4, 12, 13, 14, 15, 16]:
+                    if FoldernamX == 1:
+                        if i in [1, 2, 3, 17, 18, 19]:
+                            continue
+                    else:
+                        if i in [1, 2, 3, 14, 15, 16]:
                             continue
 
-                        # Remove "FF8000" from the line and strip again
-                        stripped_line = stripped_line.replace("FF8000", "").strip()
-        
-                        # If the line is not empty after removing "FF8000", add it to the list
-                        if stripped_line:
-                            filtered_foldername.append(stripped_line)
+                    # Regular expression to match hex colors
+                    hex_color_pattern = r'\b[A-Fa-f0-9]{6}\b'
+
+                    hex_colors = re.findall(hex_color_pattern, line)
+
+                    # Remove hex colors from the line
+                    for color in hex_colors:
+                        line = line.replace(color, '').strip()
+
+                    # Ignore "ROMS"
+                    if line.strip() == "ROMS":
+                        continue
+
+                    filtered_foldername.append(line.strip())
                 
-                    for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
-                        if i < len(filtered_foldername):
-                            tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
-                            frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
-            except Exception:
-                print("Couldn't find", index_path_foldername)
-                frogtool.systems = frogtool.systems_old_default
-                tadpole_functions.systems = tadpole_functions.systems_old_default
+                # Replace with folder names from foldername.ini
+                for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
+                    if i < len(filtered_foldername):
+                        tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
+                        frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop)                        
+        except Exception:
+            # Not sf2000 drive
+            frogtool.systems = frogtool.systems_old_default
+            tadpole_functions.systems = tadpole_functions.systems_old_default
         window.combobox_console.clear()
         for console in tadpole_functions.systems.keys():
             window.combobox_console.addItem(QIcon(), console, console)
