@@ -39,7 +39,8 @@ from dialogs.MulticoreStubsDialog import MulticoreStubsDialog
 from dialogs.MulticoreChange import MulticoreChange
 from dialogs.MulticoreAddDialog import MulticoreAddDialog
 from dialogs.MulticoreOptDialog import MulticoreOptDialog
-from dialogs.SectionEdit import SectionEdit
+from dialogs.StockSectionEdit import StockSectionEdit
+from dialogs.NewSectionEdit import NewSectionEdit
 from dialogs.ThumbnailDialog import ThumbnailDialog
 from dialogs.BootConfirmDialog import BootConfirmDialog
 from dialogs.DownloadProgressDialog import DownloadProgressDialog
@@ -433,8 +434,11 @@ class MainWindow (QMainWindow):
         editopts_action = QAction("Edit Multicore Opts", self, triggered=self.MulticoreOpts)
         self.menu_mc.addAction(editopts_action)
 
-        editsect_action = QAction("Stock Sections Editor", self, triggered=self.SectionEditor)
-        self.menu_mc.addAction(editsect_action)
+        stockeditsect_action = QAction("Stock Sections Editor", self, triggered=self.StockSectionEditor)
+        self.menu_mc.addAction(stockeditsect_action)
+
+        neweditsect_action = QAction("13 Menus Sections Editor", self, triggered=self.NewSectionEditor)
+        self.menu_mc.addAction(neweditsect_action)
 
         """
         #With Selected
@@ -650,9 +654,13 @@ class MainWindow (QMainWindow):
         MulticoreOptDialog(tpConf).exec()
     
 
-    def SectionEditor(self):
+    def StockSectionEditor(self):
         tpConf.cDir = self.combobox_drive.currentText()
-        SectionEdit(tpConf).exec()
+        StockSectionEdit(tpConf).exec()
+
+    def NewSectionEditor(self):
+        tpConf.cDir = self.combobox_drive.currentText()
+        NewSectionEdit(tpConf).exec()
         
 
     def ChangeSelectedCore(self):

@@ -1,0 +1,423 @@
+# GUI imports
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtMultimedia import QSoundEffect
+from PyQt5.QtCore import Qt, QTimer, QUrl, QSize
+# OS imports - these should probably be moved somewhere else
+import os
+import tadpole_functions
+import frogtool
+import shutil
+import re
+from dialogs.DownloadProgressDialog import DownloadProgressDialog
+
+# Subclass Qidget to create a Settings window        
+class NewSectionEdit(QDialog):
+    """
+        This window should be called without a parent widget so that it is created in its own window.
+    """
+    def __init__(self, tpConf):
+        super().__init__()
+        self.tpConf = tpConf
+        self.lock = False
+        self.fdata = {}
+
+        index_path_foldername = os.path.join(self.tpConf.cDir, "Resources", "Foldernamx.ini")
+
+        # Initialize an empty list to store the filtered data
+        self.sections = []
+
+        # Open the file for reading
+        with open(index_path_foldername, "r") as file:
+        # Read each line
+            for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
+
+                # Skip irrelevant data
+                if i in [1, 2, 3, 17, 18, 19]:
+                    continue
+
+                # Regular expression to match hex colors
+                hex_color_pattern = r'\b[A-Fa-f0-9]{6}\b'
+
+                hex_colors = re.findall(hex_color_pattern, line)
+
+                # Remove hex colors from the line
+                for color in hex_colors:
+                    line = line.replace(color, '').strip()
+
+                self.sections.append(line.strip())                      
+
+        font = QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        
+
+
+
+        self.setWindowIcon(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DesktopIcon)))
+        self.setWindowTitle(f"Edit Stock Sections")
+        
+        self.setMinimumWidth(350)
+
+        # Setup Main Layout
+        self.layout_main = QVBoxLayout()
+        self.setLayout(self.layout_main)
+
+        #Thumbnail View options
+        self.layout_main.addWidget(QLabel("How Many Sections"))
+        self.sects = QComboBox()
+
+        self.sects.addItems(["1" , "2" , "3" , "4" , "5" , "6" , "7" , "8", "9", "10", "11", "12", "13"])
+        self.sects.currentTextChanged.connect(self.enableSects)
+        self.layout_main.addWidget(self.sects)
+
+        self.layout_main.addWidget(QLabel(" "))  # spacer
+
+        self.layout_main.addWidget(QLabel("Sections Order"))
+
+        self.layout_sections = QGridLayout()
+        self.layout_main.addLayout(self.layout_sections)
+
+        self.slot1 = QComboBox()
+        #self.slot1.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot1.setCurrentText("ROMS")
+
+        self.slot2 = QComboBox()
+        #self.slot2.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot2.setCurrentText("MENU1")
+
+        self.slot3 = QComboBox()
+        #self.slot3.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot3.setCurrentText("MENU2")
+
+        self.slot4 = QComboBox()
+        #self.slot4.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot4.setCurrentText("MENU3")
+
+        self.slot5 = QComboBox()
+        #self.slot5.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot5.setCurrentText("MENU4")
+
+        self.slot6 = QComboBox()
+        #self.slot6.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot6.setCurrentText("MENU5")
+
+        self.slot7 = QComboBox()
+        #self.slot7.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot7.setCurrentText("MENU6")
+
+        self.slot8 = QComboBox()
+        #self.slot8.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot8.setCurrentText("MENU7")
+        
+        self.slot9 = QComboBox()
+        #self.slot9.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot9.setCurrentText("MENU8")
+        
+        self.slot10 = QComboBox()
+        #self.slot10.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot10.setCurrentText("MENU9")
+        
+        self.slot11 = QComboBox()
+        #self.slot11.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot11.setCurrentText("MENU10")
+
+        self.slot12 = QComboBox()
+        #self.slot12.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot12.setCurrentText("MENU11")
+        
+        self.slot13 = QComboBox()
+        #self.slot13.addItems(["ROMS" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD" , "ARCADE"])
+        #self.slot13.setCurrentText("MENU12")
+
+
+        self.layout_sections.addWidget(QLabel("Slot 1") , 0 , 0)
+        self.layout_sections.addWidget(self.slot1 , 1 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 2") , 0 , 1)
+        self.layout_sections.addWidget(self.slot2 , 1 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 3") , 2 , 0)
+        self.layout_sections.addWidget(self.slot3 , 3 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 4") , 2 , 1)
+        self.layout_sections.addWidget(self.slot4 , 3 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 5") , 4, 0)
+        self.layout_sections.addWidget(self.slot5 , 5 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 6") , 4 , 1)
+        self.layout_sections.addWidget(self.slot6 , 5 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 7") , 6 , 0)
+        self.layout_sections.addWidget(self.slot7 , 7 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 8") , 6 , 1)
+        self.layout_sections.addWidget(self.slot8 , 7 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 9") , 8 , 0)
+        self.layout_sections.addWidget(self.slot9 , 9 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 10") , 8 , 1)
+        self.layout_sections.addWidget(self.slot10 , 9 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 11") , 10 , 0)
+        self.layout_sections.addWidget(self.slot11 , 11 , 0)
+        self.layout_sections.addWidget(QLabel("Slot 12") , 10 , 1)
+        self.layout_sections.addWidget(self.slot12 , 11 , 1)
+        self.layout_sections.addWidget(QLabel("Slot 13") , 12 , 0)
+        self.layout_sections.addWidget(self.slot13 , 13 , 0)
+
+
+        self.combos = [ self.slot1 , self.slot2, self.slot3, self.slot4, self.slot5, self.slot6, self.slot7, self.slot8, self.slot9, self.slot10, self.slot11, self.slot12, self.slot13 ]
+
+        
+        self.layout_main.addWidget(QLabel(" "))  # spacer
+        
+        self.layout_main.addWidget(QLabel("Start at Section"))
+        self.first = QComboBox()
+
+        self.first.addItems(self.sections)
+        self.layout_main.addWidget(self.first)
+        
+        
+
+
+        
+        self.layout_main.addWidget(QLabel(" "))  # spacer
+
+        # Main Buttons Layout (Save/Cancel)
+        self.layout_buttons = QHBoxLayout()
+        self.layout_main.addLayout(self.layout_buttons)
+        
+
+        self.button_cancel = QPushButton("Back")
+        self.button_cancel.clicked.connect(self.accept)
+        self.layout_buttons.addWidget(self.button_cancel)
+        
+        self.status_bar = QStatusBar()
+        self.layout_main.addWidget(self.status_bar)
+
+        #Save Existing Cover To File Button
+        self.button_save = QPushButton("Save")
+        self.button_save.clicked.connect(self.saveSections)
+        self.layout_buttons.addWidget(self.button_save) 
+
+        self.loadValues()
+
+        for x in range(0 , 13):
+            self.combos[x].addItem(self.sections[x])
+            self.combos[x].setFont(font)
+
+            """
+            self.lock = True
+            self.combos[x].setCurrentText(self.fdata["sect"+str(x)][0])
+            self.lock = False
+            """
+
+        self.sects.setFont(font)
+        self.first.setFont(font)
+
+        self.sects.setCurrentText(self.fdata["total"])
+        self.lock = True
+        self.first.setCurrentText(self.sections[int(self.fdata["current"])] )
+        self.lock = False
+        #self.setHandler()
+
+
+        #self.statusBar = QStatusBar()
+        #self.setStatusBar(self.statusBar)    
+
+        
+        #self.setStatusBar(self.status_bar)
+
+    
+
+    def saveSections(self):
+        print("Saving Sections")
+
+        fdata = self.fdata
+        sdata = fdata['console'] + "\n" + fdata['langs'] + "\n" + fdata['color'] + "\n"
+
+        count = int(self.sects.currentText())
+
+        
+        for i in range(0 , 7):
+            citem = self.combos[i].currentText()
+            if citem == self.first.currentText():
+                sitem = str(i)
+            sdata += fdata['sect' + str(i)][1] + " " + citem + "\n"
+
+        for i in range(7 , 13):
+            citem = self.combos[i].currentText()
+            if citem == self.first.currentText():
+                sitem = str(i)
+            sdata += citem + "\n"
+
+        sdata += str(count) + " " + sitem + " " + str(self.hasR(True)) + "\n"
+        sdata += fdata['lastlines']
+
+        print("\n\nTHE DATA IS \n\n")
+        print(sdata)
+
+        opath = os.path.join(self.tpConf.cDir, "Resources")
+        ofile = os.path.join(opath , "Foldernamx.ini")
+        nfile = os.path.join(opath , "Foldernamx_backup.ini")
+
+        print(f"OLD path is {ofile}")
+        print(f"NEW path is {nfile}")
+
+        if os.path.exists(ofile):
+            print("copying file now")
+            shutil.copy(ofile, nfile)
+        else:
+            QMessageBox.information(self, "Error" , "Foldernamx.ini file not found , Make sure the file exists or select proper ROOT or User Directory.")
+            return
+
+        try:
+            f = open(ofile, "w")
+            f.truncate(0)
+            f.write(sdata)
+            f.close()
+
+            QMessageBox.information(self , "Success" , "Sections Edited. You original file is backed up as Foldernamx_backup.ini")
+
+        except:
+            QMessageBox.information(self , "Error" , "Error Writing File")
+
+        self.accept()
+
+
+    def loadValues(self):
+
+        fdata = {}
+	
+        cDir = os.path.join(self.tpConf.cDir, "Resources", "Foldernamx.ini")
+
+        #print(f"Directory is {cDir}")
+
+        fpath = cDir
+
+
+        print(f"Path is {cDir}")
+
+        if not os.path.exists(fpath):
+            QMessageBox.information(self,"Error" , "Foldernamx.ini Not found")
+            return
+
+        f = open(fpath, "r+")
+        lines = list(f.readlines())
+        f.close()
+        #print(f"Lines are \n {lines[0]}")
+
+        fdata['console'] = lines[0].strip("\n")
+        fdata['langs'] = lines[1].strip("\n")
+        fdata['color'] = lines[2].strip("\n")
+
+        
+        secdata = lines[3].strip("\n").split(" ")
+        fdata["sect0"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[4].strip("\n").split(" ")
+        fdata["sect1"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[5].strip("\n").split(" ")
+        fdata["sect2"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[6].strip("\n").split(" ")
+        fdata["sect3"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[7].strip("\n").split(" ")
+        fdata["sect4"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[8].strip("\n").split(" ")
+        fdata["sect5"] = [secdata[1] , secdata[0] ]
+
+        secdata = lines[9].strip("\n").split(" ")
+        fdata["sect6"] = [secdata[1] , secdata[0] ]
+
+        fdata['sect7'] = lines[10].strip("\n")
+        fdata['sect8'] = lines[11].strip("\n")
+        fdata['sect9'] = lines[12].strip("\n")
+        fdata['sect10'] = lines[13].strip("\n")
+        fdata['sect11'] = lines[14].strip("\n")
+        fdata['sect12'] = lines[15].strip("\n")
+
+        odata  = lines[16].strip("\n").split(" ")
+
+
+        fdata["total"] = odata[0]
+        fdata["current"] = odata[1]
+        fdata["roms"] = odata[2]
+
+        fdata['lastlines'] = lines[17] + lines[18]
+
+        self.fdata = fdata
+
+        #print("Data from file is")
+
+        #print(fdata)
+
+
+    def setHandler(self):
+        for i in range(0 , 13):
+            self.combos[i].currentTextChanged.connect(self.slotChanged)
+
+    def slotChanged(self):
+
+        if self.lock:
+            return
+
+        self.hasR()
+        self.changeStart()
+        #sender = self.sender()
+        #print(f"Slot {sender.currentText()} changed")
+                
+    def enableSects(self):
+
+        if self.lock:
+            return
+        count = int(self.sects.currentText())
+
+        if count < 13:
+            for i in range(count , 13):
+                self.combos[i].setDisabled(True);
+                #print(f"Disabled {self.combos[i].currentText()}")
+
+        if count > 0:
+            for j in range(0 , count):
+                self.combos[j].setDisabled(False);
+
+        self.changeStart()
+
+    def hasR(self , sMsg = False):
+        #hr = False;
+        for x in range(0 , int(self.sects.currentText())):
+            if self.combos[x].currentText() == "ROMS":
+                return x
+
+        
+
+        if not sMsg:
+            self.lock = True
+            self.combos[0].setCurrentText("ROMS")
+            self.lock = False
+            QMessageBox.information(self , "ROMS Section" , "ROMS section has to be there , It will be the only Section if you select to have 1 Section.\
+                                        \n\nSet ROMS to another slot first before changing this slot")
+        
+        return -1
+
+
+    def changeStart(self):
+
+        ti = []
+        #self.lock = True
+
+        for x in range(0,int(self.sects.currentText())):
+            ti.append(self.combos[x].currentText())
+        
+        tpi = []
+        for y in range(0 , 13):
+            
+            opi = self.first.model().item(y).text()
+            #print(op)
+            if opi not in ti:
+                self.first.model().item(y).setEnabled(False)
+                tpi.append(opi)
+            else:
+                self.first.model().item(y).setEnabled(True)
+
+        if self.first.currentText() not in ti:
+            self.first.setCurrentText(ti[0])

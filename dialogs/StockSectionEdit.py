@@ -8,10 +8,11 @@ import os
 import tadpole_functions
 import frogtool
 import shutil
+import re
 from dialogs.DownloadProgressDialog import DownloadProgressDialog
 
 # Subclass Qidget to create a Settings window        
-class SectionEdit(QDialog):
+class StockSectionEdit(QDialog):
     """
         This window should be called without a parent widget so that it is created in its own window.
     """
@@ -20,7 +21,31 @@ class SectionEdit(QDialog):
         self.tpConf = tpConf
         self.lock = False
         self.fdata = {}
-        self.sections = ["ROMS" , "FC" , "SFC" , "MD" ,"GB" , "GBC" , "GBA"  , "ARCADE"]
+
+        index_path_foldername = os.path.join(self.tpConf.cDir, "Resources", "Foldernamx.ini")
+
+        # Initialize an empty list to store the filtered data
+        self.sections = []
+
+        # Open the file for reading
+        with open(index_path_foldername, "r") as file:
+        # Read each line
+            for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
+
+                # Skip irrelevant data
+                if i in [1, 2, 3, 17, 18, 19]:
+                    continue
+
+                # Regular expression to match hex colors
+                hex_color_pattern = r'\b[A-Fa-f0-9]{6}\b'
+
+                hex_colors = re.findall(hex_color_pattern, line)
+
+                # Remove hex colors from the line
+                for color in hex_colors:
+                    line = line.replace(color, '').strip()
+
+                self.sections.append(line.strip()) 
 
         font = QFont()
         font.setFamily("Arial")
