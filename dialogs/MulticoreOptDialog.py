@@ -149,12 +149,12 @@ class MulticoreOptDialog(QDialog):
         optfile = self.optfile.currentText()
         self.oldoptfile = optfile
         conf = configparser.ConfigParser()
+
         if os.path.exists(os.path.join(self.tpConf.cDir, "configs", optfile + ".opt")):
-            if optfile == "multicore":
-                optp = os.path.join(self.tpConf.cDir, "configs", optfile + ".opt")
-            else: 
-                optp = os.path.join(self.tpConf.cDir, "configs", optfile, optfile + ".opt")
-        else:
+            optp = os.path.join(self.tpConf.cDir, "configs", optfile + ".opt")                
+        elif os.path.exists(os.path.join(self.tpConf.cDir, "configs", optfile, optfile + ".opt")):
+            optp = os.path.join(self.tpConf.cDir, "configs", optfile, optfile + ".opt")
+        else: 
             optp = os.path.join(self.tpConf.cDir, "cores", "config", optfile + ".opt")
 
         with open(optp) as lines:
