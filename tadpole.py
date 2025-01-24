@@ -582,27 +582,29 @@ the thumbnail for you. ")
             ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
             art_Type = "/Named_Snaps/"
             ROMArt_console = {  
-                "FC":     "Nintendo - Nintendo Entertainment System",
+                "FC":      "Nintendo - Nintendo Entertainment System",
                 "NES":     "Nintendo - Nintendo Entertainment System",
-                "SFC":    "Nintendo - Super Nintendo Entertainment System",
+                "SFC":     "Nintendo - Super Nintendo Entertainment System",
                 "SNES":    "Nintendo - Super Nintendo Entertainment System",
-                "MD":     "Sega - Mega Drive - Genesis",
+                "MD":      "Sega - Mega Drive - Genesis",
                 "GEN":     "Sega - Mega Drive - Genesis",
+                "GENESIS": "Sega - Mega Drive - Genesis",
                 "SMS":     "Sega - Master System - Mark III",
-                "MS":     "Sega - Master System - Mark III",
-                "MARK3":     "Sega - Master System - Mark III",
-                "GG":     "Sega - Game Gear",
-                "GB":     "Nintendo - Game Boy",
-                "GBC":    "Nintendo - Game Boy Color",
-                "GBA":    "Nintendo - Game Boy Advance", 
-                "WS":    "Bandai - WonderSwan", 
-                "WSC":    "Bandai - WonderSwan Color", 
-                "WSWAN":    "Bandai - WonderSwan", 
-                "WSWANC":    "Bandai - WonderSwan Color", 
-                "NGP":    "SNK - Neo Geo Pocket", 
+                "MS":      "Sega - Master System - Mark III",
+                "MARK3":   "Sega - Master System - Mark III",
+                "MARKIII": "Sega - Master System - Mark III",
+                "GG":      "Sega - Game Gear",
+                "GB":      "Nintendo - Game Boy",
+                "GBC":     "Nintendo - Game Boy Color",
+                "GBA":     "Nintendo - Game Boy Advance", 
+                "WS":      "Bandai - WonderSwan", 
+                "WSC":     "Bandai - WonderSwan Color", 
+                "WSWAN":   "Bandai - WonderSwan", 
+                "WSWANC":  "Bandai - WonderSwan Color", 
+                "NGP":     "SNK - Neo Geo Pocket", 
                 "NGPC":    "SNK - Neo Geo Pocket Color", 
-                "PCE":    "NEC - PC Engine - TurboGrafx 16", 
-                "ARCADE": ""
+                "PCE":     "NEC - PC Engine - TurboGrafx 16", 
+                "ARCADE":  ""
             }
             msgBox.setText("Downloading thumbnails...")
             msgBox.show()

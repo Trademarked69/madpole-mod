@@ -55,7 +55,7 @@ supported_rom_ext = [
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
 zxx_ext = {
-    "FC": "zfc", "NES": "zfc", "SFC": "zsf", "SNES": "zsf", "MD": "zmd", "GEN": "zmd", "SEGA": "zmd", "GB": "zgb", "GBC": "zgb", "GBA": "zgb", "ARCADE": "zfb"
+    "FC": "zfc", "NES": "zfc", "SFC": "zsf", "SNES": "zsf", "MD": "zmd", "GEN": "zmd", "GENESIS": "zmd", "SEGA": "zmd", "GB": "zgb", "GBC": "zgb", "GBA": "zgb", "ARCADE": "zfb"
 }
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"
