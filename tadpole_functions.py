@@ -611,20 +611,7 @@ def getGameShortcutPosition(drive, console, game):
 #Although not required, if you don't have seperate prefixes, games with same ROM names/extension
 # e.g. Gameboy, gameboy color, and gameboy advance can get confused when loading the shortcuts in other systems.  
 def getPrefixFromConsole(console):
-    if console == "FC":  
-        return 1
-    elif console == "SFC": 
-        return 2
-    elif console == "MD":  
-        return 3
-    elif console == "GB":  
-        return 4
-    elif console == "GBC":
-        return 5
-    elif console == "GBA":
-        return 7
-    else:  
-        return 6 #Aracde NEEDS 6 so always default to that
+    return systems[console][3]
 
 def findSequence(needle, haystack, offset = 0):
     # Loop through the data array starting from the offset
