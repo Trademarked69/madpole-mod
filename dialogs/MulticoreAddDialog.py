@@ -14,6 +14,9 @@ import tadpole_functions
 import frogtool
 """
 
+from tadpoleConfig import TadpoleConfig
+tpConf = TadpoleConfig()
+
 import mcoredata as mcd
 from dialogs.DownloadProgressDialog import DownloadProgressDialog
 
@@ -55,8 +58,17 @@ class MulticoreAddDialog(QDialog):
         self.button_browse.clicked.connect(self.selectFiles)
         self.layout_buttons.addWidget(QLabel("Select Roms and Thumbs Files"))
         self.layout_buttons.addWidget(self.button_browse) 
-        self.layout_main.addWidget(QLabel("Thumb name has to be the same name as ROM , if no matching\nThumb is found a placeholder selected below will be used."))
-
+        
+        if not tpConf.getThumbnailDownload():
+            self.layout_main.addWidget(QLabel("Thumb name has to be the same name as ROM , if no matching\nThumb is found a placeholder selected below will be used."))
+        else:
+            self.layout_main.addWidget(QLabel("You have Madpole configured to download thumbnails automatically."))
+            self.layout_main.addWidget(QLabel("For this to work the name of that rom must match their common released English US localized name."))            
+            link_text = "Please refer to <a href='https://thumbnails.libretro.com/'>https://thumbnails.libretro.com/</a> if Madpole isn't finding the thumbnail for you."
+            label = QLabel()
+            label.setText(link_text)
+            label.setOpenExternalLinks(True)
+            self.layout_main.addWidget(label)
 
         self.layout_main.addWidget(QLabel(" "))
 

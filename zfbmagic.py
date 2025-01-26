@@ -5,7 +5,11 @@ import requests
 import struct
 
 import frogtool
+import tadpole_functions
+from tadpoleConfig import TadpoleConfig
 import shutil
+
+tpConf = TadpoleConfig()
 
 from PIL import Image
 
@@ -196,7 +200,17 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
             fname_noext = os.path.splitext(os.path.basename(file_path))[0]
             file_ext = os.path.splitext(file_name)[1][1:]
             
-             
+            if tpConf.getThumbnailDownload():
+                Image_File = os.path.join(input_folder, fname_noext + ".png")
+                if os.path.exists(Image_File):
+                    os.remove(Image_File) 
+                
+                url = tadpole_functions.GetLibretroROMArtUrl(file_ext) + fname_noext + ".png"       
+                response = requests.get(url)
+                if response.status_code == 200:
+                    with open(Image_File, "wb") as f:
+                        f.write(response.content)
+                    print("File downloaded successfully.")
 
             # Skip if file name has been processed
             if fname_noext in rom_list:
@@ -254,13 +268,18 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
                         existadd = "_1"
 
             if img_ext:
-
+                if tpConf.getResizeRomart():
+                    tadpole_functions.resize_image(file_path)
+                    
                 with Image.open(file_path) as img:
 
                     #zfb_from_image(img , input_folder , core ,  file_name , output_folder )
                     zfb_from_image(img , input_folder , core ,  file_name, output_folder , apptxt , pretxt , addext , existadd)
                     rom_list.append(fname_noext)
                     proc_files += 1
+
+                if tpConf.getThumbnailDownload():
+                    os.remove(file_path) 
 
             else:
 

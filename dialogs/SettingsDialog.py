@@ -18,7 +18,7 @@ class SettingsDialog(QDialog):
         super().__init__()
         self.tpConf = tpConf
         self.setWindowIcon(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DesktopIcon)))
-        self.setWindowTitle(f"Tadpole Settings")
+        self.setWindowTitle(f"Madpole Settings")
         
         # Setup Main Layout
         self.layout_main = QVBoxLayout()
@@ -49,6 +49,30 @@ class SettingsDialog(QDialog):
         thubmnailOvewriteCombo.currentTextChanged.connect(self.thumbnailOverwriteChanged)
         self.layout_main.addWidget(thubmnailOvewriteCombo)
 
+        #Libretro Thumbnail Type options
+        self.layout_main.addWidget(QLabel("Libretro Thumbnail Type"))
+        libretroThumbnailTypeCombo = QComboBox()
+        libretroThumbnailTypeCombo.addItems(["Boxarts", "Snaps", "Titles"])
+        current_type = tpConf.getLibretroThumbnailType()
+        libretroThumbnailTypeCombo.setCurrentIndex(["Boxarts", "Snaps", "Titles"].index(current_type))
+        libretroThumbnailTypeCombo.currentTextChanged.connect(self.libretroThumbnailTypeChanged)
+        self.layout_main.addWidget(libretroThumbnailTypeCombo)
+
+        # Automatic resize romart
+        self.layout_main.addWidget(QLabel("Automatically Resize Romart?"))
+        resizeRomartCombo = QComboBox()
+        resizeRomartCombo.addItems(["Yes", "No"])
+        resizeRomartCombo.setCurrentIndex(0 if tpConf.getResizeRomart() else 1)
+        resizeRomartCombo.currentTextChanged.connect(self.resizeRomartChanged)
+        self.layout_main.addWidget(resizeRomartCombo)
+        
+        # Libretro Thumbnail Background Color
+        self.layout_main.addWidget(QLabel("Libretro Thumbnail Background Color"))
+        romartBackgroundColorTextbox = QLineEdit()
+        romartBackgroundColorTextbox.setText(tpConf.getRomartBackgroundColor())
+        romartBackgroundColorTextbox.textChanged.connect(self.romartBackgroundColorChanged)
+        self.layout_main.addWidget(romartBackgroundColorTextbox)
+
         self.layout_main.addWidget(QLabel(" "))  # spacer
 
         #File options options
@@ -60,7 +84,7 @@ class SettingsDialog(QDialog):
         self.btn_change_user_dir = QPushButton("Select your own local directory...")
         self.layout_main.addWidget(self.btn_change_user_dir)
         self.btn_change_user_dir.clicked.connect(self.userSelectedDirectorySettingsButton)
-        self.btn_remove_user_dir = QPushButton("Remove your local directory from Tadpole")
+        self.btn_remove_user_dir = QPushButton("Remove your local directory from Madpole")
         self.layout_main.addWidget(self.btn_remove_user_dir)
         self.btn_remove_user_dir.clicked.connect(self.userSelectedDirectoryResetSettingsButton)
                 
@@ -122,4 +146,15 @@ like the root of the SD card.  Do you want us to download all the most up to dat
 
     def thumbnailViewClicked(self):
         self.tpConf.setViewThumbnailsInTable(self.sender().isChecked())
-  
+    
+    def libretroThumbnailTypeChanged(self):
+        selected_type = self.sender().currentText()
+        self.tpConf.setLibretroThumbnailType(selected_type)
+        
+    def resizeRomartChanged(self):
+        self.tpConf.setResizeRomart(self.sender().currentIndex() == 0)
+        
+    def romartBackgroundColorChanged(self):
+        selected_type = self.sender().currentText()
+        self.tpConf.setRomartBackgroundColor(selected_type)
+

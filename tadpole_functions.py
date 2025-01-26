@@ -11,11 +11,16 @@ from io import BytesIO
 #feature imports
 import struct
 import frogtool
+from tadpoleConfig import TadpoleConfig
 import requests
+from bs4 import BeautifulSoup
 import json
 import logging
 import time
 
+from PIL import Image
+
+tpConf = TadpoleConfig()
 
 
 try:
@@ -89,33 +94,89 @@ versionDictionary = {
      #08bd07ab3313e3f00b922538516a61b5846cde34c74ebc0020cd1a0b557dd54b
      # v1.71 SHA256 : fb772d3af075f60cf26a0b923d428bfa35907fff168f55aaa328fd89e21cbb2b
 
-ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
+ROMART_baseURL = "https://thumbnails.libretro.com/"
 
-ROMArt_console = {  
-    "FC":      "Nintendo - Nintendo Entertainment System",
-    "NES":     "Nintendo - Nintendo Entertainment System",
-    "SFC":     "Nintendo - Super Nintendo Entertainment System",
-    "SNES":    "Nintendo - Super Nintendo Entertainment System",
-    "MD":      "Sega - Mega Drive - Genesis",
-    "GEN":     "Sega - Mega Drive - Genesis",
-    "GENESIS": "Sega - Mega Drive - Genesis",
-    "SMS":     "Sega - Master System - Mark III",
-    "MS":      "Sega - Master System - Mark III",
-    "MARK3":   "Sega - Master System - Mark III",
-    "MARKIII": "Sega - Master System - Mark III",
-    "GG":      "Sega - Game Gear",
-    "GB":      "Nintendo - Game Boy",
-    "GBC":     "Nintendo - Game Boy Color",
-    "GBA":     "Nintendo - Game Boy Advance", 
-    "WS":      "Bandai - WonderSwan", 
-    "WSC":     "Bandai - WonderSwan Color", 
-    "WSWAN":   "Bandai - WonderSwan", 
-    "WSWANC":  "Bandai - WonderSwan Color", 
-    "NGP":     "SNK - Neo Geo Pocket", 
-    "NGPC":    "SNK - Neo Geo Pocket Color", 
-    "PCE":     "NEC - PC Engine - TurboGrafx 16", 
-    "ARCADE":  ""
+ROMArt_console = {  # Only common rom extensions
+    "nes":     "Nintendo - Nintendo Entertainment System",
+    "smc":     "Nintendo - Super Nintendo Entertainment System",
+    "sfc":     "Nintendo - Super Nintendo Entertainment System",
+    "gb":      "Nintendo - Game Boy",
+    "gbc":     "Nintendo - Game Boy Color",
+    "gba":     "Nintendo - Game Boy Advance", 
+    "sms":     "Sega - Master System - Mark III",
+    "md":      "Sega - Mega Drive - Genesis",
+    "smd":     "Sega - Mega Drive - Genesis",
+    "gen":     "Sega - Mega Drive - Genesis",
+    "gg":      "Sega - Game Gear",
+    "ws":      "Bandai - WonderSwan", 
+    "wsc":     "Bandai - WonderSwan Color", 
+    "ngp":     "SNK - Neo Geo Pocket", 
+    "ngc":     "SNK - Neo Geo Pocket Color", 
+    "pce":     "NEC - PC Engine - TurboGrafx 16"
 }
+
+def GetLibretroROMArtUrl(rom_extension):
+    url = ROMART_baseURL + ROMArt_console[rom_extension.lower()] + "/Named_" + tpConf.getLibretroThumbnailType() + "/"
+    print("libretro png url is", url)
+    return url
+
+def GetLibretroROMArtBulk(rom_extension):
+    url = GetLibretroROMArtUrl(rom_extension)
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    png_files = []
+    for a_tag in soup.find_all('a', href=True):
+        href = a_tag['href']
+        if href.endswith('.png'):
+            href = href.replace('%20', ' ')
+            png_files.append(href)
+    return png_files
+
+def resize_image(file_path): # Resize a single png
+    max_width, max_height = 144, 208
+    image = Image.open(file_path)
+            
+    # Calculate the aspect ratio
+    aspect_ratio = image.width / image.height
+    if aspect_ratio > max_width / max_height:
+        new_width = max_width
+        if aspect_ratio > 1:
+            # Landscape image
+            new_height = int(max_width / aspect_ratio)
+        else:
+            # Portrait or square image
+            new_height = int(max_width * aspect_ratio)
+    else:
+        new_height = max_height
+        if aspect_ratio > 1:
+            # Landscape image
+            new_width = int(max_height / aspect_ratio)
+        else:
+            # Portrait or square image
+            new_width = int(max_height * aspect_ratio)
+            
+    # Resize the image to fit within the box while maintaining aspect ratio
+    image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+    # Create a new image with a custom background color
+    new_image = Image.new("RGBA", (max_width, max_height), tpConf.getRomartBackgroundColor())
+            
+    # Calculate the position to center the image
+    paste_x = (max_width - new_width) // 2
+    paste_y = (max_height - new_height) // 2
+            
+    # Paste the resized image onto the center of the new image
+    new_image.paste(image, (paste_x, paste_y))
+            
+    # Save the modified image
+    new_image.save(file_path, quality=100)
+
+def resize_images(directory): # Resize all .png files in a directory
+    for filename in os.listdir(directory):
+        if filename.endswith('.png'):
+            image_path = os.path.join(directory, filename)
+            resize_image(image_path)
+            
 
 offset_logo_presequence = [0x62, 0x61, 0x64, 0x5F, 0x65, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6F, 0x6E, 0x00, 0x00, 0x00]
 offset_buttonMap_presequence = [0x00, 0x00, 0x00, 0x71, 0xDB, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
