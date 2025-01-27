@@ -9,7 +9,7 @@ Madpole-mod currently provides the following main features:
 * Changing the firmware to official releases or multicore
 * Merging ROM zips and jpg files with the same name to the relevant Zxx fileformat for each console (stock feature)
 * Creating zfb files to load ROMs using Multicore cores
-* Downloading cover art for ROMs (including zfb files)
+* Downloading cover art for ROMs (including Multicore roms)
 * Editing the Multicore .opt files
 * A WIP section editor
 * Changing the four in menu game shortcuts for each console
