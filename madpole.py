@@ -339,7 +339,7 @@ class MainWindow (QMainWindow):
         self.menu_os.menu_change_theme.addSeparator()
         
         try:
-            self.theme_options = tadpole_functions.get_themes()
+            self.theme_options = tadpole_functions.get_themes(device)
         except (ConnectionError, requests.exceptions.ConnectionError):
             self.status_bar.showMessage("Error loading external theme resources.  Reconnect to internet and try restarting Madpole.", 20000)
             error_action = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_MessageBoxCritical)),

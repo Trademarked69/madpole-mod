@@ -703,13 +703,17 @@ def get_background_music(url="https://api.github.com/repos/EricGoldsteinNz/SF200
         return music
     raise ConnectionError("Unable to obtain music resources. (Status Code: {})".format(response.status_code))
 
-def get_themes(url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/Themes") -> bool:
+def get_themes(device) -> bool:
     """gets index of theme from provided GitHub API URL"""
     theme = {}
+    if device == 'SF2000':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000'
+    elif device == 'GB300':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/GB300'
     response = requests.get(url)
-
     if response.status_code == 200:
         data = json.loads(response.content)
+
         for item in data:
             theme[item['name'].replace(".zip", "")] = item['download_url']
         return theme
@@ -788,8 +792,9 @@ def changeTheme(drive_path: str, url: str = "", file: str = "", progressBar: QPr
                 progressBar.setMaximum(len(zip.infolist()))
                 progress = 6
                 #TODO: Hacky but assume any zip folder with more than 55 files is not a theme zip
-                if len(zip.infolist()) > 55:
-                    return False
+                #TODO: Seems the GB300 has a bunch of extra files... yikes
+                #if len(zip.infolist()) > 55:
+                #    return False
                 for zip_info in zip.infolist():     
                     #print(zip_info)
                     if zip_info.is_dir():

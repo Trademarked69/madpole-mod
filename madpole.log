@@ -1,0 +1,1481 @@
+20:10:02,432 root INFO Tadpole Started
+20:10:02,928 root INFO Madpole Started
+20:10:03,4 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+20:10:04,201 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+20:10:04,209 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+20:10:04,800 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+20:10:04,811 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+20:10:05,392 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+20:10:05,398 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+20:10:05,974 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+20:10:06,482 root INFO Automatically triggering drive change because a new drive connected
+20:10:06,483 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+20:10:06,496 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+20:10:06,500 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+20:10:06,590 root INFO Found 0 ROMs
+21:02:42,233 root INFO Tadpole Started
+21:02:42,800 root INFO Madpole Started
+21:02:42,880 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+21:02:44,73 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+21:02:44,83 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:02:44,718 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+21:02:44,730 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:02:45,387 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+21:02:45,393 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:02:46,5 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+21:02:46,570 root INFO Automatically triggering drive change because a new drive connected
+21:02:46,570 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:02:46,578 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:02:46,582 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:02:46,656 root INFO Found 0 ROMs
+21:03:00,655 root ERROR main crashed. Error: module 'tadpole_functions' has no attribute 'setDeviceType'
+Traceback (most recent call last):
+  File "madpole.py", line 1885, in <module>
+    window.reloadDriveList()
+  File "madpole.py", line 623, in reloadDriveList
+    current_device = tadpole_functions.setDeviceType(current_drive)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tadpole_functions' has no attribute 'setDeviceType'
+21:03:34,972 root INFO Tadpole Started
+21:03:35,502 root INFO Madpole Started
+21:03:35,585 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+21:03:36,896 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+21:03:36,904 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:03:37,534 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+21:03:37,546 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:03:38,148 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+21:03:38,155 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:03:38,758 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+21:03:39,348 root INFO Automatically triggering drive change because a new drive connected
+21:03:39,348 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:03:39,355 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:03:39,360 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:03:39,466 root INFO Found 0 ROMs
+21:04:50,523 root INFO Tadpole Started
+21:04:51,208 root INFO Madpole Started
+21:04:51,307 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+21:04:52,506 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+21:04:52,517 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:04:53,185 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+21:04:53,198 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:04:53,851 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+21:04:53,858 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:04:54,514 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+21:04:55,120 root INFO Automatically triggering drive change because a new drive connected
+21:04:55,120 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:04:55,127 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:04:55,131 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:04:55,211 root INFO Found 0 ROMs
+21:05:41,802 root INFO Combobox for drive changed to (D:\)
+21:05:42,122 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+21:05:42,199 root INFO loading roms to table for (D:\) (FC)
+21:05:42,234 root INFO Found 877 ROMs
+21:06:39,785 root INFO Tadpole Started
+21:06:40,250 root INFO Madpole Started
+21:06:40,330 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+21:06:41,526 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+21:06:41,535 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:06:42,137 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+21:06:42,149 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:06:42,841 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+21:06:42,849 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:06:43,443 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+21:06:50,421 root INFO Automatically triggering drive change because a new drive connected
+21:06:51,936 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:06:51,945 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:06:51,952 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:06:54,569 root INFO Found 0 ROMs
+21:08:40,700 root INFO Tadpole Started
+21:08:41,73 root INFO Madpole Started
+21:08:41,147 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+21:08:42,401 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+21:08:42,407 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:08:43,15 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+21:08:43,26 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:08:43,659 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+21:08:43,664 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+21:08:44,247 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+21:08:44,837 root INFO Automatically triggering drive change because a new drive connected
+21:08:44,837 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:08:44,844 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:08:44,848 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:08:44,938 root INFO Found 0 ROMs
+21:08:47,412 root INFO Combobox for drive changed to (D:\)
+21:08:47,594 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+21:08:47,661 root INFO loading roms to table for (D:\) (FC)
+21:08:47,689 root INFO Found 877 ROMs
+21:09:11,95 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+21:09:11,101 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+21:09:11,105 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+21:09:11,151 root INFO Found 0 ROMs
+21:09:15,415 root INFO Combobox for drive changed to (D:\)
+21:09:15,596 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+21:09:15,662 root INFO loading roms to table for (D:\) (FC)
+21:09:15,693 root INFO Found 877 ROMs
+22:23:47,132 root INFO Tadpole Started
+22:23:48,820 root INFO Madpole Started
+22:23:48,993 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+22:23:51,67 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+22:23:51,74 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+22:23:51,703 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+22:23:51,714 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+22:23:52,281 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+22:23:52,286 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+22:23:52,917 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+22:23:53,446 root INFO Automatically triggering drive change because a new drive connected
+22:23:53,447 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+22:23:53,457 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+22:23:53,469 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+22:23:53,557 root INFO Found 0 ROMs
+12:22:39,131 root INFO Tadpole Started
+12:22:40,756 root INFO Madpole Started
+12:22:40,928 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:22:42,134 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:22:42,144 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:22:42,826 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:22:42,839 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:22:43,416 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:22:43,423 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:22:43,993 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:22:44,678 root INFO Automatically triggering drive change because a new drive connected
+12:22:50,246 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:22:50,256 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:22:50,262 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:22:58,960 root INFO Found 0 ROMs
+12:26:44,527 root INFO Tadpole Started
+12:26:45,30 root INFO Madpole Started
+12:26:45,128 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:26:46,326 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:26:46,334 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:26:46,946 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:26:46,958 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:26:47,539 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:26:47,547 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:26:48,136 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:26:48,688 root INFO Automatically triggering drive change because a new drive connected
+12:26:48,688 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:26:48,697 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:26:48,701 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:26:48,782 root INFO Found 0 ROMs
+12:40:19,304 root INFO Tadpole Started
+12:40:20,919 root INFO Madpole Started
+12:40:21,49 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:40:22,292 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:40:22,301 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:40:22,990 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:40:23,7 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:40:23,690 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:40:23,699 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:40:24,328 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:40:25,2 root INFO Automatically triggering drive change because a new drive connected
+12:40:25,3 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:40:25,10 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:40:25,16 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:40:25,102 root INFO Found 0 ROMs
+12:40:58,426 root INFO Combobox for drive changed to (D:\)
+12:40:58,643 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+12:40:58,722 root INFO loading roms to table for (D:\) (FC)
+12:40:58,827 root INFO Found 877 ROMs
+12:49:22,723 root INFO Tadpole Started
+12:49:23,221 root INFO Madpole Started
+12:49:23,299 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:49:24,771 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:49:24,783 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:49:25,505 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:49:25,517 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:49:26,170 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:49:26,177 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:49:26,822 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:49:27,328 root INFO Automatically triggering drive change because a new drive connected
+12:49:27,329 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:49:27,338 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:49:27,343 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:49:27,409 root INFO Found 0 ROMs
+12:53:56,670 root INFO Tadpole Started
+12:53:57,156 root INFO Madpole Started
+12:53:57,232 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:53:58,417 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:53:58,427 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:53:59,62 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:53:59,75 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:53:59,725 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:53:59,731 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:54:00,363 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:54:00,898 root INFO Automatically triggering drive change because a new drive connected
+12:54:00,898 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:54:00,906 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:54:00,910 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:54:00,997 root INFO Found 0 ROMs
+12:55:41,557 root INFO Tadpole Started
+12:55:42,83 root INFO Madpole Started
+12:55:42,172 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:55:43,357 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:55:43,366 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:55:43,965 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:55:43,976 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:55:44,554 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:55:44,564 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:55:45,138 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:55:45,661 root INFO Automatically triggering drive change because a new drive connected
+12:55:45,661 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:55:45,669 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:55:45,673 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:55:45,750 root INFO Found 0 ROMs
+12:58:07,157 root INFO Tadpole Started
+12:58:07,680 root INFO Madpole Started
+12:58:07,757 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+12:58:08,965 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+12:58:08,974 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:58:09,566 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+12:58:09,577 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:58:10,151 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+12:58:10,158 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+12:58:10,760 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+12:58:11,321 root INFO Automatically triggering drive change because a new drive connected
+12:58:11,321 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+12:58:11,329 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+12:58:11,333 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+12:58:11,409 root INFO Found 0 ROMs
+13:00:17,434 root INFO Tadpole Started
+13:00:17,929 root INFO Madpole Started
+13:00:18,12 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:00:19,258 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:00:19,266 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:00:20,0 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:00:20,12 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:00:20,587 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:00:20,594 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:00:21,173 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:00:21,688 root INFO Automatically triggering drive change because a new drive connected
+13:00:21,688 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:00:21,697 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:00:21,701 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:00:21,773 root INFO Found 0 ROMs
+13:01:14,212 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (FC)
+13:01:14,220 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:01:14,245 root INFO Found 0 ROMs
+13:01:16,418 root INFO Combobox for drive changed to (D:\)
+13:01:16,605 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+13:01:16,679 root INFO loading roms to table for (D:\) (FC)
+13:01:17,316 root INFO Found 877 ROMs
+13:11:17,76 root INFO Tadpole Started
+13:11:17,587 root INFO Madpole Started
+13:11:17,663 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:11:18,951 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:11:18,962 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:11:19,616 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:11:19,629 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:11:20,369 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:11:20,376 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:11:21,8 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:11:21,527 root INFO Automatically triggering drive change because a new drive connected
+13:11:21,528 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:11:21,535 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:11:21,540 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:11:21,620 root INFO Found 0 ROMs
+13:13:40,325 root INFO Tadpole Started
+13:13:40,802 root INFO Madpole Started
+13:13:40,882 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:13:42,73 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:13:42,80 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:13:42,674 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:13:42,687 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:13:43,284 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:13:43,291 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:13:43,937 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:13:44,532 root INFO Automatically triggering drive change because a new drive connected
+13:13:44,532 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:13:44,540 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:13:44,544 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:13:44,643 root INFO Found 0 ROMs
+13:15:48,391 root INFO Tadpole Started
+13:15:48,875 root INFO Madpole Started
+13:15:48,953 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:15:50,127 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:15:50,136 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:15:50,718 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:15:50,729 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:15:51,307 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:15:51,313 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:15:51,900 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:15:52,466 root INFO Automatically triggering drive change because a new drive connected
+13:15:52,466 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:15:52,475 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:15:52,480 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:15:52,576 root INFO Found 0 ROMs
+13:17:14,614 root INFO Tadpole Started
+13:17:15,90 root INFO Madpole Started
+13:17:15,166 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:17:16,344 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:17:16,353 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:17:17,62 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:17:17,73 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:17:17,731 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:17:17,738 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:17:18,340 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:17:18,933 root INFO Automatically triggering drive change because a new drive connected
+13:17:18,933 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:17:18,941 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:17:18,947 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:17:19,28 root INFO Found 0 ROMs
+13:21:55,576 root INFO Tadpole Started
+13:21:56,113 root INFO Madpole Started
+13:21:56,194 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:21:57,450 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:21:57,459 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:21:58,89 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:21:58,100 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:21:58,687 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:21:58,693 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:21:59,277 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:21:59,870 root INFO Automatically triggering drive change because a new drive connected
+13:21:59,871 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:21:59,878 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:21:59,885 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:21:59,978 root INFO Found 0 ROMs
+13:25:55,17 root INFO Tadpole Started
+13:25:55,518 root INFO Madpole Started
+13:25:55,594 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:25:57,65 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:25:57,74 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:25:57,710 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:25:57,724 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:25:58,397 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:25:58,403 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:25:59,49 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:25:59,664 root INFO Automatically triggering drive change because a new drive connected
+13:25:59,664 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:25:59,672 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:25:59,677 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:25:59,768 root INFO Found 0 ROMs
+13:37:39,921 root INFO Tadpole Started
+13:37:40,414 root INFO Madpole Started
+13:37:40,490 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:37:41,701 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:37:41,711 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:37:42,484 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:37:42,497 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:37:43,130 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:37:43,137 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:37:43,736 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:37:44,338 root INFO Automatically triggering drive change because a new drive connected
+13:37:44,338 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:37:44,347 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:37:44,352 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:37:44,438 root INFO Found 0 ROMs
+13:46:30,175 root INFO Tadpole Started
+13:46:30,686 root INFO Madpole Started
+13:46:30,764 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:46:32,40 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:46:32,49 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:46:32,669 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:46:32,681 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:46:33,278 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:46:33,284 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:46:34,60 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:46:34,584 root INFO Automatically triggering drive change because a new drive connected
+13:46:34,585 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:46:34,593 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:46:34,597 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:46:34,719 root INFO Found 0 ROMs
+13:48:33,802 root INFO Tadpole Started
+13:48:34,279 root INFO Madpole Started
+13:48:34,362 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:48:35,554 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:48:35,563 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:48:36,170 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:48:36,181 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:48:36,906 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:48:36,913 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:48:37,505 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:48:38,87 root INFO Automatically triggering drive change because a new drive connected
+13:48:38,88 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:48:38,94 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:48:38,100 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:48:38,192 root INFO Found 0 ROMs
+13:54:14,921 root INFO Tadpole Started
+13:54:15,430 root INFO Madpole Started
+13:54:15,507 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+13:54:16,926 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+13:54:16,934 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:54:17,574 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+13:54:17,584 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:54:18,287 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+13:54:18,294 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+13:54:18,984 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+13:54:19,586 root INFO Automatically triggering drive change because a new drive connected
+13:54:19,587 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+13:54:19,607 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+13:54:19,613 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+13:54:19,688 root INFO Found 0 ROMs
+14:00:33,935 root INFO Combobox for drive changed to (D:\)
+14:00:34,115 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+14:00:34,248 root INFO loading roms to table for (D:\) (FC)
+14:00:34,279 root INFO Found 877 ROMs
+14:04:43,921 root INFO Tadpole Started
+14:04:44,429 root INFO Madpole Started
+14:04:44,515 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+14:04:45,679 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+14:04:45,688 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+14:04:46,310 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+14:04:46,322 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+14:04:46,926 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+14:04:46,933 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+14:04:47,513 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos HTTP/1.1" 200 603
+14:04:48,45 root INFO Automatically triggering drive change because a new drive connected
+14:04:48,45 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+14:04:48,52 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+14:04:48,56 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+14:04:48,129 root INFO Found 0 ROMs
+14:04:52,426 root INFO Combobox for drive changed to (D:\)
+14:04:52,794 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+14:04:52,946 root INFO loading roms to table for (D:\) (FC)
+14:04:53,625 root INFO Found 877 ROMs
+15:12:44,944 root INFO Tadpole Started
+15:12:46,631 root INFO Madpole Started
+15:12:46,733 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:12:47,961 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:12:47,970 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:12:48,566 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:12:48,578 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:12:49,180 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:12:49,185 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'lbl_console'
+Traceback (most recent call last):
+  File "madpole.py", line 1874, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self.lbl_console.text)
+                                                        ^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'lbl_console'
+15:13:29,704 root INFO Tadpole Started
+15:13:30,198 root INFO Madpole Started
+15:13:30,283 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:13:31,468 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:13:31,476 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:13:32,104 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 None
+15:13:32,116 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:13:32,726 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:13:32,730 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'lbl_console'
+Traceback (most recent call last):
+  File "madpole.py", line 1874, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self.lbl_console.text)
+                                                        ^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'lbl_console'
+15:14:21,160 root INFO Tadpole Started
+15:14:21,657 root INFO Madpole Started
+15:14:21,745 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:14:22,961 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:14:22,969 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:14:23,540 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:14:23,551 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:14:24,113 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:14:24,118 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'lbl_console'
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self.lbl_console.text)
+                                                        ^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'lbl_console'
+15:14:42,29 root INFO Tadpole Started
+15:14:42,517 root INFO Madpole Started
+15:14:42,595 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:14:43,798 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:14:43,809 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:14:44,404 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:14:44,416 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:14:45,44 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:14:45,48 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'lbl_device_type'
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self.lbl_device_type.text)
+                                                        ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'lbl_device_type'
+15:21:52,597 root INFO Tadpole Started
+15:21:53,64 root INFO Madpole Started
+15:21:53,604 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:21:54,814 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:21:54,822 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:21:55,445 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:21:55,457 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:21:56,35 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:21:56,39 root ERROR main crashed. Error: cannot access local variable 'response' where it is not associated with a value
+Traceback (most recent call last):
+  File "madpole.py", line 1872, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 224, in __init__
+    self.loadMenus()
+  File "madpole.py", line 384, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jason\OneDrive\Documents\GitHub\madpole-mod\tadpole_functions.py", line 712, in get_boot_logos
+    if response.status_code == 200:
+       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'response' where it is not associated with a value
+15:22:41,303 root INFO Tadpole Started
+15:22:41,787 root INFO Madpole Started
+15:22:41,869 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:22:43,61 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:22:43,69 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:22:43,675 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:22:43,689 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:22:44,305 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:22:44,310 root ERROR main crashed. Error: cannot access local variable 'response' where it is not associated with a value
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jason\OneDrive\Documents\GitHub\madpole-mod\tadpole_functions.py", line 712, in get_boot_logos
+    if response.status_code == 200:
+       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'response' where it is not associated with a value
+15:23:03,156 root INFO Tadpole Started
+15:23:03,666 root INFO Madpole Started
+15:23:03,742 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:23:04,925 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:23:04,933 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:23:05,552 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:23:05,565 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:23:06,155 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:23:06,160 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'lbl_device_type'
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos(self.lbl_device_type.text)
+                                                        ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'lbl_device_type'
+15:24:02,417 root INFO Tadpole Started
+15:24:02,894 root INFO Madpole Started
+15:24:02,979 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:24:04,191 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:24:04,199 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:24:04,769 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:24:04,782 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:24:05,407 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:24:09,364 root ERROR main crashed. Error: cannot access local variable 'response' where it is not associated with a value
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos('SF2000')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jason\OneDrive\Documents\GitHub\madpole-mod\tadpole_functions.py", line 712, in get_boot_logos
+    if response.status_code == 200:
+       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'response' where it is not associated with a value
+15:24:17,412 root INFO Tadpole Started
+15:24:17,965 root INFO Madpole Started
+15:24:18,44 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:24:19,362 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:24:19,371 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:24:19,834 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:24:19,847 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:24:20,313 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:26:40,994 root INFO Tadpole Started
+15:26:41,473 root INFO Madpole Started
+15:26:41,551 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:26:42,743 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:26:42,753 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:26:43,365 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:26:43,376 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:26:43,948 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:28:59,968 root INFO Tadpole Started
+15:29:00,452 root INFO Madpole Started
+15:29:00,530 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:29:01,727 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:29:01,736 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:29:02,531 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:29:02,544 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:29:03,188 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:29:12,180 root ERROR main crashed. Error: cannot access local variable 'response' where it is not associated with a value
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 385, in loadMenus
+    self.boot_logos  = tadpole_functions.get_boot_logos('SF2000')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jason\OneDrive\Documents\GitHub\madpole-mod\tadpole_functions.py", line 712, in get_boot_logos
+    if response.status_code == 200:
+       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'response' where it is not associated with a value
+15:33:30,667 root INFO Tadpole Started
+15:33:31,149 root INFO Madpole Started
+15:33:31,230 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:33:32,443 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:33:32,453 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:33:33,34 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:33:33,46 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:33:33,607 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:33:33,608 root ERROR main crashed. Error: name 'response' is not defined
+Traceback (most recent call last):
+  File "madpole.py", line 1873, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus()
+  File "madpole.py", line 358, in loadMenus
+    self.music_options = tadpole_functions.get_background_music()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jason\OneDrive\Documents\GitHub\madpole-mod\tadpole_functions.py", line 685, in get_background_music
+    if response.status_code == 200:
+       ^^^^^^^^
+NameError: name 'response' is not defined
+15:34:16,9 root INFO Tadpole Started
+15:34:16,564 root INFO Madpole Started
+15:34:16,645 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:34:18,30 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:34:18,39 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:34:18,647 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 None
+15:34:18,658 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:34:19,286 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:34:43,722 root INFO Tadpole Started
+15:34:44,221 root INFO Madpole Started
+15:34:44,303 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:34:45,491 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:34:45,501 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:34:46,95 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:34:46,106 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:34:46,661 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:34:51,276 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:34:51,947 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:34:54,105 root INFO Automatically triggering drive change because a new drive connected
+15:34:54,106 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+15:34:54,123 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+15:34:54,136 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+15:34:54,219 root INFO Found 0 ROMs
+15:39:12,468 root INFO Tadpole Started
+15:39:12,990 root INFO Madpole Started
+15:39:13,71 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:39:14,279 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:39:14,289 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:14,936 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:39:14,949 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:15,592 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:39:31,602 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:32,219 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:39:33,442 root INFO Automatically triggering drive change because a new drive connected
+15:39:33,442 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+15:39:33,454 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+15:39:33,461 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+15:39:33,528 root INFO Found 0 ROMs
+15:39:50,466 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:39:51,635 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:39:51,642 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:52,214 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:39:52,227 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:53,66 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:39:58,556 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:39:59,180 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:41:06,869 root INFO Tadpole Started
+15:41:07,381 root INFO Madpole Started
+15:41:07,472 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:41:08,806 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:41:08,815 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:09,497 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:41:09,508 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:10,154 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:41:23,733 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:24,753 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:41:25,332 root INFO Automatically triggering drive change because a new drive connected
+15:41:25,333 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+15:41:25,342 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+15:41:25,353 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+15:41:25,420 root INFO Found 0 ROMs
+15:41:36,224 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:41:37,387 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:41:37,394 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:37,983 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:41:37,995 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:38,561 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:41:40,120 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:41:40,620 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:42:29,27 root INFO Combobox for drive changed to (D:\)
+15:42:29,254 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+15:42:29,346 root INFO loading roms to table for (D:\) (FC)
+15:42:29,452 root INFO Found 877 ROMs
+15:56:49,213 root INFO Tadpole Started
+15:56:49,683 root INFO Madpole Started
+15:57:08,778 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'clear'
+Traceback (most recent call last):
+  File "madpole.py", line 1879, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus('SF2000')
+  File "madpole.py", line 268, in loadMenus
+    self.clear
+AttributeError: 'MainWindow' object has no attribute 'clear'
+15:59:11,675 root INFO Tadpole Started
+15:59:12,152 root INFO Madpole Started
+15:59:49,603 root INFO Tadpole Started
+15:59:50,220 root INFO Madpole Started
+15:59:52,836 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+15:59:54,45 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+15:59:54,54 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:59:54,739 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+15:59:54,752 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:59:55,348 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+15:59:57,744 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+15:59:58,446 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+15:59:59,21 root INFO Automatically triggering drive change because a new drive connected
+15:59:59,21 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+15:59:59,30 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+15:59:59,34 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+15:59:59,108 root INFO Found 0 ROMs
+16:00:19,260 root INFO Tadpole Started
+16:00:19,729 root INFO Madpole Started
+16:00:22,869 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:00:24,154 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:00:24,162 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:00:24,727 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:00:24,740 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:00:25,313 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:00:27,405 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:00:28,237 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:00:28,789 root INFO Automatically triggering drive change because a new drive connected
+16:00:28,790 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:00:28,797 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:00:28,801 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:00:28,870 root INFO Found 0 ROMs
+16:00:48,123 root INFO Combobox for drive changed to (D:\)
+16:00:48,323 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+16:00:48,392 root INFO loading roms to table for (D:\) (FC)
+16:00:48,419 root INFO Found 877 ROMs
+16:02:30,251 root INFO Tadpole Started
+16:02:30,735 root INFO Madpole Started
+16:02:36,27 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:02:37,220 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:02:37,229 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:02:37,829 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:02:37,841 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:02:38,406 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:02:43,48 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:02:43,777 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:02:44,380 root INFO Automatically triggering drive change because a new drive connected
+16:02:44,380 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:02:44,389 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:02:44,394 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:02:44,462 root INFO Found 0 ROMs
+16:03:13,190 root INFO Combobox for drive changed to (D:\)
+16:03:13,383 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+16:03:13,461 root INFO loading roms to table for (D:\) (FC)
+16:03:13,496 root INFO Found 877 ROMs
+16:03:32,607 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:03:32,616 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:03:32,621 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:03:32,665 root INFO Found 0 ROMs
+16:05:01,904 root INFO Tadpole Started
+16:05:02,377 root INFO Madpole Started
+16:05:04,774 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:05:06,8 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:05:06,18 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:05:06,904 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:05:06,917 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:05:07,592 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:05:10,21 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:05:10,640 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:05:11,160 root INFO Automatically triggering drive change because a new drive connected
+16:06:23,424 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:06:23,435 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:06:23,443 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:06:23,520 root INFO Found 0 ROMs
+16:06:57,331 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:06:58,569 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:06:58,577 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:06:59,238 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:06:59,251 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:06:59,846 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:07:06,36 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:07:06,684 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+16:07:06,691 root INFO Combobox for drive changed to (D:\)
+16:07:06,935 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+16:07:07,29 root INFO loading roms to table for (D:\) (FC)
+16:07:07,91 root INFO Found 877 ROMs
+16:15:57,505 root INFO Tadpole Started
+16:15:57,981 root INFO Madpole Started
+16:15:58,52 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'menu_bar'
+Traceback (most recent call last):
+  File "madpole.py", line 1879, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus('SF2000')
+  File "madpole.py", line 266, in loadMenus
+    for menu in self.menu_bar.children():
+                ^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'menu_bar'
+16:17:41,641 root INFO Tadpole Started
+16:17:42,115 root INFO Madpole Started
+16:17:42,186 root ERROR main crashed. Error: 'MainWindow' object has no attribute 'menu_os'
+Traceback (most recent call last):
+  File "madpole.py", line 1879, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus('SF2000')
+  File "madpole.py", line 266, in loadMenus
+    for menu in self.menu_os.children():
+                ^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'menu_os'
+16:20:37,651 root INFO Tadpole Started
+16:20:38,140 root INFO Madpole Started
+16:20:48,470 root ERROR main crashed. Error: 'QToolButton' object has no attribute 'menuAction'
+Traceback (most recent call last):
+  File "madpole.py", line 1880, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus('SF2000')
+  File "madpole.py", line 270, in loadMenus
+    self.menu_os.removeAction(menu.menuAction())
+                              ^^^^^^^^^^^^^^^
+AttributeError: 'QToolButton' object has no attribute 'menuAction'
+16:22:29,798 root INFO Tadpole Started
+16:22:35,959 root INFO Madpole Started
+16:22:36,40 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:22:37,284 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:22:37,295 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:22:38,11 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:22:38,24 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:22:38,726 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:22:42,911 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:22:43,508 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:22:44,131 root INFO Automatically triggering drive change because a new drive connected
+16:22:50,74 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:22:50,84 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:22:50,92 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:22:50,201 root INFO Found 0 ROMs
+16:25:06,652 root INFO Tadpole Started
+16:25:07,136 root INFO Madpole Started
+16:25:07,216 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:25:08,514 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:25:08,523 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:25:09,109 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:25:09,122 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:25:09,720 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:25:12,420 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:25:13,26 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:25:13,555 root INFO Automatically triggering drive change because a new drive connected
+16:25:15,930 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:25:15,940 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:25:15,946 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:25:16,27 root INFO Found 0 ROMs
+16:28:44,914 root INFO Tadpole Started
+16:28:45,393 root INFO Madpole Started
+16:28:45,475 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:28:46,655 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:28:46,665 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:28:47,301 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:28:47,313 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:28:47,895 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:28:51,429 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:28:52,12 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:28:52,532 root INFO Automatically triggering drive change because a new drive connected
+16:28:55,219 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:28:55,231 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:28:55,238 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:28:55,313 root INFO Found 0 ROMs
+16:31:09,655 root INFO Tadpole Started
+16:31:10,154 root INFO Madpole Started
+16:31:10,229 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:31:11,490 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:31:11,498 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:12,87 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:31:12,98 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:12,664 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:31:16,823 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:17,482 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:31:18,59 root INFO Automatically triggering drive change because a new drive connected
+16:31:18,639 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:31:18,649 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:31:18,658 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:31:18,741 root INFO Found 0 ROMs
+16:31:49,795 root INFO Tadpole Started
+16:31:50,266 root INFO Madpole Started
+16:31:50,343 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:31:51,524 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:31:51,533 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:52,124 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:31:52,136 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:52,708 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:31:52,714 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:31:53,279 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:31:53,804 root INFO Automatically triggering drive change because a new drive connected
+16:31:54,375 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:31:54,384 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:31:54,389 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:31:54,483 root INFO Found 0 ROMs
+16:32:03,76 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:32:04,241 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:32:04,248 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:32:04,773 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:32:04,785 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:32:05,295 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:32:05,302 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:32:05,956 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+16:32:05,963 root INFO Combobox for drive changed to (D:\)
+16:32:06,185 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+16:32:06,273 root INFO loading roms to table for (D:\) (FC)
+16:32:06,333 root INFO Found 877 ROMs
+16:33:52,224 root INFO Tadpole Started
+16:33:52,725 root INFO Madpole Started
+16:33:52,808 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:33:53,992 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:33:54,1 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:33:54,626 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:33:54,638 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:33:55,266 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:33:55,273 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:33:55,840 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:33:56,373 root INFO Automatically triggering drive change because a new drive connected
+16:33:56,951 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:33:56,960 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:33:56,965 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:33:57,38 root INFO Found 0 ROMs
+16:59:00,799 root INFO Tadpole Started
+16:59:02,487 root INFO Madpole Started
+16:59:02,653 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:59:04,126 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:59:04,136 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:59:04,716 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:59:04,729 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:59:05,287 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:59:05,295 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:59:05,908 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+16:59:06,457 root INFO Automatically triggering drive change because a new drive connected
+16:59:07,32 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+16:59:07,41 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+16:59:07,47 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+16:59:07,137 root INFO Found 0 ROMs
+16:59:56,679 root INFO Tadpole Started
+16:59:57,223 root INFO Madpole Started
+16:59:57,318 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+16:59:58,520 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+16:59:58,529 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:59:59,128 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+16:59:59,141 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+16:59:59,739 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+16:59:59,746 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:00:00,318 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:00:00,743 root INFO Automatically triggering drive change because a new drive connected
+17:00:01,328 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:00:01,335 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:00:01,339 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:00:01,406 root INFO Found 0 ROMs
+17:00:26,239 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:00:27,471 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:00:27,479 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:00:28,164 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:00:28,176 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:00:28,772 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:00:28,780 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:00:29,392 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:00:29,399 root INFO Combobox for drive changed to (D:\)
+17:00:29,624 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:00:29,718 root INFO loading roms to table for (D:\) (FC)
+17:00:29,847 root INFO Found 877 ROMs
+17:01:42,137 root INFO Tadpole Started
+17:01:42,516 root INFO Madpole Started
+17:01:42,589 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:01:43,768 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:01:43,773 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:44,408 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:01:44,417 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:44,987 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:01:44,992 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:45,573 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:01:46,30 root INFO Automatically triggering drive change because a new drive connected
+17:01:46,384 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:01:46,391 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:01:46,395 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:01:46,473 root INFO Found 0 ROMs
+17:01:49,121 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:01:50,557 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:01:50,562 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:51,44 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:01:51,55 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:51,523 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:01:51,527 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:01:52,115 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:01:52,123 root INFO Combobox for drive changed to (D:\)
+17:01:52,334 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:01:52,400 root INFO loading roms to table for (D:\) (FC)
+17:01:52,427 root INFO Found 877 ROMs
+17:04:35,712 root INFO Tadpole Started
+17:04:36,205 root INFO Madpole Started
+17:04:36,287 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:04:37,496 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:04:37,504 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:04:38,110 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:04:38,121 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:04:38,722 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:04:38,730 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:04:39,423 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:04:39,879 root INFO Automatically triggering drive change because a new drive connected
+17:04:40,456 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:04:40,465 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:04:40,470 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:04:40,546 root INFO Found 0 ROMs
+17:05:18,71 root INFO Tadpole Started
+17:05:19,651 root INFO Madpole Started
+17:05:19,777 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:05:21,71 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:05:21,76 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:21,686 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:05:21,696 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:22,296 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:05:22,301 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:22,881 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:05:23,465 root INFO Automatically triggering drive change because a new drive connected
+17:05:23,841 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:05:23,847 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:05:23,852 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:05:23,932 root INFO Found 0 ROMs
+17:05:27,215 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:05:28,374 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:05:28,379 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:28,858 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:05:28,867 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:29,338 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:05:29,343 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:05:29,978 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:05:29,986 root INFO Combobox for drive changed to (D:\)
+17:05:30,178 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:05:30,244 root INFO loading roms to table for (D:\) (FC)
+17:05:30,270 root INFO Found 877 ROMs
+17:06:10,695 root INFO Tadpole Started
+17:06:11,46 root INFO Madpole Started
+17:06:11,120 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:06:12,404 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:06:12,410 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:13,38 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:06:13,47 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:13,684 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:06:13,688 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:14,350 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:06:14,876 root INFO Automatically triggering drive change because a new drive connected
+17:06:15,241 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:06:15,247 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:06:15,251 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:06:15,321 root INFO Found 0 ROMs
+17:06:17,350 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:06:18,548 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:06:18,553 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:19,17 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:06:19,26 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:19,486 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:06:19,490 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:06:20,70 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:06:20,77 root INFO Combobox for drive changed to (D:\)
+17:06:20,256 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:06:20,322 root INFO loading roms to table for (D:\) (FC)
+17:06:20,350 root INFO Found 877 ROMs
+17:07:57,160 root INFO Tadpole Started
+17:07:57,476 root INFO Madpole Started
+17:07:57,548 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:07:58,739 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:07:58,745 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:07:59,370 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:07:59,379 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:08:00,5 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:08:00,10 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:08:00,581 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:08:01,154 root INFO Automatically triggering drive change because a new drive connected
+17:08:01,522 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:08:01,528 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:08:01,532 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:08:01,604 root INFO Found 0 ROMs
+17:08:04,280 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:08:05,455 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:08:05,460 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:08:05,945 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:08:05,954 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:08:06,446 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:08:06,450 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:08:07,59 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:08:07,66 root INFO Combobox for drive changed to (D:\)
+17:08:07,245 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:08:07,311 root INFO loading roms to table for (D:\) (FC)
+17:08:07,339 root INFO Found 877 ROMs
+17:09:23,667 root INFO Tadpole Started
+17:09:24,60 root INFO Madpole Started
+17:09:24,151 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:09:25,551 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:09:25,556 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:26,127 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:09:26,137 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:26,701 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:09:26,706 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:27,273 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:09:27,799 root INFO Automatically triggering drive change because a new drive connected
+17:09:28,165 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:09:28,172 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:09:28,176 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:09:28,253 root INFO Found 0 ROMs
+17:09:30,251 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:09:31,546 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:09:31,552 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:32,20 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 403 278
+17:09:32,29 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:32,472 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 403 278
+17:09:32,477 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:09:32,928 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 403 278
+17:09:32,936 root INFO Combobox for drive changed to (D:\)
+17:09:33,116 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:09:33,182 root INFO loading roms to table for (D:\) (FC)
+17:09:33,214 root INFO Found 877 ROMs
+17:11:08,931 root INFO Tadpole Started
+17:11:09,272 root INFO Madpole Started
+17:11:09,342 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:11:10,523 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:11:10,529 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:11,24 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 403 278
+17:11:11,33 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:11,505 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 403 278
+17:11:11,510 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:11,983 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 403 278
+17:11:12,553 root INFO Automatically triggering drive change because a new drive connected
+17:11:12,921 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:11:12,929 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:11:12,934 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:11:13,7 root INFO Found 0 ROMs
+17:11:23,338 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:11:24,639 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:11:24,645 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:25,117 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 403 278
+17:11:25,122 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:25,585 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 403 278
+17:11:25,590 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:11:26,69 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 403 278
+17:11:26,78 root INFO Combobox for drive changed to (D:\)
+17:11:26,258 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:11:26,324 root INFO loading roms to table for (D:\) (FC)
+17:11:26,352 root INFO Found 877 ROMs
+17:13:39,428 root INFO Running frogtool with drive (D:\) and console (FC)
+17:13:39,522 root INFO loading roms to table for (D:\) (FC)
+17:13:39,583 root INFO Found 877 ROMs
+17:14:36,985 root INFO Running frogtool with drive (D:\) and console (FC)
+17:14:37,99 root INFO loading roms to table for (D:\) (FC)
+17:14:37,140 root INFO Found 877 ROMs
+17:14:40,861 root INFO Tadpole~viewThumbnail: (D:\FC\1942.zfc)
+17:52:13,836 root INFO Tadpole Started
+17:52:14,394 root INFO Madpole Started
+17:52:14,501 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:52:15,736 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:52:15,741 root ERROR tadpole~loadMenus: ERROR occured while trying to load OS menu. Unable to obtain boot logo resources. (Status Code: 200)
+17:52:15,751 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:52:16,323 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:52:16,335 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:52:16,934 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:52:16,941 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:52:17,651 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:52:18,176 root INFO Automatically triggering drive change because a new drive connected
+17:52:18,731 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:52:18,741 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:52:18,746 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:52:18,822 root INFO Found 0 ROMs
+17:56:32,632 root INFO Tadpole Started
+17:56:33,127 root INFO Madpole Started
+17:56:33,204 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:56:34,541 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:56:34,549 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:56:35,156 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:56:35,167 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:56:35,747 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:56:35,753 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:56:36,366 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:56:36,908 root INFO Automatically triggering drive change because a new drive connected
+17:56:37,496 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:56:37,510 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:56:37,519 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:56:37,588 root INFO Found 0 ROMs
+17:57:30,900 root ERROR tadpole~loadMenus: ERROR occured while trying to load OS menu. get_firmware_versions() missing 1 required positional argument: 'device'
+17:57:30,912 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:57:31,598 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:57:31,609 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:57:32,175 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:57:32,182 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:57:32,866 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+17:57:32,873 root INFO Combobox for drive changed to (D:\)
+17:57:33,158 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+17:57:33,291 root INFO loading roms to table for (D:\) (FC)
+17:57:33,331 root INFO Found 877 ROMs
+17:59:53,481 root INFO Tadpole Started
+17:59:53,983 root INFO Madpole Started
+17:59:54,68 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+17:59:55,304 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+17:59:55,313 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:59:55,924 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+17:59:55,938 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:59:56,539 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+17:59:56,545 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+17:59:57,126 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+17:59:57,665 root INFO Automatically triggering drive change because a new drive connected
+17:59:58,234 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+17:59:58,244 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+17:59:58,249 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+17:59:58,320 root INFO Found 0 ROMs
+18:00:06,442 root ERROR tadpole~loadMenus: ERROR occured while trying to load OS menu. get_firmware_versions() missing 1 required positional argument: 'device'
+18:00:06,455 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:00:06,936 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:00:06,947 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:00:07,411 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:00:07,417 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:00:08,165 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+18:00:08,172 root INFO Combobox for drive changed to (D:\)
+18:00:08,533 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+18:00:08,604 root INFO loading roms to table for (D:\) (FC)
+18:00:08,634 root INFO Found 877 ROMs
+18:02:24,464 root INFO Tadpole Started
+18:02:24,987 root INFO Madpole Started
+18:02:25,66 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:02:26,382 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:02:26,392 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:02:27,32 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:02:27,44 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:02:27,762 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:02:27,770 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:02:28,411 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+18:02:28,928 root INFO Automatically triggering drive change because a new drive connected
+18:02:29,558 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+18:02:29,566 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+18:02:29,572 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:02:29,635 root INFO Found 0 ROMs
+18:03:16,193 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (FC)
+18:03:16,199 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:03:16,224 root INFO Found 0 ROMs
+18:05:55,719 root INFO Tadpole Started
+18:05:56,223 root INFO Madpole Started
+18:05:56,302 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:05:57,556 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:05:57,564 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:05:58,210 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:05:58,222 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:05:58,830 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:05:58,836 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:05:59,520 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+18:06:00,94 root INFO Automatically triggering drive change because a new drive connected
+18:06:00,686 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+18:06:00,694 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+18:06:00,698 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:06:00,771 root INFO Found 0 ROMs
+18:06:16,147 root ERROR tadpole~loadMenus: ERROR occured while trying to load OS menu. get_firmware_versions() missing 1 required positional argument: 'device'
+18:06:16,159 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:16,637 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:06:16,649 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:17,161 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:06:17,168 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:17,797 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+18:06:17,809 root INFO Combobox for drive changed to (D:\)
+18:06:18,90 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+18:06:18,167 root INFO loading roms to table for (D:\) (FC)
+18:06:18,216 root INFO Found 877 ROMs
+18:06:48,209 root INFO Tadpole Started
+18:06:48,808 root INFO Madpole Started
+18:06:48,893 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:06:50,121 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:06:50,129 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:50,780 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:06:50,795 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:51,476 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:06:51,484 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:06:52,145 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+18:06:52,815 root INFO Automatically triggering drive change because a new drive connected
+18:06:53,452 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+18:06:53,576 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+18:06:53,664 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:06:53,772 root INFO Found 0 ROMs
+18:07:28,354 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:07:28,965 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 404 135
+18:10:40,323 root INFO Tadpole Started
+18:10:40,847 root INFO Madpole Started
+18:10:40,925 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:10:42,160 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:10:42,177 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:10:42,815 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 1472
+18:10:42,853 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:10:43,494 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:10:43,501 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:10:44,173 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+18:10:44,737 root INFO Automatically triggering drive change because a new drive connected
+18:10:45,367 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+18:10:45,379 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+18:10:45,385 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:10:45,465 root INFO Found 0 ROMs
+18:11:01,839 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:11:02,450 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 200 360
+18:11:26,698 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:11:27,387 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/Themes HTTP/1.1" 200 None
+18:11:27,401 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:11:28,44 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:11:28,52 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:11:28,693 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+18:11:28,701 root INFO Combobox for drive changed to (D:\)
+18:11:28,907 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+18:11:28,976 root INFO loading roms to table for (D:\) (FC)
+18:11:29,4 root INFO Found 877 ROMs
+18:53:09,440 root INFO Tadpole Started
+18:53:09,949 root INFO Madpole Started
+18:53:10,29 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:53:11,308 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:53:11,315 root ERROR main crashed. Error: get_themes() missing 1 required positional argument: 'device'
+Traceback (most recent call last):
+  File "madpole.py", line 1903, in <module>
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "madpole.py", line 136, in __init__
+    self.loadMenus('SF2000')
+  File "madpole.py", line 342, in loadMenus
+    self.theme_options = tadpole_functions.get_themes()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_themes() missing 1 required positional argument: 'device'
+18:54:27,675 root INFO Tadpole Started
+18:54:28,195 root INFO Madpole Started
+18:54:28,270 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+18:54:29,574 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+18:54:29,583 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:54:30,189 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000 HTTP/1.1" 200 1470
+18:54:30,202 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:54:30,920 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:54:30,927 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:54:31,723 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+18:54:32,320 root INFO Automatically triggering drive change because a new drive connected
+18:54:32,943 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+18:54:32,953 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+18:54:32,984 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+18:54:33,71 root INFO Found 0 ROMs
+18:56:41,940 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:56:42,580 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 200 360
+18:56:42,587 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:56:43,229 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/GB300 HTTP/1.1" 200 440
+18:56:43,236 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:56:43,841 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+18:56:43,850 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+18:56:44,481 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+18:56:44,487 root INFO Combobox for drive changed to (D:\)
+18:56:44,686 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+18:56:44,771 root INFO loading roms to table for (D:\) (FC)
+18:56:44,831 root INFO Found 877 ROMs
+18:57:02,224 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+18:57:03,217 urllib3.connectionpool DEBUG https://raw.githubusercontent.com:443 "GET /jasongrieves/SF2000_Resources/main/Themes/GB300/Black%20Friday%20Night%20(By%20Q_ta).zip HTTP/1.1" 200 5868719
+19:01:34,350 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+19:01:35,575 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+19:01:35,582 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:36,228 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000 HTTP/1.1" 200 1470
+19:01:36,240 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:36,836 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:01:36,842 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:37,454 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+19:01:37,463 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+19:01:37,473 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+19:01:37,478 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+19:01:37,529 root INFO Found 0 ROMs
+19:01:45,265 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:45,848 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 200 360
+19:01:45,855 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:46,431 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/GB300 HTTP/1.1" 200 445
+19:01:46,437 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:46,908 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:01:46,914 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:01:47,520 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+19:01:47,526 root INFO Combobox for drive changed to (D:\)
+19:01:47,775 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+19:01:47,877 root INFO loading roms to table for (D:\) (FC)
+19:01:47,915 root INFO Found 877 ROMs
+19:03:39,747 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+19:03:40,760 urllib3.connectionpool DEBUG https://raw.githubusercontent.com:443 "GET /jasongrieves/SF2000_Resources/main/Themes/GB300/Black%20Friday%20Night%20(By%20Q_ta).zip HTTP/1.1" 200 4933330
+19:05:27,164 root INFO Combobox for drive changed to (D:\)
+19:05:27,419 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+19:05:27,509 root INFO loading roms to table for (D:\) (FC)
+19:05:27,553 root INFO Found 877 ROMs
+19:08:18,53 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+19:08:18,622 urllib3.connectionpool DEBUG https://raw.githubusercontent.com:443 "GET /jasongrieves/SF2000_Resources/main/Themes/GB300/Black%20Friday%20Night%20(By%20Q_ta).zip HTTP/1.1" 200 4933330
+19:18:00,743 root INFO Tadpole Started
+19:18:01,275 root INFO Madpole Started
+19:18:01,368 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+19:18:02,619 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+19:18:02,629 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:03,820 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000 HTTP/1.1" 200 1470
+19:18:03,834 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:04,461 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:18:04,469 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:05,67 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+19:18:05,584 root INFO Automatically triggering drive change because a new drive connected
+19:18:06,152 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+19:18:06,160 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+19:18:06,166 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+19:18:06,232 root INFO Found 0 ROMs
+19:18:33,649 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:34,232 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 200 360
+19:18:34,241 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:34,843 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/GB300 HTTP/1.1" 200 445
+19:18:34,850 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:35,417 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:18:35,424 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:18:35,993 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+19:18:36,0 root INFO Combobox for drive changed to (D:\)
+19:18:36,199 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+19:18:36,280 root INFO loading roms to table for (D:\) (FC)
+19:18:36,410 root INFO Found 877 ROMs
+19:19:26,676 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+19:19:28,482 urllib3.connectionpool DEBUG https://raw.githubusercontent.com:443 "GET /jasongrieves/SF2000_Resources/main/Themes/GB300/Original%20Theme.zip HTTP/1.1" 200 21000636
+19:21:00,875 root INFO Tadpole_functions~ Deleting ROM: D:\FC\1942.zfc
+19:21:00,905 root INFO Running frogtool with drive (D:\) and console (FC)
+19:21:01,10 root INFO loading roms to table for (D:\) (FC)
+19:21:01,68 root INFO Found 876 ROMs
+19:23:32,375 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): tadpolestorage.blob.core.windows.net:443
+19:23:34,8 urllib3.connectionpool DEBUG https://tadpolestorage.blob.core.windows.net:443 "GET /$web/os.json HTTP/1.1" 200 880
+19:23:34,17 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:34,886 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000 HTTP/1.1" 200 1470
+19:23:34,898 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:35,760 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:23:35,769 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:36,607 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000 HTTP/1.1" 200 604
+19:23:36,619 root INFO Combobox for drive changed to (C:\Users\jason\Desktop\SF2000)
+19:23:36,630 root INFO Running frogtool with drive (C:\Users\jason\Desktop\SF2000) and console (ARCADE)
+19:23:36,636 root INFO loading roms to table for (C:\Users\jason\Desktop\SF2000) (FC)
+19:23:36,689 root INFO Found 0 ROMs
+19:23:42,989 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:43,597 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/OS/GB300 HTTP/1.1" 200 360
+19:23:43,605 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:44,227 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/Themes/GB300 HTTP/1.1" 200 445
+19:23:44,234 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:44,729 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic HTTP/1.1" 200 889
+19:23:44,736 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.github.com:443
+19:23:45,321 urllib3.connectionpool DEBUG https://api.github.com:443 "GET /repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300 HTTP/1.1" 200 304
+19:23:45,329 root INFO Combobox for drive changed to (D:\)
+19:23:45,516 root INFO Running frogtool with drive (D:\) and console (ARCADE)
+19:23:45,583 root INFO loading roms to table for (D:\) (FC)
+19:23:45,622 root INFO Found 876 ROMs
