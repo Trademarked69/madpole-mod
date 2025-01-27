@@ -178,7 +178,8 @@ def resize_images(directory): # Resize all .png files in a directory
             resize_image(image_path)
             
 
-offset_logo_presequence = [0x62, 0x61, 0x64, 0x5F, 0x65, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6F, 0x6E, 0x00, 0x00, 0x00]
+offset_sf2000_logo_presequence = [0x62, 0x61, 0x64, 0x5F, 0x65, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6F, 0x6E, 0x00, 0x00, 0x00]
+offset_gb300_logo_multi_core_presequence = [0x6E, 0x74, 0x61, 0x6C, 0x5F, 0x74, 0x79, 0x70, 0x65, 0x5F, 0x69, 0x6E, 0x66, 0x6F, 0x45, 0x00]
 offset_buttonMap_presequence = [0x00, 0x00, 0x00, 0x71, 0xDB, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 offset_buttonMap_postsequence = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00]
 
@@ -191,30 +192,39 @@ class Exception_StopExecution(Exception):
 class InvalidURLError(Exception):
     pass
    
-def changeBootLogo(index_path, newLogoFileName, msgBox):
+def changeBootLogo(index_path, newLogoFileName, msgBox, device):
     # Load the new Logo
     msgBox.setText("Uploading new boot logo...")
     msgBox.showProgress(25, True)
-    newLogo = QImage(newLogoFileName)
-    # Convert to RGB565
-    msgBox.setText("Converting boot logo...")
-    msgBox.showProgress(40, True)
-    rgb565Data = QImageToRGB565Logo(newLogo)
-    # Change the boot logo
-    msgBox.setText("Uploading boot logo...")
-    msgBox.showProgress(60, True)
+    #load bisrv into memory
     file_handle = open(index_path, 'rb')  # rb for read, wb for write
     bisrv_content = bytearray(file_handle.read(os.path.getsize(index_path)))
     file_handle.close()
-    logoOffset = findSequence(offset_logo_presequence, bisrv_content,10000000)
+    #get location of boot logo 
+    newLogo = QImage(newLogoFileName)
+    if device == 'SF2000':
+        logoOffset = findSequence(offset_sf2000_logo_presequence, bisrv_content,
+        10000000)
+        width = 512
+        height = 200
+    if device == 'GB300':
+        logoOffset = findSequence(offset_gb300_logo_multi_core_presequence, bisrv_content,
+        10000000)
+        width = 248
+        height = 249
     bootLogoStart = logoOffset + 16
+    # Convert to RGB565
+    msgBox.setText("Converting boot logo...")
+    msgBox.showProgress(40, True)
+    rgb565Data = QImageToRGB565Logo(newLogo, width, height)
+    # Change the boot logo
+    msgBox.setText("Updating boot logo...")
+    msgBox.showProgress(60, True)
     
-    for i in range(0, 512*200):
+    for i in range(0, width*height):
         data = rgb565Data[i].to_bytes(2, 'little')
         bisrv_content[bootLogoStart+i*2] = data[0]
         bisrv_content[bootLogoStart+i*2+1] = data[1]
-    msgBox.setText("Updating BIOS file...")
-    msgBox.showProgress(80, True)
     print("Patching CRC")    
     bisrv_content = patchCRC32(bisrv_content)
     msgBox.setText("Uploading BIOS file...")
@@ -241,14 +251,14 @@ def crc32mpeg2(buf, crc=0xffffffff):
             crc = crc << 1 if (crc & 0x80000000) == 0 else (crc << 1) ^ 0x104c11db7
     return crc
      
-def QImageToRGB565Logo(inputQImage):
+def QImageToRGB565Logo(inputQImage, width, height):
     print("Converting supplied file to boot logo format")
     # Need to increase the size to 512x200
-    inputQImage = inputQImage.scaled(512, 200, Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
+    inputQImage = inputQImage.scaled(width, height, Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
     inputQImage = inputQImage.convertToFormat(QImage.Format_RGB16)
     rgb565Data = []
-    for y in range(0, 200):
-        for x in range(0, 512):
+    for y in range(0, height):
+        for x in range(0, width):
             pixel = inputQImage.pixelColor(x,y)
             pxValue = ((pixel.red() & 248) << 8) + ((pixel.green() & 252) << 3) + (pixel.blue() >> 3)
             rgb565Data.append(pxValue)
@@ -430,7 +440,7 @@ def bisrv_getFirmwareVersion(index_path):
         
         # Next identify the boot logo position, and blank it out too...
         print("start finding logo")
-        badExceptionOffset = findSequence(offset_logo_presequence, bisrv_content, 10000000) #Set the offset to 10000000 as we know it doesnt occur earlier than that
+        badExceptionOffset = findSequence(offset_sf2000_logo_presequence, bisrv_content, 10000000) #Set the offset to 10000000 as we know it doesnt occur earlier than that
         print(f"finished finding logo - ({badExceptionOffset})")
         if (badExceptionOffset > -1):  # Check we found the boot logo position
             bootLogoStart = badExceptionOffset + 16
@@ -726,6 +736,20 @@ def checkDriveLooksFroggy(froggypath):
     return False
 
 
+def get_firmware_versions(device):
+    OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
+    # Get firmware from tadpole storage
+    if device == 'SF2000':
+        print("#TODO: we should insert SF2000 here and have less logic in the main UI")
+    elif device == 'GB300':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/OS/GB300'
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = json.loads(response.content)
+            for item in data:
+                OS_options[item['name'].replace(".zip", "")] = item['download_url']
+            return OS_options
+    raise ConnectionError("Unable to obtain OS resources. (Status Code: {})".format(response.status_code))
 
 
 def get_background_music(url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic"):
@@ -740,23 +764,30 @@ def get_background_music(url="https://api.github.com/repos/EricGoldsteinNz/SF200
         return music
     raise ConnectionError("Unable to obtain music resources. (Status Code: {})".format(response.status_code))
 
-def get_themes(url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/Themes") -> bool:
+def get_themes(device) -> bool:
     """gets index of theme from provided GitHub API URL"""
     theme = {}
+    if device == 'SF2000':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000'
+    elif device == 'GB300':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/GB300'
     response = requests.get(url)
-
     if response.status_code == 200:
         data = json.loads(response.content)
+
         for item in data:
             theme[item['name'].replace(".zip", "")] = item['download_url']
         return theme
     raise ConnectionError("Unable to obtain theme resources. (Status Code: {})".format(response.status_code))
 
-def get_boot_logos(url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/BootLogos") -> bool:
+def get_boot_logos(device) -> bool:
     """gets index of theme from provided GitHub API URL"""
     bootlogos = {}
+    if device == 'SF2000':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000'
+    elif device == 'GB300':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300'
     response = requests.get(url)
-
     if response.status_code == 200:
         data = json.loads(response.content)
         for item in data:
@@ -822,8 +853,9 @@ def changeTheme(drive_path: str, url: str = "", file: str = "", progressBar: QPr
                 progressBar.setMaximum(len(zip.infolist()))
                 progress = 6
                 #TODO: Hacky but assume any zip folder with more than 55 files is not a theme zip
-                if len(zip.infolist()) > 55:
-                    return False
+                #TODO: Seems the GB300 has a bunch of extra files... yikes
+                #if len(zip.infolist()) > 55:
+                #    return False
                 for zip_info in zip.infolist():     
                     #print(zip_info)
                     if zip_info.is_dir():
@@ -1331,6 +1363,17 @@ def convertPNGtoResourceRGB565(srcPNG, resourceFileName, drive):
     else:
         print("Couldn't convert file for gameshortcut")
 
+    # Get's the type of device the SD card/directory is configured
+def setDeviceType(drive):
+    SFCDRResourcePath = os.path.join(drive, 'Resources', 'sfcdr.cpl')
+    img = openBRGAasImage(SFCDRResourcePath)
+    #The size of sfcdr.cpl is 576x1512 for GB300V2, thanks Q_ta
+    if (img.width, img.height) == (576, 1512): 
+        return 'GB300'
+    #The size of sfcdr.cpl is 576x1344 for SF2000, thanks Q_ta
+    elif(img.width, img.height) == (576, 1344):
+            return 'SF2000'
+    return 'Unknown'
 
 
 #returns a string to the current resource file for each system

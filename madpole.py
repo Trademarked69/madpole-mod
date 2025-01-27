@@ -133,7 +133,7 @@ class MainWindow (QMainWindow):
 
         # Load the Menus
         self.create_actions()
-        self.loadMenus()
+        self.loadMenus('SF2000')
 
         # Create Layouts
         layout = QVBoxLayout(widget)
@@ -156,6 +156,11 @@ class MainWindow (QMainWindow):
 
         # Spacer
         selector_layout.addWidget(QLabel(" "), stretch=3)
+
+        # Device Type
+        self.lbl_device_type = QLabel(text="SF2000")
+        self.lbl_device_type.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        selector_layout.addWidget(self.lbl_device_type)
 
         # Console Select Widgets
         self.lbl_console = QLabel(text="Console:")
@@ -256,54 +261,66 @@ class MainWindow (QMainWindow):
         tadpole_functions.updateShortcutTextforConsole(drive, tadpole_functions._static_shortcut_ARCADE, "Call", "games", "anything", "you want")
         print("finished test function")
 
-    def loadMenus(self):
+    def loadMenus(self, device):
         self.menu_file = self.menuBar().addMenu("&File")
         #TestFunction_action = QAction("Test Function", self, triggered=self.testFunction)
         #self.menu_file.addAction(TestFunction_action)
         Settings_action = QAction("Settings...", self, triggered=self.Settings)
         self.menu_file.addAction(Settings_action)
-        self.menu_file.addAction(self.exit_action)
-
-        
+        self.menu_file.addAction(self.exit_action)        
         #self.menu_mc.addAction(self.exit_action)
 
         # OS Menu
         self.menu_os = self.menuBar().addMenu("&OS")
-        #Sub-menu for updating Firmware
+        # Sub-menu for updating Firmware
         self.menu_os.menu_update = self.menu_os.addMenu("Firmware")
-        # Get firmware from tadpole storage
+        self.OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
         try:
-            response = requests.get("https://tadpolestorage.blob.core.windows.net/$web/os.json")
-            self.OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
-            if response.status_code == 200:
-                data = json.loads(response.content)
-                # Read official firmware versions
-                for item in data["official"]["versions"]:
-                    title = item["title"]
-                    link = item["link"]
-                    self.OS_options[title] = link                                                                              
-                    self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
-                                                            title, 
-                                                            self, 
-                                                            triggered=self.change_OS))
-                self.menu_os.menu_update.addSeparator()
-                # Read multicore firmware versions
-                for item in data["multicore"]["versions"]:
-                    title = item["title"]
-                    link = item["link"]
-                    self.OS_options[title] = link                                                                              
-                    self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
-                                                            title, 
-                                                            self, 
-                                                            triggered=self.change_OS))  
-                    
-                #Get the latest firmware version
-                self.OS_latest = data["multicore"]["latest"]
+            # TODO: get this into the right function
+            if device == 'SF2000':
+                # Get firmware from tadpole storage
+                    if device == 'SF2000':
+                        response = requests.get("https://tadpolestorage.blob.core.windows.net/$web/os.json")
+                        if response.status_code == 200:
+                            data = json.loads(response.content)
+                            # Read official firmware versions
+                            for item in data["official"]["versions"]:
+                                title = item["title"]
+                                link = item["link"]
+                                self.OS_options[title] = link                                                                              
+                                self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
+                                                                        title, 
+                                                                        self, 
+                                                                        triggered=self.change_OS))
+                            self.menu_os.menu_update.addSeparator()
+                            # Read multicore firmware versions
+                            for item in data["multicore"]["versions"]:
+                                title = item["title"]
+                                link = item["link"]
+                                self.OS_options[title] = link                                                                              
+                                self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
+                                                                        title, 
+                                                                        self, 
+                                                                        triggered=self.change_OS))  
+                                
+                            #Get the latest firmware version
+                            self.OS_latest = data["multicore"]["latest"]
+            elif device == 'GB300':
+                self.OS_options = tadpole_functions.get_firmware_versions(device)
+                for update in self.OS_options:
+                    self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)),
+                                                    update,
+                                                    self,
+                                                    triggered=self.change_OS))
         except Exception as e:
             logging.error(f"tadpole~loadMenus: ERROR occured while trying to load OS menu. {str(e)}")
             action_OSmenuError = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_MessageBoxCritical)), "Error loading OS menu", self) 
             action_OSmenuError.setEnabled(False)                                                                             
             self.menu_os.menu_update.addAction(action_OSmenuError) 
+
+        self.menu_os.menu_update.addSeparator()
+
+        # Multi-Core options
         action_makeMulticoreROMList  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_BrowserReload)), "Rebuild Multicore ROM List", self, triggered=self.makeMulticoreROMList)                                                                              
         self.menu_os.menu_update.addAction(action_makeMulticoreROMList) 
         action_makeMulticoreROMListARCADEMode  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_BrowserReload)), "Rebuild Multicore ROM List - ARCADE Mode", self, triggered=self.makeMulticoreROMList_ARCADEMode)                                                                              
@@ -315,8 +332,6 @@ class MainWindow (QMainWindow):
         self.menu_os.menu_update.addAction(action_bootloader_patch)
         self.menu_os.menu_update.addSeparator()
 
-  
-
         #Sub-menu for updating themes
         self.menu_os.menu_change_theme = self.menu_os.addMenu("Theme")
         action_strip_all_shortcut_text  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogResetButton)), "Strip all shortcut text", self, triggered=self.stripAllShortcutText)                                                                              
@@ -324,7 +339,7 @@ class MainWindow (QMainWindow):
         self.menu_os.menu_change_theme.addSeparator()
         
         try:
-            self.theme_options = tadpole_functions.get_themes()
+            self.theme_options = tadpole_functions.get_themes(device)
         except (ConnectionError, requests.exceptions.ConnectionError):
             self.status_bar.showMessage("Error loading external theme resources.  Reconnect to internet and try restarting Madpole.", 20000)
             error_action = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_MessageBoxCritical)),
@@ -377,7 +392,7 @@ class MainWindow (QMainWindow):
         #Menus for boot logo
         self.menu_os.menu_boot_logo = self.menu_os.addMenu("Boot Logo")
         try:
-            self.boot_logos  = tadpole_functions.get_boot_logos()
+            self.boot_logos  = tadpole_functions.get_boot_logos(device)
         except (ConnectionError, requests.exceptions.ConnectionError):
             self.status_bar.showMessage("Error loading external theme resources.  Reconnect to internet and try restarting Madpole.", 20000)
             error_action = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_MessageBoxCritical)),
@@ -473,6 +488,24 @@ class MainWindow (QMainWindow):
         self.menu_help.addSeparator()
         self.menu_help.addAction(self.about_action)
 
+    def clearMenus(self):
+        self.menu_file.clear()
+        self.menu_os.clear()
+        self.menu_help.clear()
+        self.menu_mc.clear()
+        self.menu_roms.clear()
+        self.menuBar().removeAction(self.menu_file.menuAction())
+        self.menuBar().removeAction(self.menu_os.menuAction())
+        self.menuBar().removeAction(self.menu_roms.menuAction())
+        self.menuBar().removeAction(self.menu_help.menuAction())
+        self.menuBar().removeAction(self.menu_mc.menuAction())
+        '''
+        menu_bar = menu.menuBar()
+        for menu in menu_bar.children():
+            if isinstance(menu, QMenuBar):
+                continue
+            menu_bar.removeAction(menu.menuAction())
+        '''
 
     def exportPngs(self):
         print("Exporting Images")
@@ -607,14 +640,13 @@ class MainWindow (QMainWindow):
 
             if len(self.combobox_drive) > 0:
                 self.toggle_features(True)
-                
+
                 #TODO: Replace this a comparison of the list items instead.
                 if(current_drive == static_NoDrives):
                     print("New drive detected")
                     self.status_bar.showMessage("New SF2000 Drive(s) Detected.", 2000)
                     logging.info(f"Automatically triggering drive change because a new drive connected")
-                    self.combobox_drive_change()
-                    
+                    self.combobox_drive_change()  
             else:
                 # disable functions if nothing is in the combobox
                 self.combobox_drive.addItem(QIcon(), static_NoDrives, static_NoDrives)
@@ -622,7 +654,6 @@ class MainWindow (QMainWindow):
                 self.toggle_features(False)
                 #TODO Should probably also clear the table of the ROMs that are still listed
             self.combobox_drive.setCurrentText(current_drive)
-    
     def Settings(self):
         SettingsDialog(tpConf).exec()
         if(self.combobox_drive.currentText() != static_NoDrives):
@@ -883,7 +914,7 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         msgBox.setText(" Loading current boot logo...")
         msgBox.show()
         msgBox.showProgress(50, True)
-        dialog = BootConfirmDialog(self.combobox_drive.currentText(), basedir)
+        dialog = BootConfirmDialog(self.combobox_drive.currentText(), basedir, self.lbl_device_type.text())
         msgBox.close()
         change = dialog.exec()
         if change:
@@ -900,7 +931,7 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
                 success = tadpole_functions.changeBootLogo(os.path.join(self.combobox_drive.currentText(),
                                                               "bios",
                                                               "bisrv.asd"),
-                                                 newLogoFileName, msgBox)
+                                                 newLogoFileName, msgBox, self.lbl_device_type.text())
                 msgBox.close()
             except tadpole_functions.Exception_InvalidPath:
                 QMessageBox.about(self, "Change Boot Logo", "An error occurred. Please ensure that you have the right \
@@ -917,6 +948,14 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
     def combobox_drive_change(self):
         newDrive = self.combobox_drive.currentText()
         console = self.combobox_console.currentText()
+        #Look to see if the device type changed
+        current_device = tadpole_functions.setDeviceType(newDrive)
+        if(self.lbl_device_type.text() != current_device):
+            self.lbl_device_type.setText(current_device)   
+            print("Refresehing menu's for new device type")
+            self.clearMenus()
+            self.loadMenus(current_device)
+
         logging.info(f"Combobox for drive changed to ({newDrive})")
         self.initMulticoreShortcuts()
         try:
