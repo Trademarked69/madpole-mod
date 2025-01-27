@@ -742,7 +742,7 @@ def get_firmware_versions(device):
     if device == 'SF2000':
         print("#TODO: we should insert SF2000 here and have less logic in the main UI")
     elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/OS/GB300'
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/OS/GB300V2'
         response = requests.get(url)
         if response.status_code == 200:
             data = json.loads(response.content)
@@ -770,7 +770,7 @@ def get_themes(device) -> bool:
     if device == 'SF2000':
         url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000'
     elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/GB300'
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/GB300V2'
     response = requests.get(url)
     if response.status_code == 200:
         data = json.loads(response.content)
@@ -786,7 +786,7 @@ def get_boot_logos(device) -> bool:
     if device == 'SF2000':
         url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000'
     elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300'
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300V2'
     response = requests.get(url)
     if response.status_code == 200:
         data = json.loads(response.content)
