@@ -12,8 +12,8 @@ Madpole-mod currently provides the following main features:
 * Downloading cover art for ROMs (including Multicore ROMs)
 * Editing the Multicore .opt files
 * A WIP section editor
-* Changing the four in menu game shortcuts for each console
-* Changing the boot logo (for Multicore bisrvs also)
+* Changing the four in menu game shortcuts for each console (including Multicore ROMs)
+* Changing the boot logo (for Multicore Bisrv's also)
 * Changing the background music
 * Changing the theme
 * Applying the bootloader fix
