@@ -163,7 +163,7 @@ class MainWindow (QMainWindow):
         selector_layout.addWidget(self.lbl_device_type)
 
         # Console Select Widgets
-        self.lbl_console = QLabel(text="Console:")
+        self.lbl_console = QLabel(text="Menu:")
         self.lbl_console.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.combobox_console = QComboBox()
         self.combobox_console.activated.connect(self.combobox_console_change)
@@ -276,42 +276,13 @@ class MainWindow (QMainWindow):
         self.menu_os.menu_update = self.menu_os.addMenu("Firmware")
         self.OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
         try:
-            # TODO: get this into the right function
-            if device == 'SF2000':
-                # Get firmware from tadpole storage
-                    if device == 'SF2000':
-                        response = requests.get("https://tadpolestorage.blob.core.windows.net/$web/os.json")
-                        if response.status_code == 200:
-                            data = json.loads(response.content)
-                            # Read official firmware versions
-                            for item in data["official"]["versions"]:
-                                title = item["title"]
-                                link = item["link"]
-                                self.OS_options[title] = link                                                                              
-                                self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
-                                                                        title, 
-                                                                        self, 
-                                                                        triggered=self.change_OS))
-                            self.menu_os.menu_update.addSeparator()
-                            # Read multicore firmware versions
-                            for item in data["multicore"]["versions"]:
-                                title = item["title"]
-                                link = item["link"]
-                                self.OS_options[title] = link                                                                              
-                                self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), 
-                                                                        title, 
-                                                                        self, 
-                                                                        triggered=self.change_OS))  
-                                
-                            #Get the latest firmware version
-                            self.OS_latest = data["multicore"]["latest"]
-            elif device == 'GB300':
-                self.OS_options = tadpole_functions.get_firmware_versions(device)
-                for update in self.OS_options:
-                    self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)),
-                                                    update,
-                                                    self,
-                                                    triggered=self.change_OS))
+            self.OS_options = tadpole_functions.get_firmware_versions(device)
+            # TODO: add a spacer between stock and multicore after switching to json
+            for update in self.OS_options:
+                self.menu_os.menu_update.addAction(QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)),
+                                                update,
+                                                self,
+                                                triggered=self.change_OS))
         except Exception as e:
             logging.error(f"tadpole~loadMenus: ERROR occured while trying to load OS menu. {str(e)}")
             action_OSmenuError = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_MessageBoxCritical)), "Error loading OS menu", self) 

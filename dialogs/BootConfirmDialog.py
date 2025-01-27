@@ -76,9 +76,9 @@ class BootLogoViewer(QLabel):
         self.setStyleSheet("background-color: white;")
 
         if device == 'SF2000':
-            self.setMinimumSize(512, 200)  # resize to Froggy boot logo dimensions
-        elif device == 'GB300':
-            self.setMinimumSize(248, 249)  # resize to Froggy boot logo dimensions
+            self.setMinimumSize(512, 200)  # resize to SF2000 boot logo dimensions
+        elif device == 'GB300V2':
+            self.setMinimumSize(248, 249)  # resize to GB300 V2 boot logo dimensions
 
         if self.changeable:
             self.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -94,7 +94,7 @@ class BootLogoViewer(QLabel):
             if len(file_name) > 0:  # confirm if user selected a file
                 if self.device == 'SF2000':
                     self.load_image(file_name, 512, 200)
-                elif self.device == 'GB300':
+                elif self.device == 'GB300V2':
                     self.load_image(file_name, 248, 249)
 
 
@@ -104,7 +104,7 @@ class BootLogoViewer(QLabel):
 
         Args:
             drive (str):  Path to the root of the Froggy drive.
-            device (str): Type of device (e.g. SF2000 or GB300)
+            device (str): Type of device (e.g. SF2000 or GB300 V2)
         """
 
         with open(os.path.join(drive, "bios", "bisrv.asd"), "rb") as bios_file:
@@ -114,11 +114,10 @@ class BootLogoViewer(QLabel):
             width = 512
             height = 200
             offset = tadpole_functions.findSequence(tadpole_functions.offset_sf2000_logo_presequence, bios_content) + 16
-        # TODO this only supports V2 firmware which changed boot logo to 248*249
-        elif(device == 'GB300'):
+        elif(device == 'GB300V2'):
             width = 248
             height = 249
-            offset = tadpole_functions.findSequence(tadpole_functions.offset_gb300_logo_multi_core_presequence, bios_content) + 16
+            offset = tadpole_functions.findSequence(tadpole_functions.offset_gb300v2_logo_multi_core_presequence, bios_content) + 16
 
         # TODO switch this to be in memory
         with open(os.path.join(self.basedir, "bios_image.raw"), "wb") as image_file:

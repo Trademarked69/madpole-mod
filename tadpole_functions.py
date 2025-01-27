@@ -179,7 +179,7 @@ def resize_images(directory): # Resize all .png files in a directory
             
 
 offset_sf2000_logo_presequence = [0x62, 0x61, 0x64, 0x5F, 0x65, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6F, 0x6E, 0x00, 0x00, 0x00]
-offset_gb300_logo_multi_core_presequence = [0x6E, 0x74, 0x61, 0x6C, 0x5F, 0x74, 0x79, 0x70, 0x65, 0x5F, 0x69, 0x6E, 0x66, 0x6F, 0x45, 0x00]
+offset_gb300v2_logo_multi_core_presequence = [0x6E, 0x74, 0x61, 0x6C, 0x5F, 0x74, 0x79, 0x70, 0x65, 0x5F, 0x69, 0x6E, 0x66, 0x6F, 0x45, 0x00]
 offset_buttonMap_presequence = [0x00, 0x00, 0x00, 0x71, 0xDB, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 offset_buttonMap_postsequence = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00]
 
@@ -207,8 +207,8 @@ def changeBootLogo(index_path, newLogoFileName, msgBox, device):
         10000000)
         width = 512
         height = 200
-    if device == 'GB300':
-        logoOffset = findSequence(offset_gb300_logo_multi_core_presequence, bisrv_content,
+    if device == 'GB300V2':
+        logoOffset = findSequence(offset_gb300v2_logo_multi_core_presequence, bisrv_content,
         10000000)
         width = 248
         height = 249
@@ -740,9 +740,23 @@ def get_firmware_versions(device):
     OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
     # Get firmware from tadpole storage
     if device == 'SF2000':
-        print("#TODO: we should insert SF2000 here and have less logic in the main UI")
-    elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/OS/GB300'
+        # TODO fix the repo and switch to that then make a new json
+        response = requests.get("https://tadpolestorage.blob.core.windows.net/$web/os.json")
+        if response.status_code == 200:
+            data = json.loads(response.content)
+            # Read official firmware versions
+            for item in data["official"]["versions"]:
+                title = item["title"]
+                link = item["link"]
+                OS_options[title] = link
+            # Read multicore firmware versions
+            for item in data["multicore"]["versions"]:
+                title = item["title"]
+                link = item["link"]
+                OS_options[title] = link  
+            return OS_options  
+    elif device == 'GB300V2':
+        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/OS/' + device
         response = requests.get(url)
         if response.status_code == 200:
             data = json.loads(response.content)
@@ -752,11 +766,12 @@ def get_firmware_versions(device):
     raise ConnectionError("Unable to obtain OS resources. (Status Code: {})".format(response.status_code))
 
 
-def get_background_music(url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic"):
+def get_background_music():
     """gets index of background music from provided GitHub API URL"""
     music = {}
+    # TODO switch to json so we don't keep hosting others work
+    url="https://api.github.com/repos/EricGoldsteinNz/SF2000_Resources/contents/BackgroundMusic"
     response = requests.get(url)
-
     if response.status_code == 200:
         data = json.loads(response.content)
         for item in data:
@@ -767,10 +782,8 @@ def get_background_music(url="https://api.github.com/repos/EricGoldsteinNz/SF200
 def get_themes(device) -> bool:
     """gets index of theme from provided GitHub API URL"""
     theme = {}
-    if device == 'SF2000':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/SF2000'
-    elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/GB300'
+    # TODO switch to json so we don't keep hosting others work
+    url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/Themes/' + device
     response = requests.get(url)
     if response.status_code == 200:
         data = json.loads(response.content)
@@ -783,10 +796,8 @@ def get_themes(device) -> bool:
 def get_boot_logos(device) -> bool:
     """gets index of theme from provided GitHub API URL"""
     bootlogos = {}
-    if device == 'SF2000':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/SF2000'
-    elif device == 'GB300':
-        url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/GB300'
+    # TODO switch to json so we don't keep hosting others work
+    url = 'https://api.github.com/repos/jasongrieves/SF2000_Resources/contents/BootLogos/' + device
     response = requests.get(url)
     if response.status_code == 200:
         data = json.loads(response.content)
@@ -1363,17 +1374,21 @@ def convertPNGtoResourceRGB565(srcPNG, resourceFileName, drive):
     else:
         print("Couldn't convert file for gameshortcut")
 
-    # Get's the type of device the SD card/directory is configured
+# Get's the type of device the SD card/directory is configured
 def setDeviceType(drive):
-    SFCDRResourcePath = os.path.join(drive, 'Resources', 'sfcdr.cpl')
-    img = openBRGAasImage(SFCDRResourcePath)
-    #The size of sfcdr.cpl is 576x1512 for GB300V2, thanks Q_ta
-    if (img.width, img.height) == (576, 1512): 
-        return 'GB300'
-    #The size of sfcdr.cpl is 576x1344 for SF2000, thanks Q_ta
-    elif(img.width, img.height) == (576, 1344):
+    ROMListPath = os.path.join(drive, 'Resources', 'kjbyr.tax') # The PCE rom list for GB300 V2
+    FoldernamePath = os.path.join(drive, 'Resources', 'foldername.ini')
+    if os.path.exists(FoldernamePath):
+        with open(FoldernamePath, 'r') as file:
+            first_line = file.readline()
+        if first_line == "GB300":
+            return 'GB300V1' # TODO: give warning, maybe exit 
+        if os.path.exists(ROMListPath):
+            return 'GB300V2'
+        else:
             return 'SF2000'
-    return 'Unknown'
+    else: 
+        return 'Unknown'
 
 
 #returns a string to the current resource file for each system
