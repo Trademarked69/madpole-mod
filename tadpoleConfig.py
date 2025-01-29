@@ -17,6 +17,8 @@ class TadpoleConfig():
     _static_thumbnails_overwrite_DEFAULT = "False"
     _static_thumbnails_download = "download"
     _static_thumbnails_download_DEFAULT = "0"
+    _static_topGamesEnabled = "top_games_enabled"
+    _static_topGamesEnabled_DEFAULT = "False"
     # [libretro]
     _static_libretro = "Libretro"
     _static_libretro_thumbnail_type = "thumbnail_type"
@@ -125,6 +127,14 @@ class TadpoleConfig():
     def getThumbnailOverwrite(self):
         view = self.getVariable(self._static_thumbnails,self._static_thumbnails_overwrite,self._static_thumbnails_overwrite_DEFAULT)
         return view == "True"
+
+    def getTopGamesEnabled(self):
+        return self.config[self._static_general].get(self._static_topGamesEnabled, self._static_topGamesEnabled_DEFAULT) == "True"
+
+    def setTopGamesEnabled(self, value):
+        self.config[self._static_general][self._static_topGamesEnabled] = "True" if value else "False"
+        with open(self._static_TadpoleConfigFile, 'w') as configfile:
+            self.config.write(configfile)
 
     def setLibretroThumbnailType(self, thumbnail_type: str):
         print(f"Setting LibretroThumbnailType to ({thumbnail_type})")

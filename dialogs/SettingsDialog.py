@@ -75,6 +75,17 @@ class SettingsDialog(QDialog):
 
         self.layout_main.addWidget(QLabel(" "))  # spacer
 
+        # Sorting options options
+        self.top_games_enabled = self.tpConf.getTopGamesEnabled()  # Get the initial state from configuration
+        self.layout_main.addWidget(QLabel("Sorting options"))
+        self.top_games_sorting_checkbox = QCheckBox("Enable Top Games List (TopGames.txt)", self)
+        self.top_games_sorting_checkbox.setToolTip("Adds the games specified in TopGames.txt to the top of the game listing")
+        self.top_games_sorting_checkbox.clicked.connect(self.topGamesToggled)
+        self.layout_main.addWidget(self.top_games_sorting_checkbox)
+        self.top_games_sorting_checkbox.setChecked(self.top_games_enabled)
+
+        self.layout_main.addWidget(QLabel(" "))  # spacer
+
         #File options options
         self.layout_main.addWidget(QLabel("File Options"))
         UserSavedDirectory = tpConf.getLocalUserDirectory()
@@ -146,6 +157,9 @@ like the root of the SD card.  Do you want us to download all the most up to dat
 
     def thumbnailViewClicked(self):
         self.tpConf.setViewThumbnailsInTable(self.sender().isChecked())
+    
+    def topGamesToggled(self):
+        self.tpConf.setTopGamesEnabled(self.top_games_sorting_checkbox.isChecked())
     
     def libretroThumbnailTypeChanged(self):
         selected_type = self.sender().currentText()
