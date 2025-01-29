@@ -92,7 +92,7 @@ def RunFrogTool(drive, console):
             for console in frogtool.systems.keys():
                 if tpConf.getTopGamesEnabled():
                     print("Top Games feature enabled - sorting game list with Top Games List at the top")
-                    top_games_list = read_top_games(console)
+                    top_games_list = read_top_games(drive, console)
                 result = frogtool.process_sys(drive, console, False, top_games_list)
                 #Update Progress
                 progress += 10
@@ -103,7 +103,7 @@ def RunFrogTool(drive, console):
         else:
             if tpConf.getTopGamesEnabled():
                 print("Top Games feature enabled - sorting game list with Top Games List at the top")
-                top_games_list = read_top_games(console)
+                top_games_list = read_top_games(drive, console)
             result = frogtool.process_sys(drive, console, False, top_games_list)
             print("Result " + result)      
         #Always reload the table now that the folders are all cleaned up
@@ -1616,7 +1616,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
             files = sorted(files)
             if tpConf.getTopGamesEnabled():  #sort with top games at the top if Top Games feature is enabled
                 print("Top Games feature enabled - sorting game list with Top Games List at the top")
-                top_games_list = read_top_games(system)
+                top_games_list = read_top_games(drive, system)
                 if top_games_list:
                     top_sorted = [game for game in top_games_list if game in files]
                     remainder_games_sorted = [game for game in files if game not in top_sorted]

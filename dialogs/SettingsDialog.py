@@ -33,6 +33,15 @@ class SettingsDialog(QDialog):
         thubmnailViewCheckBox.toggled.connect(self.thumbnailViewClicked)
         self.layout_main.addWidget(thubmnailViewCheckBox)
         
+        # Sorting options options
+        self.top_games_enabled = self.tpConf.getTopGamesEnabled()  # Get the initial state from configuration
+        self.layout_main.addWidget(QLabel("Sorting options"))
+        self.top_games_sorting_checkbox = QCheckBox("Enable Top Games List (sdcard/topgames.txt)", self)
+        self.top_games_sorting_checkbox.setToolTip("Adds the games specified in topgames.txt to the top of the game listing")
+        self.top_games_sorting_checkbox.clicked.connect(self.topGamesToggled)
+        self.layout_main.addWidget(self.top_games_sorting_checkbox)
+        self.top_games_sorting_checkbox.setChecked(self.top_games_enabled)
+        
         #Thumbnail upload style
         self.layout_main.addWidget(QLabel("Add thumbnails by: "))
         thubmnailAddCombo = QComboBox()
@@ -72,17 +81,6 @@ class SettingsDialog(QDialog):
         romartBackgroundColorTextbox.setText(tpConf.getRomartBackgroundColor())
         romartBackgroundColorTextbox.textChanged.connect(self.romartBackgroundColorChanged)
         self.layout_main.addWidget(romartBackgroundColorTextbox)
-
-        self.layout_main.addWidget(QLabel(" "))  # spacer
-
-        # Sorting options options
-        self.top_games_enabled = self.tpConf.getTopGamesEnabled()  # Get the initial state from configuration
-        self.layout_main.addWidget(QLabel("Sorting options"))
-        self.top_games_sorting_checkbox = QCheckBox("Enable Top Games List (TopGames.txt)", self)
-        self.top_games_sorting_checkbox.setToolTip("Adds the games specified in TopGames.txt to the top of the game listing")
-        self.top_games_sorting_checkbox.clicked.connect(self.topGamesToggled)
-        self.layout_main.addWidget(self.top_games_sorting_checkbox)
-        self.top_games_sorting_checkbox.setChecked(self.top_games_enabled)
 
         self.layout_main.addWidget(QLabel(" "))  # spacer
 
