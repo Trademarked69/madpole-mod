@@ -42,7 +42,7 @@ class MulticoreStubsDialog(QDialog):
         self.mdirCombo = QComboBox()
         mdir = tpConf.cDir
         try:
-            self.mdirCombo.addItems([f.name for f in os.scandir(mdir +"ROMS") if f.is_dir() and f.name != "save" and f.name != "mnt" ])
+            self.mdirCombo.addItems([f.name for f in os.scandir(os.path.join(mdir, "ROMS")) if f.is_dir() and f.name != "save" and f.name != "mnt" ])
         except:
             self.mdirCombo.addItems([])
 

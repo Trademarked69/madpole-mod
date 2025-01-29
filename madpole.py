@@ -31,7 +31,6 @@ import frogtool
 import tadpole_functions
 from tadpole_functions import read_top_games
 from tadpoleConfig import TadpoleConfig
-import multicore_functions
 import mcoredata as mc
 # Dialog imports
 from dialogs.SettingsDialog import SettingsDialog
@@ -297,13 +296,6 @@ class MainWindow (QMainWindow):
             action_OSmenuError.setEnabled(False)                                                                             
             self.menu_os.menu_update.addAction(action_OSmenuError) 
 
-        self.menu_os.menu_update.addSeparator()
-
-        # Multi-Core options
-        action_makeMulticoreROMList  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_BrowserReload)), "Rebuild Multicore ROM List", self, triggered=self.makeMulticoreROMList)                                                                              
-        self.menu_os.menu_update.addAction(action_makeMulticoreROMList) 
-        action_makeMulticoreROMListARCADEMode  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_BrowserReload)), "Rebuild Multicore ROM List - ARCADE Mode", self, triggered=self.makeMulticoreROMList_ARCADEMode)                                                                              
-        self.menu_os.menu_update.addAction(action_makeMulticoreROMListARCADEMode) 
         self.menu_os.menu_update.addSeparator()
         action_battery_fix  = QAction(QIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_DialogSaveButton)), "Battery Fix - Built by the community (Improves battery life and shows low power warning)", self, triggered=self.Battery_fix)                                                                              
         self.menu_os.menu_update.addAction(action_battery_fix)
@@ -1015,31 +1007,6 @@ This app has very little GB300 V1 support so we recommend either updating to GB3
         self.UpdateDeviceFromZip(url)
         #Rebuild the ROM lists just incase we did a full rebuild
         RunFrogTool(self.combobox_drive.currentText(),static_AllSystems)
-
-
-    def makeMulticoreROMList(self):
-        logging.info("Tadpole~makeMulticoreROMList")
-        drive = self.combobox_drive.currentText()
-        msgBox = DownloadProgressDialog()
-        msgBox.setText("Rebuilding Multicore ROM list.")
-        msgBox.show()
-        msgBox.showProgress(0, True)
-        romcount = multicore_functions.makeMulticoreROMList(drive)
-        msgBox.close()
-        QMessageBox.about(self, "Finished Rebuilding Multicore ROMs",f"Found {romcount} ROMs in multicore folders")
-    
-    def makeMulticoreROMList_ARCADEMode(self):
-        logging.info("Tadpole~makeMulticoreROMListARCADEMode")
-        drive = self.combobox_drive.currentText()
-        msgBox = DownloadProgressDialog()
-        msgBox.setText("Rebuilding Multicore ROM list.")
-        msgBox.show()
-        msgBox.showProgress(0, True)
-        romcount = multicore_functions.makeMulticoreROMList_ARCADEMode(drive)
-        RunFrogTool(drive, "ARCADE")
-        msgBox.close()
-        QMessageBox.about(self, "Finished Rebuilding Multicore ROMs",f"Found {romcount} ROMs in multicore folders")
- 
 
     def Battery_fix(self):
         logging.info("Tadpole~Battery_fix")
