@@ -8,8 +8,11 @@ import os
 # feature imports
 from PIL import Image, ImageDraw
 import tadpole_functions
+from tadpoleConfig import TadpoleConfig
 import frogtool
 import logging
+
+tpConf = TadpoleConfig()
 
 class GameShortcutIconsDialog(QDialog):
     """
@@ -182,44 +185,73 @@ by matching the name of the game and a folder you select?  You can change the ic
         return rectangle
     
     def resize_for_shortcut(self, game):
-        # This will resample down to 60x60 and then back up to 120x120 for better thumbnails
+        max_width, max_height = 124, 124
+        if tpConf.getShortcutsBorderEnabled():
+            max_width, max_height = 120, 120
+            
+        if tpConf.getResizeRomart() and not tpConf.getShortcutsBorderEnabled():
+            # Calculate the aspect ratio
+            aspect_ratio = game.width / game.height
+            print(game.width)
+            print(aspect_ratio)
+            if game.width > game.height or game.width == game.height:
+                # Landscape or square image
+                new_width = max_width
+                new_height = int(max_width / aspect_ratio)
+            else:
+                # Portrait image
+                new_height = max_height
+                new_width = int(max_height * aspect_ratio)
+                    
+            # Resize the image to fit within the box while maintaining aspect ratio
+            game = game.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+            # Create a new image with a custom background color
+            new_image = Image.new("RGBA", (max_width, max_height))
+            
+            # Calculate the position to center the image
+            paste_x = (max_width - new_width) // 2
+            paste_y = (max_height - new_height) // 2
+            
+            # Paste the resized image onto the center of the new image
+            new_image.paste(game, (paste_x, paste_y))
+            game = new_image
+                    
+        # This will resample down to 120x120 or 124x124
         game = game.convert('RGBA')
-        game = game.resize((60, 60), Image.Resampling.LANCZOS)
-        new_image = Image.new('RGB', (60, 60), (255,255,255,0))
-        new_image.paste(game, (0, 0), game)
+        game = game.resize((max_width, max_height), Image.Resampling.LANCZOS)
+        
+        if tpConf.getShortcutsBorderEnabled():
+            # Create rectangles for white borders with fillet
+            white_rounded_rect = self.round_rectangle((124,124), 8, "white")
 
-        game = new_image.resize((120, 120), Image.Resampling.NEAREST)
+            white_rounded_rect.paste(game, (2,2))
+            game = white_rounded_rect
 
-        # Create rectangles for white borders with fillet
-        white_rounded_rect = self.round_rectangle((124,124), 8, "white")
+            white_rounded_rect2 = self.round_rectangle((124,124), 8, "white")
+            black_rounded_rect2 = self.round_rectangle((120,120), 8, "black")
+            white_rounded_rect2.paste(black_rounded_rect2, (2,2), black_rounded_rect2)
 
-        white_rounded_rect.paste(game, (2,2))
-        game = white_rounded_rect
+            datas = white_rounded_rect2.getdata()
 
-        white_rounded_rect2 = self.round_rectangle((124,124), 8, "white")
-        black_rounded_rect2 = self.round_rectangle((120,120), 8, "black")
-        white_rounded_rect2.paste(black_rounded_rect2, (2,2), black_rounded_rect2)
+            img_data = white_rounded_rect.getdata()
 
-        datas = white_rounded_rect2.getdata()
+            newData = []
+            new_imgData = []
+            for idx,item in enumerate(datas):
+                if item[3] == 0:
+                    new_imgData.append((255, 255, 255, 0))
+                else:
+                    new_imgData.append(img_data[idx])
 
-        img_data = white_rounded_rect.getdata()
+                if item[0] == 0 and item[1] == 0 and item[2] == 0:
+                    newData.append((255, 255, 255, 0))
+                else:
+                    newData.append(item)
 
-        newData = []
-        new_imgData = []
-        for idx,item in enumerate(datas):
-            if item[3] == 0:
-                new_imgData.append((255, 255, 255, 0))
-            else:
-                new_imgData.append(img_data[idx])
-
-            if item[0] == 0 and item[1] == 0 and item[2] == 0:
-                newData.append((255, 255, 255, 0))
-            else:
-                newData.append(item)
-
-        white_rounded_rect2.putdata(newData)
-        game.putdata(new_imgData)
-        game.paste(white_rounded_rect2, (0,0), white_rounded_rect2)
+            white_rounded_rect2.putdata(newData)
+            game.putdata(new_imgData)
+            game.paste(white_rounded_rect2, (0,0), white_rounded_rect2)
         return game
     
     def ovewrite_background_and_reload(self, path, icon):

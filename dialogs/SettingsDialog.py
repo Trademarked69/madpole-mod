@@ -24,6 +24,15 @@ class SettingsDialog(QDialog):
         self.layout_main = QVBoxLayout()
         self.setLayout(self.layout_main)
 
+        # Sorting options options
+        self.top_games_enabled = self.tpConf.getTopGamesEnabled()  # Get the initial state from configuration
+        self.layout_main.addWidget(QLabel("Sorting options"))
+        self.top_games_sorting_checkbox = QCheckBox("Enable Top Games List (sdcard/topgames.txt)", self)
+        self.top_games_sorting_checkbox.setToolTip("Adds the games specified in topgames.txt to the top of the game listing")
+        self.top_games_sorting_checkbox.clicked.connect(self.topGamesToggled)
+        self.layout_main.addWidget(self.top_games_sorting_checkbox)
+        self.top_games_sorting_checkbox.setChecked(self.top_games_enabled)
+
         #Thumbnail View options
         self.layout_main.addWidget(QLabel("Thumbnail options"))
         #Viewer
@@ -33,14 +42,31 @@ class SettingsDialog(QDialog):
         thubmnailViewCheckBox.toggled.connect(self.thumbnailViewClicked)
         self.layout_main.addWidget(thubmnailViewCheckBox)
         
-        # Sorting options options
-        self.top_games_enabled = self.tpConf.getTopGamesEnabled()  # Get the initial state from configuration
-        self.layout_main.addWidget(QLabel("Sorting options"))
-        self.top_games_sorting_checkbox = QCheckBox("Enable Top Games List (sdcard/topgames.txt)", self)
-        self.top_games_sorting_checkbox.setToolTip("Adds the games specified in topgames.txt to the top of the game listing")
-        self.top_games_sorting_checkbox.clicked.connect(self.topGamesToggled)
-        self.layout_main.addWidget(self.top_games_sorting_checkbox)
-        self.top_games_sorting_checkbox.setChecked(self.top_games_enabled)
+        # Border around shortcuts
+        self.layout_main.addWidget(QLabel("Shortcuts border (doesn't work with Resizing ROMArt)"))
+        shortcutsBorderEnabled = self.tpConf.getShortcutsBorderEnabled()  # Get the initial state from configuration
+        shortcutsBorderCheckBox = QCheckBox("Border around shortcuts")
+        shortcutsBorderCheckBox.setToolTip("Adds a white border aroung the shortcut image")
+        shortcutsBorderCheckBox.clicked.connect(self.shortcutsBorderToggle)
+        self.layout_main.addWidget(shortcutsBorderCheckBox)
+        shortcutsBorderCheckBox.setChecked(shortcutsBorderEnabled)
+        
+        # Automatic resize romart
+        self.layout_main.addWidget(QLabel("Resizing ROMArt"))
+        resizeRomartEnabled = self.tpConf.getResizeRomart()  # Get the initial state from configuration
+        resizeRomartCheckBox = QCheckBox("Keep aspect ratio")
+        resizeRomartCheckBox.setToolTip("Resizes ROMArt so the aspect ratio is preserved")
+        resizeRomartCheckBox.clicked.connect(self.resizeRomartToggle)
+        self.layout_main.addWidget(resizeRomartCheckBox)
+        resizeRomartCheckBox.setChecked(resizeRomartEnabled)
+        
+        # Libretro Thumbnail Background Color
+        self.layout_main.addWidget(QLabel("ROMArt background color: "))
+        romartBackgroundColorTextbox = QLineEdit()
+        romartBackgroundColorTextbox.setText(tpConf.getRomartBackgroundColor())
+        romartBackgroundColorTextbox.setToolTip("Only used if keeping aspect ratio")
+        romartBackgroundColorTextbox.textChanged.connect(self.romartBackgroundColorChanged)
+        self.layout_main.addWidget(romartBackgroundColorTextbox)
         
         #Thumbnail upload style
         self.layout_main.addWidget(QLabel("Add thumbnails by: "))
@@ -66,21 +92,6 @@ class SettingsDialog(QDialog):
         libretroThumbnailTypeCombo.setCurrentIndex(["Boxarts", "Snaps", "Titles"].index(current_type))
         libretroThumbnailTypeCombo.currentTextChanged.connect(self.libretroThumbnailTypeChanged)
         self.layout_main.addWidget(libretroThumbnailTypeCombo)
-
-        # Automatic resize romart
-        self.layout_main.addWidget(QLabel("Automatically Resize Romart?"))
-        resizeRomartCombo = QComboBox()
-        resizeRomartCombo.addItems(["Yes", "No"])
-        resizeRomartCombo.setCurrentIndex(0 if tpConf.getResizeRomart() else 1)
-        resizeRomartCombo.currentTextChanged.connect(self.resizeRomartChanged)
-        self.layout_main.addWidget(resizeRomartCombo)
-        
-        # Libretro Thumbnail Background Color
-        self.layout_main.addWidget(QLabel("Libretro Thumbnail Background Color"))
-        romartBackgroundColorTextbox = QLineEdit()
-        romartBackgroundColorTextbox.setText(tpConf.getRomartBackgroundColor())
-        romartBackgroundColorTextbox.textChanged.connect(self.romartBackgroundColorChanged)
-        self.layout_main.addWidget(romartBackgroundColorTextbox)
 
         self.layout_main.addWidget(QLabel(" "))  # spacer
 
@@ -162,11 +173,14 @@ like the root of the SD card.  Do you want us to download all the most up to dat
     def libretroThumbnailTypeChanged(self):
         selected_type = self.sender().currentText()
         self.tpConf.setLibretroThumbnailType(selected_type)
-        
-    def resizeRomartChanged(self):
-        self.tpConf.setResizeRomart(self.sender().currentIndex() == 0)
+              
+    def shortcutsBorderToggle(self):
+        self.tpConf.setShortcutsBorderEnabled(self.sender().isChecked())
+                
+    def resizeRomartToggle(self):
+        self.tpConf.setResizeRomart(self.sender().isChecked())
         
     def romartBackgroundColorChanged(self):
-        selected_type = self.sender().currentText()
+        selected_type = self.sender().text()
         self.tpConf.setRomartBackgroundColor(selected_type)
 

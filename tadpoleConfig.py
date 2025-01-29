@@ -9,6 +9,10 @@ class TadpoleConfig():
     _static_general = "madpole"
     _static_general_userDirectory = "user_directory"
     _static_general_userDirectory_DEFAULT = os.getcwd()
+    _static_topGamesEnabled = "top_games_enabled"
+    _static_topGamesEnabled_DEFAULT = "False"
+    _static_shortcutsBorderEnabled = "shortcuts_border_enabled"
+    _static_shortcutsBorderEnabled_DEFAULT = "False"
     # [thumbnails]
     _static_thumbnails = "Thumbnails"
     _static_thumbnails_view = "ViewInTable"
@@ -17,16 +21,12 @@ class TadpoleConfig():
     _static_thumbnails_overwrite_DEFAULT = "False"
     _static_thumbnails_download = "download"
     _static_thumbnails_download_DEFAULT = "0"
-    _static_topGamesEnabled = "top_games_enabled"
-    _static_topGamesEnabled_DEFAULT = "False"
-    # [libretro]
-    _static_libretro = "Libretro"
-    _static_libretro_thumbnail_type = "thumbnail_type"
-    _static_libretro_thumbnail_type_DEFAULT = "Boxarts"
-    _static_libretro_resize_romart = "resize_romart"
-    _static_libretro_resize_romart_DEFAULT = "1"
-    _static_libretro_romart_background_color = "romart_background_color"
-    _static_libretro_romart_background_color_DEFAULT = "#212d29"
+    _static_thumbnails_ResizeRomartEnabled = "resize_romart"
+    _static_thumbnails_ResizeRomartEnabled_DEFAULT = "True"
+    _static_thumbnails_type = "thumbnail_type"
+    _static_thumbnails_type_DEFAULT = "Boxarts"
+    _static_thumbnails_romart_background_color = "romart_background_color"
+    _static_thumbnails_romart_background_color_DEFAULT = "#212d29"
 
 
 
@@ -138,23 +138,31 @@ class TadpoleConfig():
 
     def setLibretroThumbnailType(self, thumbnail_type: str):
         print(f"Setting LibretroThumbnailType to ({thumbnail_type})")
-        self.setVariable(self._static_libretro, self._static_libretro_thumbnail_type, thumbnail_type)
+        self.setVariable(self._static_thumbnails, self._static_thumbnails_type, thumbnail_type)
     
     def getLibretroThumbnailType(self):
-        return self.getVariable(self._static_libretro, self._static_libretro_thumbnail_type, self._static_libretro_thumbnail_type_DEFAULT)
+        return self.getVariable(self._static_thumbnails, self._static_thumbnails_type, self._static_thumbnails_type_DEFAULT)
+
+    def setShortcutsBorderEnabled(self, value):
+        self.config[self._static_general][self._static_shortcutsBorderEnabled] = "True" if value else "False"
+        with open(self._static_TadpoleConfigFile, 'w') as configfile:
+            self.config.write(configfile)
     
-    def setResizeRomart(self, enabled: bool):
-        print(f"Setting ResizeRomart to ({enabled})")
-        self.setVariable(self._static_libretro, self._static_libretro_resize_romart, ("1" if enabled else "0"))
+    def getShortcutsBorderEnabled(self):
+        return self.config[self._static_general].get(self._static_shortcutsBorderEnabled, self._static_shortcutsBorderEnabled_DEFAULT) == "True"
+    
+    def setResizeRomart(self, value):
+        self.config[self._static_thumbnails][self._static_thumbnails_ResizeRomartEnabled] = "True" if value else "False"
+        with open(self._static_TadpoleConfigFile, 'w') as configfile:
+            self.config.write(configfile)
     
     def getResizeRomart(self):
-        view = self.getVariable(self._static_libretro,self._static_libretro_resize_romart,self._static_libretro_resize_romart_DEFAULT)
-        return view == "1"
-    
+        return self.config[self._static_thumbnails].get(self._static_thumbnails_ResizeRomartEnabled, self._static_thumbnails_ResizeRomartEnabled_DEFAULT) == "True"
+            
     def setRomartBackgroundColor(self, romart_background_color: str):
         print(f"Setting RomartBackgroundColor to ({romart_background_color})")
-        self.setVariable(self._static_libretro, self._static_libretro_romart_background_color, romart_background_color)
+        self.setVariable(self._static_thumbnails, self._static_thumbnails_romart_background_color, romart_background_color)
     
     def getRomartBackgroundColor(self):
-        return self.getVariable(self._static_libretro, self._static_libretro_romart_background_color, self._static_libretro_romart_background_color_DEFAULT)
+        return self.getVariable(self._static_thumbnails, self._static_thumbnails_romart_background_color, self._static_thumbnails_romart_background_color_DEFAULT)
 
