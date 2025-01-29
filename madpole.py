@@ -698,7 +698,7 @@ class MainWindow (QMainWindow):
     """
     Action function to find all selected ROMs and delete them, then runfrogtool and reload the table
     """
-
+    # TODO: rewrite this to not be dependant on bisrv and actually use it
     def detectOSVersion(self):
         logging.info("Tadpole~DetectOSVersion")
         print("Tadpole~DetectOSVersion: Trying to read bisrv hash")

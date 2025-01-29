@@ -349,70 +349,6 @@ def changeZXXThumbnail(romPath, imagePath):
         return False
     return True
 
-# TODO: is this even used?
-def overwriteZXXThumbnail(roms_path, romExtension, progress):
-    #First we need to get lists of all the images and ROMS
-    img_files = os.scandir(roms_path)
-    img_files = list(filter(frogtool.check_img, img_files))
-    rom_files = os.scandir(roms_path)
-    rom_files = list(filter(frogtool.check_rom, rom_files))
-    sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
-    if not img_files or not rom_files:
-        return
-    print(f"Found image and .z** files, looking for matches to combine to {sys_zxx_ext}")
-
-    #SECOND we need to get the RAW copies of each image...if there is a matching Z**
-    imgs_processed = 0
-    progress.setMaximum(len(img_files))
-    progress.setValue(imgs_processed)
-    for img_file in img_files:
-        zxx_rom_file = frogtool.find_matching_file_diff_ext(img_file, rom_files)
-        if not zxx_rom_file:
-            continue
-        tempPath = f"{zxx_rom_file.path}.tmp"
-        converted = frogtool.rgb565_convert(img_file.path, tempPath, (144, 208))
-        if not converted:
-            print("! Aborting image processing due to errors")
-            break
-        try:
-            temp_file_handle = open(tempPath, "ab")
-            zxx_file_handle = open(zxx_rom_file.path, "rb")
-            romData = bytearray(zxx_file_handle.read())
-            temp_file_handle.write(romData[59904:])
-            temp_file_handle.close()
-            zxx_file_handle.close()
-        except (OSError, IOError):
-            print(f"! Failed appending zip file to ")
-            break
-        try:
-            shutil.move(tempPath,zxx_rom_file.path)
-        except (OSError, IOError) as error:
-            print(f"! Failed moving temp files. {error}")
-            break
-        imgs_processed += 1
-        progress.setValue(imgs_processed)
-        QApplication.processEvents()
-    #Third we need to copy the data of the new thumbnail over to the rom file
-
-"""
-This is a rewrtite attempt at changing the cover art inplace rather thancopy and replace
-"""
-# def changeZXXThumbnail2(romPath, imagePath):
-#     coverData = getImageData565(imagePath, (144, 208))
-#     if not coverData:
-#         return False
-#     # copy the rom data to the temp
-#     try:
-#         zxx_file_handle = open(romPath, "r+b")
-#         zxx_file_handle.seek(0)
-#         zxx_file_handle.write(coverData)
-#         zxx_file_handle.close()
-#     except (OSError, IOError):
-#         print(f"! Failed appending zip file to ")
-#         return False
-#     return True
-
-
 def getImageData565(src_filename, dest_size=None):
     if not image_lib_avail:
         print("! Pillow module not found, can't do image conversion")
@@ -459,130 +395,26 @@ def bisrv_getFirmwareVersion(index_path):
         file_handle = open(index_path, 'rb')  # rb for read, wb for write
         bisrv_content = bytearray(file_handle.read(os.path.getsize(index_path)))
         file_handle.close()
-        print("Finished reading file")
-        # First, replace CRC32 bits with 00...
-        bisrv_content[396] = 0x00
-        bisrv_content[397] = 0x00
-        bisrv_content[398] = 0x00
-        bisrv_content[399] = 0x00
-        print("Blanked CRC32")
-        
-        # Next identify the boot logo position, and blank it out too...
-        print("start finding logo")
-        badExceptionOffset = findSequence(offset_sf2000_logo_presequence, bisrv_content, 10000000) #Set the offset to 10000000 as we know it doesnt occur earlier than that
-        print(f"finished finding logo - ({badExceptionOffset})")
-        if (badExceptionOffset > -1):  # Check we found the boot logo position
-            bootLogoStart = badExceptionOffset + 16
-            for i in range(bootLogoStart, bootLogoStart + 204800):
-                bisrv_content[i] = 0x00
-        else:  # If no boot logo found exit
-            return False
-        
-        print("Blanked Bootlogo")
-        print("start finding button mapping")
-        # Next identify the emulator button mappings (if they exist), and blank them out too...
-        preButtonMapOffset = findSequence(offset_buttonMap_presequence, bisrv_content, 9200000)
-        print(f"found button mapping - ({preButtonMapOffset})")
-        if preButtonMapOffset > -1:
-            postButtonMapOffset = findSequence(offset_buttonMap_postsequence, bisrv_content, preButtonMapOffset)
-            if postButtonMapOffset > -1:
-                for i in range(preButtonMapOffset + 16, i < postButtonMapOffset):
-                    bisrv_content[i] = 0x00
-            else:
-                return False
-        else:
-            return False
-        print("finished finding button mapping")
-        # Next we'll look for (and zero out) the five bytes that the power
-        # monitoring functions of the SF2000 use for switching the UI's battery
-        # level indicator. These unfortunately can't be searched for - they're just
-        # in specific known locations for specific firmware versions...
+        print("Finished reading file")        
         print("start finding powercurve")
         prePowerCurve = findSequence([0x11, 0x05, 0x00, 0x02, 0x24], bisrv_content,3000000)
         print(f"found pre-powercurve - ({prePowerCurve})")
         if prePowerCurve > -1:
             powerCurveFirstByteLocation = prePowerCurve + 5
-            if powerCurveFirstByteLocation == 0x35A8F8:
-                # Seems to match mid-March layout...
-                bisrv_content[0x35A8F8] = 0x00
-                bisrv_content[0x35A900] = 0x00
-                bisrv_content[0x35A9B0] = 0x00
-                bisrv_content[0x35A9B8] = 0x00
-                bisrv_content[0x35A9D4] = 0x00
-
-            elif powerCurveFirstByteLocation == 0x35A954:
-                # Seems to match April 20th layout...
-                bisrv_content[0x35A954] = 0x00
-                bisrv_content[0x35A95C] = 0x00
-                bisrv_content[0x35AA0C] = 0x00
-                bisrv_content[0x35AA14] = 0x00
-                bisrv_content[0x35AA30] = 0x00
-
-            elif powerCurveFirstByteLocation == 0x35C78C:
-                # Seems to match May 15th layout...
-                bisrv_content[0x35C78C] = 0x00
-                bisrv_content[0x35C794] = 0x00
-                bisrv_content[0x35C844] = 0x00
-                bisrv_content[0x35C84C] = 0x00
-                bisrv_content[0x35C868] = 0x00
-
-            elif powerCurveFirstByteLocation == 0x35C790:
-                # Seems to match May 22nd layout...
-                bisrv_content[0x35C790] = 0x00
-                bisrv_content[0x35C798] = 0x00
-                bisrv_content[0x35C848] = 0x00
-                bisrv_content[0x35C850] = 0x00
-                bisrv_content[0x35C86C] = 0x00
-
-            elif powerCurveFirstByteLocation == 0x3564EC:
+            if powerCurveFirstByteLocation == 0x3564EC:
                 # Seems to match August 3rd layout...
-                bisrv_content[0x3564EC] = 0x00
-                bisrv_content[0x3564F4] = 0x00
-                bisrv_content[0x35658C] = 0x00
-                bisrv_content[0x356594] = 0x00
-                bisrv_content[0x3565B0] = 0x00
+                version = version_displayString_1_6
 
             elif powerCurveFirstByteLocation == 0x356638:
                 #Seems to match October 7th/13th layout...
-                bisrv_content[0x356638] = 0x00
-                bisrv_content[0x356640] = 0x00
-                bisrv_content[0x3566D8] = 0x00
-                bisrv_content[0x3566E0] = 0x00
-                bisrv_content[0x3566FC] = 0x00          
+                version = version_displayString_1_71        
             else:
-                return False
+                Version = "UNKNOWN"
         else:
-            return False
-        
-        # Next we'll look for and zero out the bytes used for SNES audio rate and
-        # CPU cycles, in case folks want to patch those bytes to correct SNES
-        # first-launch issues on newer firmwares...
-        # Location: Approximately 0xC0A170 (about 99% of the way through the file)
-        preSNESBytes = findSequence([0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80], bisrv_content,12500000)
-        print(f"found pre SNES fix bytes - ({preSNESBytes})")
-        if preSNESBytes > -1:
-            snesAudioBitrateBytes = preSNESBytes + 8
-            snesCPUCyclesBytes = snesAudioBitrateBytes + 8
-            bisrv_content[snesAudioBitrateBytes] = 0x00
-            bisrv_content[snesAudioBitrateBytes + 1] = 0x00
-            bisrv_content[snesCPUCyclesBytes] = 0x00
-            bisrv_content[snesCPUCyclesBytes + 1] = 0x00
-        else:
-            return False
-
-        # If we're here, we've zeroed-out all of the bits of the firmware that are
-        # semi-user modifiable (boot logo, button mappings and the CRC32 bits); now
-        # we can generate a hash of what's left and compare it against some known
-        # values...
-        print("starting to compute hash")  
-        sha256hasher = hashlib.new('sha256')
-        sha256hasher.update(bisrv_content)
-        bisrvHash = sha256hasher.hexdigest()
-        print(f"Hash: {bisrvHash}")
-
-        version = versionDictionary.get(bisrvHash)
+            Version = "UNKNOWN"
+            
         return version
-        
+    
     except (IOError, OSError):
         print("! Failed reading bisrv.")
         print("  Check the SD card and file are readable, and the file is not open in another program.")
@@ -1599,7 +1431,7 @@ class BatteryPatcher:
             return False
         for addr, expected_value in zip(ADDRESSES, self.BATTERY_FIX_VALUES):
             if bisrv_data[addr] != expected_value:
-                logging.info("The firmware does not match the expected battery patched versions at offset %X. ")
+                logging.info("The firmware does not match the expected battery patched versions at offset %X." %addr)
                 return False
         logging.info("The firmware matched the expected battery patched versions at offset %X." %addr)
         return True
