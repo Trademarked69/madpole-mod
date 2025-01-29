@@ -4,5 +4,7 @@ build
 dist
 venv
 frogtool.spec
-tadpole.log
+madpole.log
+madpole.ini
+mshortcuts.ini
 *.spec
