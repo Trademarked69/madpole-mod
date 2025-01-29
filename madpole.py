@@ -737,106 +737,68 @@ class MainWindow (QMainWindow):
         romList = frogtool.getROMList(rom_path)
         msgBox = DownloadProgressDialog()
         failedConversions = 0
+        #ARCADE can't get ROM art, so just return
+        if system == "ARCADE":
+            QMessageBox.about(self, "Add Thumbnails", "Custom Arcade ROMs cannot have thumbnails at this time.")
+            return
         #Check what the user has configured; local or download
         ovewrite = tpConf.getThumbnailOverwrite()
+        # Setup progress as these can take a while
+        msgBox.progress.setMaximum(len(romList))
+        msgBox.setText("Getting thumbnails for roms")
+        msgBox.showProgress(0, True)
+        msgBox.show()
+        # Get PNG files
+        # TODO: readd support for other image types
         if not tpConf.getThumbnailDownload():
-            # User has chosen to use local thumbnails
+        # User has chosen to use local thumbnails
+            QMessageBox.about(self, "Add Thumbnails", """You have Madpole configured to select thumbnails manually. \
+For this to work the name of that rom and thumbnail must match and the thumbnail must be in png format.""") 
+            png_files = []
             directory = QFileDialog.getExistingDirectory()
             if directory == '':
-                    return
-            files = os.listdir(directory)
-            #Setup progress as these can take a while
-            msgBox.progress.setMaximum(len(romList))
-            msgBox.setText("Copying thumbnails for zips")
-            msgBox.showProgress(0, True)
-            msgBox.show()
-            for i, newThumbnail in enumerate(files):
-                newThumbnailName = os.path.splitext(newThumbnail)[0]
-                newThumbnailPath = os.path.join(directory, newThumbnail)
-                #Only copy images over from that folder
-                if newThumbnail.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                    for rom in romList:
-                        romName = os.path.splitext(rom)[0]
-                        if newThumbnailName == romName:
-                            rom_full_path = os.path.join(rom_path, rom)
-                            if not tadpole_functions.addThumbnail(rom_full_path, drive, system, newThumbnailPath, ovewrite):
-                                failedConversions += 1
-                msgBox.showProgress(i, True)
-        
-        else:
-        #User wants to download romart from internet
-            #ARCADE can't get ROM art, so just return
-            if system == "ARCADE":
-                QMessageBox.about(self, "Add Thumbnails", "Custom Arcade ROMs cannot have thumbnails at this time.")
                 return
-            QMessageBox.about(self, "Add Thumbnails", "You have Madpole configured to download thumbnails automatically. \
-For this to work, your roms must be in ZIP files and the name of that zip must match their common released English US localized \
-name.  Please refer to https://github.com/EricGoldsteinNz/libretro-thumbnails/tree/master if Madpole isn't finding \
-the thumbnail for you. ") 
-            #Need the url for scraping the png's, which is different
-            ROMART_baseURL_parsing = "https://github.com/EricGoldsteinNz/libretro-thumbnails/tree/master/"
-            ROMART_baseURL = "https://raw.githubusercontent.com/EricGoldsteinNz/libretro-thumbnails/master/"
-            art_Type = "/Named_Snaps/"
-            ROMArt_console = {  
-                "FC":      "Nintendo - Nintendo Entertainment System",
-                "NES":     "Nintendo - Nintendo Entertainment System",
-                "SFC":     "Nintendo - Super Nintendo Entertainment System",
-                "SNES":    "Nintendo - Super Nintendo Entertainment System",
-                "MD":      "Sega - Mega Drive - Genesis",
-                "GEN":     "Sega - Mega Drive - Genesis",
-                "GENESIS": "Sega - Mega Drive - Genesis",
-                "SMS":     "Sega - Master System - Mark III",
-                "MS":      "Sega - Master System - Mark III",
-                "MARK3":   "Sega - Master System - Mark III",
-                "MARKIII": "Sega - Master System - Mark III",
-                "GG":      "Sega - Game Gear",
-                "GB":      "Nintendo - Game Boy",
-                "GBC":     "Nintendo - Game Boy Color",
-                "GBA":     "Nintendo - Game Boy Advance", 
-                "WS":      "Bandai - WonderSwan", 
-                "WSC":     "Bandai - WonderSwan Color", 
-                "WSWAN":   "Bandai - WonderSwan", 
-                "WSWANC":  "Bandai - WonderSwan Color", 
-                "NGP":     "SNK - Neo Geo Pocket", 
-                "NGPC":    "SNK - Neo Geo Pocket Color", 
-                "PCE":     "NEC - PC Engine - TurboGrafx 16", 
-                "ARCADE":  ""
-            }
-            msgBox.setText("Downloading thumbnails...")
-            msgBox.show()
-
-            zip_files = os.scandir(os.path.join(drive,system))
-            zip_files = list(filter(frogtool.check_zip, zip_files))
-            msgBox.setText("Trying to find thumbnails for " + str(len(zip_files)) + " ROMs\n" + ROMArt_console[system])
-            msgBox.progress.reset()
-            msgBox.progress.setMaximum(len(zip_files)+1)
-            msgBox.progress.setValue(0)
-            QApplication.processEvents()
-            #Scrape the url for .png files
-            url_for_scraping = ROMART_baseURL_parsing + ROMArt_console[system] + art_Type
-            response = requests.get(url_for_scraping)
-            # BeautifulSoup magically find ours PNG's and ties them up into a nice bow
-            soup = BeautifulSoup(response.content, 'html.parser')
-            json_response = json.loads(soup.contents[0])
-            png_files = []
-            for value in json_response['payload']['tree']['items']:
-                png_files.append(value['name'])
-            for i, newThumbnail in enumerate(png_files):
-                newThumbnailName = os.path.splitext(newThumbnail)[0]
-                #Only copy images over from the list
-                if newThumbnail.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                    for rom in romList:
-                        newThumbnailPath = os.path.join(rom_path, newThumbnail)
-                        romName = os.path.splitext(rom)[0]
-                        if newThumbnailName == romName:
-                            #download the png
-                            rom_png_url = ROMART_baseURL + ROMArt_console[system] + art_Type + newThumbnail
-                            rom_full_path = os.path.join(rom_path, rom)
-                            #If it finds it, download it and add it
-                            if tadpole_functions.downloadFileFromGithub(newThumbnailPath, rom_png_url):
-                                if not tadpole_functions.addThumbnail(rom_full_path, drive, system, newThumbnailPath, ovewrite): 
-                                    failedConversions += 1
-                msgBox.showProgress(i, True)
+            files = os.listdir(directory)
+            for filename in os.listdir(directory):
+                if filename.endswith('.png'):
+                    png_files.append(filename)
+        else:
+            # User wants to download romart from internet
+            QMessageBox.about(self, "Add Thumbnails", """You have Madpole configured to download thumbnails automatically. \
+For this to work the name of that rom must match their common released English US localized name.\
+Please refer to <a href=\"https://thumbnails.libretro.com/">https://thumbnails.libretro.com/</a> if Madpole isn't finding \
+the thumbnail for you. """) 
+            # Scrape the url for .png files
+            png_files = tadpole_functions.GetLibretroROMArtList(romList)
+                
+        for i, rom in enumerate(romList):
+            romName = os.path.splitext(rom)[0]
+            romExtension = os.path.splitext(rom)[1][1:]
+            newThumbnailName = romName + ".png"
+            if newThumbnailName in png_files:
+                if not tpConf.getThumbnailDownload():
+                    # Copy the .png files
+                    thumbnailFileCopy = os.path.join(rom_path, romName + ".png")
+                    newThumbnailFile = os.path.join(directory, romName + ".png")
+                    if thumbnailFileCopy != newThumbnailFile:
+                        shutil.copyfile(newThumbnailFile, thumbnailFileCopy)
+                else:
+                    # Download the .png files
+                    tadpole_functions.downloadROMArt(rom_path, rom)
+                    
+                newThumbnailPath = os.path.join(rom_path, romName + ".png")
+                rom_full_path = os.path.join(rom_path, rom)
+                if os.path.exists(newThumbnailPath):
+                    if tpConf.getResizeRomart():
+                        tadpole_functions.resize_image(newThumbnailPath)
+                    if not tadpole_functions.addThumbnail(rom_full_path, drive, system, newThumbnailPath, ovewrite):
+                        failedConversions += 1
+                else: 
+                    failedConversions += 1
+            else:
+                failedConversions += 1
+            msgBox.showProgress(i, True)
+            
         msgBox.close()
         if failedConversions == 0:
             QMessageBox.about(self, "Add thubmnails", "ROM thumbnails successfully changed")
@@ -926,7 +888,9 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
             print("Refresehing menu's for new device type")
             self.clearMenus()
             self.loadMenus(current_device)
-
+        if current_device == "GB300V1":
+            QMessageBox.about(self, "GB300 V1 Warning", """You appear to have loaded a GB300 V1 SD Card. \
+This app has very little GB300 V1 support so we recommend either updating to GB300 V2 or using GB300 V1 frogtool.""") 
         logging.info(f"Combobox for drive changed to ({newDrive})")
         self.initMulticoreShortcuts()
         try:
@@ -1550,6 +1514,7 @@ It is recommended to save it somewhere other than your SD card used with the SF2
             ret = qm.question(self,'Add Thumbnails?', f"Added " + str(len(filenames)) + " ROMs to " + consolePath + "\n\nDo you want to add thumbnails?\n\n\
 Note: You can change in settings to either pick your own or try to downlad automatically.", qm.Yes | qm.No)
             if ret == qm.Yes:
+                # TODO: this overwrites all boxart
                 self.addBoxart()
         RunFrogTool(drive,console)
             
@@ -1669,9 +1634,9 @@ Note: You can change in settings to either pick your own or try to downlad autom
                     pathToROM = objGame.ROMlocation
                     extension = Path(pathToROM).suffix
                     #only show thumbnails of the .z** files 
-                    sys_zxx_ext = '.' + frogtool.zxx_ext[system]
+                    sys_zxx_ext = {".zfc", ".zsf", ".zmd", ".zgb", ".zfb", ".zpc"}
                     extension = extension.lower()
-                    if(extension == sys_zxx_ext or extension == ".zfb"):
+                    if extension in sys_zxx_ext:
                         with open(pathToROM, "rb") as rom_file:
                             rom_content = bytearray(rom_file.read(((144*208)*2)))
                         

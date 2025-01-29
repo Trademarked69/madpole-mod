@@ -30,9 +30,9 @@ class ThumbnailDialog(QDialog):
 
         # Load Initial Image
         # If it's a supported .z**, open it, otherwise leave it blank
-        file_extension = file_extension = os.path.splitext(filepath)[1]
-        if file_extension == '.zfb' or file_extension == '.zfc' or file_extension == '.zgb' or \
-                                    file_extension == '.zmd' or file_extension == '.zsf': 
+        file_extension = os.path.splitext(filepath)[1]
+        sys_zxx_ext = {".zfc", ".zsf", ".zmd", ".zgb", ".zfb", ".zpc"}
+        if file_extension.lower() in sys_zxx_ext:
             self.current_viewer.load_from_ROM_inMemory(filepath)
 
         self.layout_main.addWidget(QLabel(" "))  # spacer

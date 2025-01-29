@@ -96,7 +96,13 @@ versionDictionary = {
 
 ROMART_baseURL = "https://thumbnails.libretro.com/"
 
-ROMArt_console = {  # Only common rom extensions
+ROMArt_console = {  # Only common rom extensions, along with zxx files
+    "zfc":     "Nintendo - Nintendo Entertainment System",      
+    "zsf":     "Nintendo - Super Nintendo Entertainment System",
+    "zmd":     "Sega - Mega Drive - Genesis",  #TODO: treat zmd as all sega, wrap and read to find out which sega console
+    "zgb":     "Nintendo - Game Boy",   #TODO: wrap and read zgb files to find out if its gb/gbc/gba
+    "zfb":     "Nintendo - Nintendo Entertainment System", #TODO: wrap and read to see which multicore console and give a warning if its aracde or not found
+    "zpc":     "NEC - PC Engine - TurboGrafx 16",
     "nes":     "Nintendo - Nintendo Entertainment System",
     "smc":     "Nintendo - Super Nintendo Entertainment System",
     "sfc":     "Nintendo - Super Nintendo Entertainment System",
@@ -117,44 +123,64 @@ ROMArt_console = {  # Only common rom extensions
 
 def GetLibretroROMArtUrl(rom_extension):
     url = ROMART_baseURL + ROMArt_console[rom_extension.lower()] + "/Named_" + tpConf.getLibretroThumbnailType() + "/"
-    print("libretro png url is", url)
+    print("libretro ROMArt url is", url)
     return url
 
-def GetLibretroROMArtBulk(rom_extension):
-    url = GetLibretroROMArtUrl(rom_extension)
+def downloadROMArt(rom_path, rom):
+    romName = os.path.splitext(rom)[0]
+    romExtension = os.path.splitext(rom)[1][1:]
+    newThumbnailFile = os.path.join(rom_path, romName + ".png")
+    url = GetLibretroROMArtUrl(romExtension) + romName + ".png"       
     response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
+    if response.status_code == 200:
+        with open(newThumbnailFile, "wb") as f:
+            f.write(response.content)
+        print("Downloaded", url)        
+        return True    
+    else:
+        print("Could not downlaod", url)  
+        return False  
+
+def GetLibretroROMArtList(romList):
+    ext_to_roms = {}
     png_files = []
-    for a_tag in soup.find_all('a', href=True):
-        href = a_tag['href']
-        if href.endswith('.png'):
-            href = href.replace('%20', ' ')
-            png_files.append(href)
+    
+    # Group ROMs by their extension
+    for rom in romList:
+        rom_ext = os.path.splitext(rom)[1][1:] 
+        if rom_ext not in ext_to_roms:
+            ext_to_roms[rom_ext] = []
+        ext_to_roms[rom_ext].append(rom)
+    
+    # Download HTML for each system once and process PNG links
+    for ext, roms in ext_to_roms.items():
+        url = GetLibretroROMArtUrl(ext)
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            for a_tag in soup.find_all('a', href=True):
+                href = a_tag['href']
+                if href.endswith('.png'):
+                    href = href.replace('%20', ' ')
+                    png_files.append(href)
+    
     return png_files
 
 def resize_image(file_path): # Resize a single png
     max_width, max_height = 144, 208
     image = Image.open(file_path)
-            
+        
     # Calculate the aspect ratio
     aspect_ratio = image.width / image.height
-    if aspect_ratio > max_width / max_height:
+    if image.width > image.height or image.width == image.height:
+        # Landscape or square image
         new_width = max_width
-        if aspect_ratio > 1:
-            # Landscape image
-            new_height = int(max_width / aspect_ratio)
-        else:
-            # Portrait or square image
-            new_height = int(max_width * aspect_ratio)
+        new_height = int(max_width / aspect_ratio)
     else:
+        # Portrait image
         new_height = max_height
-        if aspect_ratio > 1:
-            # Landscape image
-            new_width = int(max_height / aspect_ratio)
-        else:
-            # Portrait or square image
-            new_width = int(max_height * aspect_ratio)
-            
+        new_width = int(max_height * aspect_ratio)
+                    
     # Resize the image to fit within the box while maintaining aspect ratio
     image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
             
@@ -265,17 +291,19 @@ def QImageToRGB565Logo(inputQImage, width, height):
     print("Finished converting image to boot logo format")
     return rgb565Data   
 
-def changeZIPThumbnail(romPath, newImpagePath, system):
+def changeZIPThumbnail(romPath, newImpagePath, romExtension):
     try:
         newLogoPath = os.path.dirname(romPath)
         newLogoName = os.path.basename(newImpagePath)
         romFile = os.path.basename(romPath)
         new_romPath = os.path.dirname(romPath)
-        newLogoFile = os.path.join(newLogoPath,newLogoName)
-        shutil.copyfile(newImpagePath, newLogoFile)
-        sys_zxx_ext = frogtool.zxx_ext[system]
+        newLogoFile = os.path.join(newLogoPath, newLogoName)
+        if newLogoFile != newImpagePath:
+            shutil.copyfile(newImpagePath, newLogoFile)
+        sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
         zxx_file_name = f"{frogtool.strip_file_extension(romFile)}.{sys_zxx_ext}"
-        zxx_file_path = os.path.join(new_romPath,zxx_file_name)
+        zxx_file_name = os.path.splitext(romFile)[0] + "." + sys_zxx_ext 
+        zxx_file_path = os.path.join(new_romPath, zxx_file_name)
         converted = frogtool.rgb565_convert(newLogoFile, zxx_file_path, (144, 208))
         if not converted:
             return False
@@ -321,13 +349,14 @@ def changeZXXThumbnail(romPath, imagePath):
         return False
     return True
 
-def overwriteZXXThumbnail(roms_path, system, progress):
+# TODO: is this even used?
+def overwriteZXXThumbnail(roms_path, romExtension, progress):
     #First we need to get lists of all the images and ROMS
     img_files = os.scandir(roms_path)
     img_files = list(filter(frogtool.check_img, img_files))
     rom_files = os.scandir(roms_path)
     rom_files = list(filter(frogtool.check_rom, rom_files))
-    sys_zxx_ext = frogtool.zxx_ext[system]
+    sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
     if not img_files or not rom_files:
         return
     print(f"Found image and .z** files, looking for matches to combine to {sys_zxx_ext}")
@@ -1185,16 +1214,6 @@ def GBABIOSFix(drive: str):
         print("! Failed to copy GBA BIOS.")
         print(error)
         raise Exception_InvalidPath
- 
-def downloadROMArt(console : str, ROMpath : str, game : str, artType: str, realname : str):
-
-    outFile = os.path.join(os.path.dirname(ROMpath),f"{realname}.png")
-    if(downloadFileFromGithub(outFile,ROMART_baseURL + ROMArt_console[console] + artType + game)):
-        print(' Downloaded ' + realname + ' ' + ' thumbnail')
-        return True    
-    else:
-        print(' Could not downlaod ' + realname + ' ' + ' thumbnail')
-        return True  
     
 def stripShortcutText(drive: str):
     if drive == "???" or drive == "":
@@ -1380,10 +1399,11 @@ def setDeviceType(drive):
     FoldernamePath = os.path.join(drive, 'Resources', 'foldername.ini')
     if os.path.exists(FoldernamePath):
         with open(FoldernamePath, 'r') as file:
-            first_line = file.readline()
+            first_line = file.readline().strip()
+            print(first_line)
         if first_line == "GB300":
-            return 'GB300V1' # TODO: give warning, maybe exit 
-        if os.path.exists(ROMListPath):
+            return 'GB300V1'
+        elif os.path.exists(ROMListPath):
             return 'GB300V2'
         else:
             return 'SF2000'
@@ -1423,24 +1443,23 @@ def zip_file(file_path, output_path):
     with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         zipf.write(file_path, arcname=file_name)
 
-#Add a thumbnail to a single rom
+#Add a thumbnail to a single rom 
 def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite):
         try:
             #Check if this rom type is supported
             romFullName = os.path.basename(rom_path)
-            romName, romExtension = os.path.splitext(romFullName)
-            #Strip the . as frogtool doesn't use it in its statics
-            romExtension = romExtension.lstrip('.')
+            romName = os.path.splitext(romFullName)[0]
+            romExtension = os.path.splitext(romFullName)[1][1:]
             if romExtension == "zfb" and system != "ARCADE":
                 sys_zxx_ext = "zfb"
             else:
-                sys_zxx_ext = frogtool.zxx_ext[system]
+                sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
             #If its not supported, return
             if romExtension not in frogtool.supported_rom_ext:
                 return False
             #If its zip pass to frogtool
             elif romExtension in frogtool.supported_zip_ext:
-                if not changeZIPThumbnail(rom_path, new_thumbnail, system):
+                if not changeZIPThumbnail(rom_path, new_thumbnail, romExtension):
                     return False
             #If its the supported system .z** pass to frogtool
             elif romExtension == sys_zxx_ext:
@@ -1451,7 +1470,7 @@ def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite):
             else:
                 new_zipped_rom_path = os.path.join(drive, system, romName + '.zip')
                 zip_file(rom_path, new_zipped_rom_path)
-                if not changeZIPThumbnail(new_zipped_rom_path, new_thumbnail, system): 
+                if not changeZIPThumbnail(new_zipped_rom_path, new_thumbnail, romExtension): 
                     return False
                 #Frogtool takes care of the zip, we need to remove the base ROM to not confuse the user
                 if os.path.exists(rom_path):

@@ -3,6 +3,7 @@ import re
 import binascii
 import shutil
 import struct
+import zipfile
 
 try:
     from PIL import Image
@@ -50,13 +51,24 @@ systems = {
     "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"]
 }
 
-supported_rom_ext = [
-    "bkp", "zip", "zfc", "zsf", "zmd", "zgb", "zfb", "smc", "fig", "sfc", "gd3", "gd7", "dx2", "bsx", "swc", "nes",
+supported_rom_ext = [ #TODO: add the rest of these to ROMArt_console and zxx_ext_romext also cleanup the order so it makes more sense
+    "bkp", "zip", "zfc", "zsf", "zmd", "zgb", "zfb", "zpc", "sfc", "smc", "fig", "gd3", "gd7", "dx2", "bsx", "swc", "nes",
     "nfc", "fds", "unf", "gba", "agb", "gbz", "gbc", "gb", "sgb", "bin", "md", "smd", "gen", "sms"
 ]
-zxx_ext = {
-    "FC": "zfc", "NES": "zfc", "SFC": "zsf", "SNES": "zsf", "MD": "zmd", "GEN": "zmd", "GENESIS": "zmd", "SEGA": "zmd", "GB": "zgb", "GBC": "zgb", "GBA": "zgb", "ARCADE": "zfb"
-}
+    
+# TODO: rename
+# TODO: add all sega consoles stock supports as zmd
+# TODO: add zpc and guard it for gb300 only, move setDeviceType from tadpole_functions to here
+def zxx_ext_romext(romext):
+    zxx_exts = {
+        "nes": "zfc", "smc": "zsf", "sfc": "zsf", "md": "zmd", "smd": "zmd", "gen": "zmd", "gb": "zgb", "gbc": "zgb", "gba": "zgb"
+        }
+    try:
+        sys_zxx_ext = zxx_exts[romext]
+    except Exception:
+        sys_zxx_ext = "zfb" # Assume arcade, hopefully nobody tries to use an unsupported rom type
+    return sys_zxx_ext
+        
 supported_img_ext = [
     "png", "jpg", "jpeg", "gif"
 ]
@@ -178,20 +190,21 @@ def convert_zip_image_pairs_to_zxx(roms_path, system):
     img_files = list(filter(check_img, img_files))
     zip_files = os.scandir(roms_path)
     zip_files = list(filter(check_zip, zip_files))
-    try:
-        sys_zxx_ext = zxx_ext[system]
-    except Exception:
-            print("Default to zfb")
-            sys_zxx_ext = "zfb"
+    
     if not img_files or not zip_files:
         return
-    print(f"Found image and zip files, looking for matches to combine to {sys_zxx_ext}")
 
     imgs_processed = 0
     for img_file in img_files:
         zip_file = find_matching_file_diff_ext(img_file, zip_files)
         if not zip_file:
             continue
+        with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+            file_names = zip_ref.namelist()
+        rom = file_names[0]
+        rom_ext = os.path.splitext(rom)[1][1:]
+        sys_zxx_ext = zxx_ext_romext(rom_ext)
+        print(f"Found image and zip files, looking for matches to combine to {sys_zxx_ext}")
         converted = convert_zip_image_to_zxx(roms_path, img_file, zip_file, sys_zxx_ext)
         if not converted:
             print("! Aborting image processing due to errors")

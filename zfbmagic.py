@@ -205,12 +205,7 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
                 if os.path.exists(Image_File):
                     os.remove(Image_File) 
                 
-                url = tadpole_functions.GetLibretroROMArtUrl(file_ext) + fname_noext + ".png"       
-                response = requests.get(url)
-                if response.status_code == 200:
-                    with open(Image_File, "wb") as f:
-                        f.write(response.content)
-                    print("File downloaded successfully.")
+                tadpole_functions.downloadROMArt(input_folder, file_name)
 
             # Skip if file name has been processed
             if fname_noext in rom_list:
@@ -268,9 +263,10 @@ def create_zfb_files(wind ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , d
                         existadd = "_1"
 
             if img_ext:
+                
                 if tpConf.getResizeRomart():
                     tadpole_functions.resize_image(file_path)
-                    
+                              
                 with Image.open(file_path) as img:
 
                     #zfb_from_image(img , input_folder , core ,  file_name , output_folder )
