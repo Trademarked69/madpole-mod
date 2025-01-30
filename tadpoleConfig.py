@@ -12,7 +12,7 @@ class TadpoleConfig():
     _static_topGamesEnabled = "top_games_enabled"
     _static_topGamesEnabled_DEFAULT = "False"
     _static_shortcutsBorderEnabled = "shortcuts_border_enabled"
-    _static_shortcutsBorderEnabled_DEFAULT = "False"
+    _static_shortcutsBorderEnabled_DEFAULT = "True"
     # [thumbnails]
     _static_thumbnails = "Thumbnails"
     _static_thumbnails_view = "ViewInTable"
@@ -22,7 +22,7 @@ class TadpoleConfig():
     _static_thumbnails_download = "download"
     _static_thumbnails_download_DEFAULT = "0"
     _static_thumbnails_ResizeRomartEnabled = "resize_romart"
-    _static_thumbnails_ResizeRomartEnabled_DEFAULT = "True"
+    _static_thumbnails_ResizeRomartEnabled_DEFAULT = "False"
     _static_thumbnails_type = "thumbnail_type"
     _static_thumbnails_type_DEFAULT = "Boxarts"
     _static_thumbnails_romart_background_color = "romart_background_color"
