@@ -9,10 +9,8 @@ import glob
 import shutil
 import zfbmagic as zfb
 
-"""
 import tadpole_functions
 import frogtool
-"""
 
 from tadpoleConfig import TadpoleConfig
 tpConf = TadpoleConfig()
@@ -56,7 +54,7 @@ class MulticoreAddDialog(QDialog):
         
         self.button_browse = QPushButton("Browse")
         self.button_browse.clicked.connect(self.selectFiles)
-        self.layout_buttons.addWidget(QLabel("Select Roms and Thumbs Files"))
+        self.layout_buttons.addWidget(QLabel("Select Rom Files"))
         self.layout_buttons.addWidget(self.button_browse) 
         
         if not tpConf.getThumbnailDownload():
@@ -107,7 +105,7 @@ class MulticoreAddDialog(QDialog):
 
     def selectFiles(self):
         #print("Selecting Files")
-        self.filenames, _ = QFileDialog.getOpenFileNames(self,"Select ROMs and THUMBs",'',"All Files (*.*)")
+        self.filenames, _ = QFileDialog.getOpenFileNames(self,"Select ROMs",'',"All Files (*.*)")
         self.status_bar.showMessage(f"{len(self.filenames)} File(s) Selected")
 
     def addroms(self):
@@ -129,14 +127,10 @@ class MulticoreAddDialog(QDialog):
             QMessageBox.information(self , "Enter Core" , "CORE is required to add multicore roms.")
             return
 
-        if core not in mcd.cores:
-            QMessageBox.information(self , "Unsupported Core" , "The CORE you entered isnt part of multicore.")
-            return
-
         files = self.filenames
 
         if len(files) < 1:
-            QMessageBox.information(self , "No Files" , "No Files Selected. Please Select Roms and Thumbs.")
+            QMessageBox.information(self , "No Files" , "No Files Selected. Please Select Rom files.")
             return
 
         
@@ -166,7 +160,43 @@ class MulticoreAddDialog(QDialog):
         prg = DownloadProgressDialog()
         prgT = False
 
-        zfb.create_zfb_files(self ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , doExt , filenames ,doMove , ifexist , prg , prgT , False)
+        current_device = tadpole_functions.setDeviceType(wdir)
+        if current_device == "GB300V1":
+            
+            output_folder = os.path.join(wdir.strip(), sdir)
+            if not os.path.isdir(os.path.join(output_folder)):
+                os.makedirs(output_folder)
+                
+            for file in files:
+                input_folder = os.path.dirname(file) 
+                file_name = os.path.basename(file)
+                New_Name = os.path.join(output_folder, core + ";" + file_name)
+                New_File = os.path.join(New_Name + ".gba")
+                fname_noext = os.path.splitext(os.path.basename(file_name))[0]
+                Image_File_Old_path = os.path.join(input_folder, fname_noext + ".png")
+                Image_File_New_Path = os.path.join(New_Name + ".png")
+                
+                shutil.copy(file, os.path.join(wdir, "ROMS", core, file_name))
+                open(New_File, 'a').close()
+                
+                if tpConf.getThumbnailDownload():
+                    if os.path.exists(Image_File_Old_path):
+                        os.remove(Image_File_Old_path) 
+                
+                    tadpole_functions.downloadROMArt(input_folder, file_name)
+                
+                if os.path.exists(Image_File_Old_path) and not os.path.exists(Image_File_New_Path):
+                    shutil.copy(Image_File_Old_path, Image_File_New_Path)
+                
+                if os.path.exists(Image_File_New_Path):
+                    ovewrite = tpConf.getThumbnailOverwrite()
+                    new_zipped_rom_path = os.path.join(wdir, sdir, core + ";" + file_name + '.zip')
+                    tadpole_functions.zip_file(New_File, new_zipped_rom_path)
+                    file_ext = os.path.splitext(file_name)[1][1:]
+                    tadpole_functions.changeZIPThumbnail(new_zipped_rom_path, Image_File_New_Path, file_ext)
+                    os.remove(New_File) 
+        else:
+            zfb.create_zfb_files(self ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , doExt , filenames ,doMove , ifexist , prg , prgT , False)
         self.accept()
 
     def build_pfiles(self):

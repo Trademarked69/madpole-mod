@@ -890,7 +890,7 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
             self.loadMenus(current_device)
         if current_device == "GB300V1":
             QMessageBox.about(self, "GB300 V1 Warning", """You appear to have loaded a GB300 V1 SD Card. \
-This app has very little GB300 V1 support so we recommend either updating to GB300 V2 or using GB300 V1 frogtool.""") 
+Not everything in this app supports GB300 V1 so be careful.""") 
         logging.info(f"Combobox for drive changed to ({newDrive})")
         self.initMulticoreShortcuts()
         try:
@@ -923,7 +923,7 @@ This app has very little GB300 V1 support so we recommend either updating to GB3
                         if i in [1, 2, 3, 17, 18, 19]:
                             continue
                     else:
-                        if i in [1, 2, 3, 14, 15, 16]:
+                        if i in [1, 2, 3, 14, 15, 16, 17]:
                             continue
 
                     # Regular expression to match hex colors

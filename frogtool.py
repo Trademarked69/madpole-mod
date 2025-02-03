@@ -15,14 +15,14 @@ except ImportError:
     image_lib_avail = False
 
 systems_old_default = {
-    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],
-    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],
-    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],
-    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
-    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
-    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],
-    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"]
+    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"], # default = FC
+    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"], # default = SFC (PCE for gb300V1)
+    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"], # default = MD (SFC for gb300V1)
+    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"], # default = GB (MD for gb300V1)
+    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"], # default = GBC (GB for gb300V1)
+    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"], # default = GBA (GBC for gb300V1)
+    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"], # default = ARCADE (GBA for gb300V1)
+    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"] # default = PCE (GB300V2 only)
 }
 
 systems_default = {
