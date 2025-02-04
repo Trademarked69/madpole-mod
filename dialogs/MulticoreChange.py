@@ -128,39 +128,105 @@ class MulticoreChange(QDialog):
             msgbox.showProgress(100, True)"""
             totals += 1
 
+            wdir = self.tpConf.cDir
+            current_device = tadpole_functions.setDeviceType(wdir)
             fname = os.path.basename(zfile)
             fext = os.path.splitext(zfile)[1][1:].lower()
 
-            if fext != "zfb":
-                self.sts.append(lbs + f"<span style='color:red'>{fname} SKIPPED as its not a ZFB</span>")
-                lbs = "<br>"
-                skips += 1
-                continue
 
-
-            with open(zfile, "rb+") as rom_file:
-                #get past the RAW image
-                
-                rom_file.seek(59908)
-                rawfileName = rom_file.read(255).decode().strip('\0')
-
-                if not rawfileName.lower().endswith("gba"):
-                    self.sts.append(lbs + f"<span style='color:red'>{fname} <strong>SKIPPED</strong> , Not a Multicore ZFB</span>")
+            if current_device != "GB300V1":
+                if fext != "zfb":
+                    self.sts.append(lbs + f"<span style='color:red'>{fname} SKIPPED as its not a ZFB</span>")
                     lbs = "<br>"
                     skips += 1
                     continue
 
-                rawfileName = rawfileName.split(";")
-                oldCore = rawfileName[0].strip('\x00')
 
+                with open(zfile, "rb+") as rom_file:
+                    #get past the RAW image
+                    
+                    rom_file.seek(59908)
+                    rawfileName = rom_file.read(255).decode().strip('\0')
+
+                    if not rawfileName.lower().endswith("gba"):
+                        self.sts.append(lbs + f"<span style='color:red'>{fname} <strong>SKIPPED</strong> , Not a Multicore ZFB</span>")
+                        lbs = "<br>"
+                        skips += 1
+                        continue
+
+                    rawfileName = rawfileName.split(";")
+                    oldCore = rawfileName[0].strip('\x00')
+
+                    if newCore == oldCore:
+                        self.sts.append(lbs + f"<span style='color:blue'>{fname} <strong>SKIPPED</strong> , Core already {newCore}</span>")
+                        lbs = "<br>"
+                        skips += 1
+
+                    romName = rawfileName[1].strip('\x00')
+                    romName = romName[0:-4]
+                    #print("Core is : " + oldCore + "||  NewCore " + newCore)
+                    if self.syschk.isChecked():
+                        if (oldCore  in neslist and newCore in neslist ) or (oldCore  in sneslist and newCore in sneslist ) or (oldCore  in gbalist and newCore in gbalist ) or (oldCore  in gblist and newCore in gblist ) or (oldCore  in segalist and newCore in segalist ) or (oldCore  in commlist and newCore in commlist ):
+                            res = True
+                        else:
+                            self.sts.append(lbs + f"<span style='color:red'>{fname} <strong>SKIPPED</strong> , due to core system mismatch</span>")
+                            lbs = "<br>"
+                            skips += 1
+                            continue
+
+                    if res:                                            
+                        rom_file.truncate(59908)
+                        rom_file.seek(59908)
+                        newFileName = newCore + ";" + romName + ".gba"
+                   
+                        rom_file.write(newFileName.encode('utf-8') + b'\x00\x00')
+                        
+                        dones += 1
+
+                        moved = True
+                        if not self.movechk.isChecked():
+                            rompath = os.path.join(self.tpConf.cDir , "ROMS", oldCore, romName)
+                            newpath = os.path.join(self.tpConf.cDir , "ROMS", newCore)
+                            if os.path.exists(rompath):
+                                #move file
+                                if not os.path.isdir(newpath):
+                                    os.makedirs(newpath)
+                                newrompath = os.path.join(newpath , romName)
+                                try:
+                                    if self.copychk.isChecked():
+                                        shutil.copy(rompath, newrompath)
+                                    else:
+                                        os.replace(rompath, newrompath)
+                                    moved = True
+                                except:
+                                    moved = False
+                                
+                            else:
+                                moved = False
+
+                        if res and not moved:
+                            self.sts.append(lbs + f"<span style='color:orange'>{fname} core <strong>CHANGED</strong> , Rom file couldnt be moved/copied</span>")
+                        else:
+                            self.sts.append(lbs + f"<span style='color:green'>{fname} core <strong>CHANGED</strong> to {newCore}</span>")
+                        lbs = "<br>"
+                    else:
+                        skips += 1
+            else:
+                fpath = os.path.dirname(zfile)
+                oldCore = fname.split(';')[0]
+                romName = fname.split(';')[1]
+                zfile_new = fpath + '/' + newCore + ';'+ romName
+
+                if fext != "zgb" and fext != "gba":
+                    self.sts.append(lbs + f"<span style='color:red'>{fname} SKIPPED as its not a ZGB or GBA</span>")
+                    lbs = "<br>"
+                    skips += 1
+                    continue
                 if newCore == oldCore:
                     self.sts.append(lbs + f"<span style='color:blue'>{fname} <strong>SKIPPED</strong> , Core already {newCore}</span>")
                     lbs = "<br>"
                     skips += 1
 
-                romName = rawfileName[1].strip('\x00')
-                romName = romName[0:-4]
-                #print("Core is : " + oldCore + "||  NewCore " + newCore)
                 if self.syschk.isChecked():
                     if (oldCore  in neslist and newCore in neslist ) or (oldCore  in sneslist and newCore in sneslist ) or (oldCore  in gbalist and newCore in gbalist ) or (oldCore  in gblist and newCore in gblist ) or (oldCore  in segalist and newCore in segalist ) or (oldCore  in commlist and newCore in commlist ):
                         res = True
@@ -168,26 +234,14 @@ class MulticoreChange(QDialog):
                         self.sts.append(lbs + f"<span style='color:red'>{fname} <strong>SKIPPED</strong> , due to core system mismatch</span>")
                         lbs = "<br>"
                         skips += 1
-                        continue
-
-                
-
-
-                #    if not 
-
-                if res:
-
-                    
-                    rom_file.truncate(59908)
-                    rom_file.seek(59908)
-                    newFileName = newCore + ";" + romName + ".gba"
-               
-                    rom_file.write(newFileName.encode('utf-8') + b'\x00\x00')
-                    
+                        continue           
+                if res:                
+                    os.rename(zfile, zfile_new)
                     dones += 1
 
                     moved = True
                     if not self.movechk.isChecked():
+                        romName = romName.rsplit(".", 1)[0] 
                         rompath = os.path.join(self.tpConf.cDir , "ROMS", oldCore, romName)
                         newpath = os.path.join(self.tpConf.cDir , "ROMS", newCore)
                         if os.path.exists(rompath):
