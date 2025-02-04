@@ -202,7 +202,7 @@ class MainWindow (QMainWindow):
 
 
         # Change Core
-        self.btn_changecore = QPushButton("Change Selcted Core")
+        self.btn_changecore = QPushButton("Change Selected Core")
         self.btn_changecore.setEnabled(False)
         selector_layout.addWidget(self.btn_changecore)
         self.btn_changecore.clicked.connect(self.ChangeSelectedCore)
@@ -411,7 +411,10 @@ class MainWindow (QMainWindow):
         addmroms_action = QAction("Add Multicore Roms", self, triggered=self.MulticoreRoms)
         self.menu_mc.addAction(addmroms_action)
 
-        makezfbs_action = QAction("Create ZFBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
+        if device != "GB300V1":
+            makezfbs_action = QAction("Create ZFBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
+        else:
+            makezfbs_action = QAction("Create ZGBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
         self.menu_mc.addAction(makezfbs_action)
 
         makestubs_action = QAction("Create STUBS for Multicore Roms", self, triggered=self.MulticoreStubs)
@@ -1644,7 +1647,6 @@ Note: You can change in settings to either pick your own or try to downlad autom
 
                 newDrive = self.combobox_drive.currentText()
                 current_device = tadpole_functions.setDeviceType(newDrive)
-                print(f"current_device: {current_device}")
                 if current_device != "GB300V1":
                     # Add to Shortcuts-
                     shortcut_comboBox = QComboBox()
