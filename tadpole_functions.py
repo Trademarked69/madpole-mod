@@ -1276,13 +1276,14 @@ def zip_file(file_path, output_path):
         zipf.write(file_path, arcname=file_name)
 
 #Add a thumbnail to a single rom 
-def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite, device):
+def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite):
         try:
             #Check if this rom type is supported
             romFullName = os.path.basename(rom_path)
             romName = os.path.splitext(romFullName)[0]
             romExtension = os.path.splitext(romFullName)[1][1:]
-            if device == 'GB300V1' and (romExtension == "zfc" or romExtension == "zgb"):
+            zxx_extensions = {"zfc", "zsf", "zmd", "zgb", "zfb", "zpc"}
+            if romExtension in zxx_extensions:
                 sys_zxx_ext = romExtension
             else:
                 if romExtension == "zfb" and system != "ARCADE":
