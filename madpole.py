@@ -794,7 +794,7 @@ the thumbnail for you. """)
                 if os.path.exists(newThumbnailPath):
                     if tpConf.getResizeRomart():
                         tadpole_functions.resize_image(newThumbnailPath)
-                    if not tadpole_functions.addThumbnail(rom_full_path, drive, system, newThumbnailPath, ovewrite):
+                    if not tadpole_functions.addThumbnail(rom_full_path, drive, system, newThumbnailPath, ovewrite,self.lbl_device_type.text()):
                         failedConversions += 1
                 else: 
                     failedConversions += 1
@@ -1059,7 +1059,7 @@ Not everything in this app supports GB300 V1 so be careful.""")
             if newLogoFileName is None or newLogoFileName == "":
                 print("user cancelled image select")
                 return
-            if tadpole_functions.addThumbnail(rom_path, drive, system, newLogoFileName, True):
+            if tadpole_functions.addThumbnail(rom_path, drive, system, newLogoFileName, True, self.lbl_device_type.text()):
                 QMessageBox.about(self, "Change ROM Logo", "ROM thumbnails successfully changed")
                 RunFrogTool(drive,system)
                 return True
