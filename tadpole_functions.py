@@ -1232,7 +1232,7 @@ def setDeviceType(drive):
     if os.path.exists(FoldernamePath):
         with open(FoldernamePath, 'r') as file:
             first_line = file.readline().strip()
-            print(first_line)
+            #print(first_line)
         if first_line == "GB300":
             return 'GB300V1'
         elif os.path.exists(ROMListPath):
@@ -1282,10 +1282,14 @@ def addThumbnail(rom_path, drive, system, new_thumbnail, ovewrite):
             romFullName = os.path.basename(rom_path)
             romName = os.path.splitext(romFullName)[0]
             romExtension = os.path.splitext(romFullName)[1][1:]
-            if romExtension == "zfb" and system != "ARCADE":
-                sys_zxx_ext = "zfb"
+            zxx_extensions = {"zfc", "zsf", "zmd", "zgb", "zfb", "zpc"}
+            if romExtension in zxx_extensions:
+                sys_zxx_ext = romExtension
             else:
-                sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
+                if romExtension == "zfb" and system != "ARCADE":
+                    sys_zxx_ext = "zfb"
+                else:
+                    sys_zxx_ext = frogtool.zxx_ext_romext(romExtension)
             #If its not supported, return
             if romExtension not in frogtool.supported_rom_ext:
                 return False
