@@ -1713,6 +1713,9 @@ Note: You can change in settings to either pick your own or try to downlad autom
         sconfig = configparser.ConfigParser()
 
         cwd = tpConf.getLocalUserDirectory()
+        current_device = tadpole_functions.setDeviceType(cwd)
+        if current_device == "GB300V1":
+            return
         if self.combobox_drive.currentText().strip():
             cwd = self.combobox_drive.currentText().strip()
             #print("USed combobox drive")
