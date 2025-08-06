@@ -13,6 +13,7 @@ import struct
 import frogtool
 from tadpoleConfig import TadpoleConfig
 import requests
+import re
 from bs4 import BeautifulSoup
 import json
 import logging
@@ -33,18 +34,21 @@ except ImportError:
 
 # This dictionary is in the following format:
 # "System": []
-systems_old_default = {    
-    "MENU1":   ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1],
-    "MENU2":   ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2],
-    "MENU3":   ["scksp.tax", "setxa.nec", "wmiui.bvs",3],
-    "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
-    "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
-    "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
-    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7],
-    "MENU8":   ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8]
-}
 
 systems_default = {
+    "MENU1":    ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1], # FC 
+    "MENU2":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2], # SFC (PCE for gb300V1)
+    "MENU3":    ["scksp.tax", "setxa.nec", "wmiui.bvs",3], # MD (SFC for gb300V1)
+    "MENU4":    ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4], # GB (MD for gb300V1)
+    "MENU5":    ["pnpui.tax", "wjere.nec", "mgdel.bvs",5], # GBC (GB for gb300V1)
+    "MENU6":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], # GBA (GBC for gb300V1)
+    "MENU7":    ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7], # ARCADE (GBA for gb300V1) (CPS1 for dy19)
+    "MENU8":    ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8], # PCE for gb300V2 (CPS2 for dy19)
+    "MENU9":    ["rmapi.tax", "pcadm.nec", "ntdll.bvs",9], # NEO GEO for dy19
+    "MENU10":   ["subst.tax", "aepic.nec", "sensc.bvs",10] # IGS for dy19
+}
+
+systems_13_menu = {
     "MENU1":   ["m01.ta", "m01.ne", "m01.bv",1],
     "MENU2":   ["m02.ta", "m02.ne", "m02.bv",2],
     "MENU3":   ["m03.ta", "m03.ne", "m03.bv",3],
@@ -59,16 +63,83 @@ systems_default = {
     "MENU12":  ["m12.ta", "m12.ne", "m12.bv",12]
 }
 
-systems = {    
-    "MENU1":   ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1],
-    "MENU2":   ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2],
-    "MENU3":   ["scksp.tax", "setxa.nec", "wmiui.bvs",3],
-    "MENU4":   ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4],
-    "MENU5":   ["pnpui.tax", "wjere.nec", "mgdel.bvs",5],
-    "MENU6":   ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], 
-    "MENU7":   ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7],
-    "MENU8":   ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8]
+systems = {
+    "MENU1":    ["rdbui.tax", "fhcfg.nec", "nethn.bvs",1], # FC 
+    "MENU2":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs",2], # SFC (PCE for gb300V1)
+    "MENU3":    ["scksp.tax", "setxa.nec", "wmiui.bvs",3], # MD (SFC for gb300V1)
+    "MENU4":    ["vdsdc.tax", "umboa.nec", "qdvd6.bvs",4], # GB (MD for gb300V1)
+    "MENU5":    ["pnpui.tax", "wjere.nec", "mgdel.bvs",5], # GBC (GB for gb300V1)
+    "MENU6":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs",6], # GBA (GBC for gb300V1)
+    "MENU7":    ["mswb7.tax", "msdtc.nec", "mfpmp.bvs",7], # ARCADE (GBA for gb300V1) (CPS1 for dy19)
+    "MENU8":    ["kjbyr.tax", "djoin.nec", "ke89a.bvs",8], # PCE for gb300V2 (CPS2 for dy19)
+    "MENU9":    ["rmapi.tax", "pcadm.nec", "ntdll.bvs",9], # NEO GEO for dy19
+    "MENU10":   ["subst.tax", "aepic.nec", "sensc.bvs",10] # IGS for dy19
 }
+
+menu_sections = []
+
+console_firmware = "SF2000_8"
+console_firmware_height = 200
+console_firmware_width = 512
+
+def load_foldername_sections(base_path, update_systems=False, window=None):
+    global systems
+    global console_firmware
+
+    def remove_html_hex_colors(text):
+        return re.sub(r'\b#?[A-Fa-f0-9]{6}\b|\b#?[A-Fa-f0-9]{3}\b', '', text)
+
+    sects = []
+    if console_firmware == "DY19":
+        skip_lines=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 25, 26, 27, 28, 29, 30, 31]
+        MaxEntries = 10
+        foldername_path = os.path.join(base_path, "Resources", "Foldername.ini")
+    elif console_firmware == "SF2000_13":
+        skip_lines=[1, 2, 3, 4, 17, 18, 19]
+        MaxEntries = 12
+        frogtool.systems = frogtool.systems_13_menu
+        systems = systems_13_menu
+        foldername_path = os.path.join(base_path, "Resources", "FoldernamX.ini")
+    elif console_firmware == "SF2000_8":
+        skip_lines=[1, 2, 3, 4, 12, 13, 14, 15, 16]
+        MaxEntries = 7
+        foldername_path = os.path.join(base_path, "Resources", "Foldername.ini")
+    else:
+        foldername_path = os.path.join(base_path, "Resources", "Foldername.ini")
+
+    try:
+        with open(foldername_path, "r") as file:
+            for i, line in enumerate(file, start=1):
+                if i in skip_lines:
+                    continue
+                stripped_line = remove_html_hex_colors(line.strip()).strip()
+                if stripped_line:
+                    sects.append(stripped_line)
+
+        if update_systems:
+            for i, key_to_pop in enumerate(list(frogtool.systems.keys())):
+                if i < len(sects):
+                    new_key = sects[i]
+                    systems[new_key] = systems.pop(key_to_pop)
+                    frogtool.systems[new_key] = frogtool.systems.pop(key_to_pop)
+        
+            entries = len(systems)
+            if entries > MaxEntries:
+                for i in range(MaxEntries + 1, 11):  # from MaxEntries+1 up to 10 inclusive
+                    key = f"MENU{i}"
+                    systems.pop(key, None)
+                    frogtool.systems.pop(key, None)
+
+        if window and hasattr(window, "combobox_console"):
+            window.combobox_console.clear()
+            for console in systems.keys():
+                window.combobox_console.addItem(QIcon(), console, console)
+
+    except Exception as e:
+        print(f"{e}")
+        sects = ["ARCADE", "FC", "SFC", "GB", "GBC", "GBA", "MD"]
+
+    return sects
 
 supported_save_ext = [
     "sav", "sa0", "sa1", "sa2", "sa3"
@@ -228,26 +299,22 @@ def changeBootLogo(index_path, newLogoFileName, msgBox, device):
     file_handle.close()
     #get location of boot logo 
     newLogo = QImage(newLogoFileName)
-    if device == 'SF2000':
+    if device == 'SF2000_8' or device == 'SF2000_13' or device == 'DY19':
         logoOffset = findSequence(offset_sf2000_logo_presequence, bisrv_content,
         10000000)
-        width = 512
-        height = 200
     if device == 'GB300V2':
         logoOffset = findSequence(offset_gb300v2_logo_multi_core_presequence, bisrv_content,
         10000000)
-        width = 248
-        height = 249
     bootLogoStart = logoOffset + 16
     # Convert to RGB565
     msgBox.setText("Converting boot logo...")
     msgBox.showProgress(40, True)
-    rgb565Data = QImageToRGB565Logo(newLogo, width, height)
+    rgb565Data = QImageToRGB565Logo(newLogo, console_firmware_width, console_firmware_height)
     # Change the boot logo
     msgBox.setText("Updating boot logo...")
     msgBox.showProgress(60, True)
     
-    for i in range(0, width*height):
+    for i in range(0, console_firmware_width*console_firmware_height):
         data = rgb565Data[i].to_bytes(2, 'little')
         bisrv_content[bootLogoStart+i*2] = data[0]
         bisrv_content[bootLogoStart+i*2+1] = data[1]
@@ -600,7 +667,7 @@ def checkDriveLooksFroggy(froggypath):
 def get_firmware_versions(device):
     OS_options = {} #This approach means that two items must never have the same name or there will be a collision. 
     # Get firmware from tadpole storage
-    if device == 'SF2000':
+    if device == 'SF2000_8' or device == 'SF2000_13':
         # TODO fix the repo and switch to that then make a new json
         response = requests.get("https://tadpolestorage.blob.core.windows.net/$web/os.json")
         if response.status_code == 200:
@@ -1232,15 +1299,21 @@ def setDeviceType(drive):
     if os.path.exists(FoldernamePath):
         with open(FoldernamePath, 'r') as file:
             first_line = file.readline().strip()
-            #print(first_line)
+        if first_line == "AHHM3":
+            return 'DY19'
         if first_line == "GB300":
             return 'GB300V1'
         elif os.path.exists(ROMListPath):
             return 'GB300V2'
+        elif os.path.exists(os.path.join(drive, 'Resources', 'FoldernamX.ini')):
+            return 'SF2000_13'
         else:
-            return 'SF2000'
+            return 'SF2000_8'
     else: 
-        return 'Unknown'
+        if os.path.exists(os.path.join(drive, 'Resources', 'FoldernamX.ini')):
+            return 'SF2000_13'
+        else:
+            return 'Unknown'
 
 
 #returns a string to the current resource file for each system

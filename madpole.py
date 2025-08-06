@@ -885,97 +885,31 @@ from tzlion on frogtool. Special thanks also goes to wikkiewikkie & Jason Grieve
         newDrive = self.combobox_drive.currentText()
         console = self.combobox_console.currentText()
         #Look to see if the device type changed
-        current_device = tadpole_functions.setDeviceType(newDrive)
-        if(self.lbl_device_type.text() != current_device):
-            self.lbl_device_type.setText(current_device)   
+        tadpole_functions.console_firmware = tadpole_functions.setDeviceType(newDrive)
+        if(self.lbl_device_type.text() != tadpole_functions.console_firmware):
+            self.lbl_device_type.setText(tadpole_functions.console_firmware)   
             print("Refresehing menu's for new device type")
             self.clearMenus()
-            self.loadMenus(current_device)
-        if current_device == "GB300V1":
+            self.loadMenus(tadpole_functions.console_firmware)
+        if tadpole_functions.console_firmware == "SF2000_8" or tadpole_functions.console_firmware == "SF2000_13":
+            tadpole_functions.console_firmware_height = 200
+            tadpole_functions.console_firmware_width = 512
+        if tadpole_functions.console_firmware == "GB300V2":
+            tadpole_functions.console_firmware_height = 249
+            tadpole_functions.console_firmware_width = 248
+        if tadpole_functions.console_firmware == "DY19":
+            tadpole_functions.console_firmware_height = 128
+            tadpole_functions.console_firmware_width = 128
+        if tadpole_functions.console_firmware == "GB300V1":
             QMessageBox.about(self, "GB300 V1 Warning", """You appear to have loaded a GB300 V1 SD Card. \
 Not everything in this app supports GB300 V1 so be careful.""") 
         logging.info(f"Combobox for drive changed to ({newDrive})")
         self.initMulticoreShortcuts()
-        try:
-            MaxEntries = 8
-            if os.path.exists(os.path.join(newDrive,"Resources","FoldernamX.ini")):
-                index_path_foldername = os.path.join(newDrive,"Resources","FoldernamX.ini")
-                frogtool.systems = frogtool.systems_default
-                tadpole_functions.systems = tadpole_functions.systems_default
-                MaxEntries = 12
-            elif os.path.exists(os.path.join(newDrive,"Resources","Foldername.ini")):
-                print("Could not find", os.path.join(newDrive,"Resources","FoldernamX.ini"))
-                index_path_foldername = os.path.join(newDrive,"Resources","Foldername.ini")
-                frogtool.systems = frogtool.systems_old_default
-                tadpole_functions.systems = tadpole_functions.systems_old_default
-            else:
-                print("Could not find", os.path.join(newDrive,"Resources","Foldername.ini"))
-                frogtool.systems = frogtool.systems_old_default
-                tadpole_functions.systems = tadpole_functions.systems_old_default
-
-            # Initialize an empty list to store the filtered data
-            filtered_foldername = []
-
-            # Open the file for reading
-            with open(index_path_foldername, "r") as file:
-            # Read each line
-                for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
-
-                    # Skip irrelevant data
-                    if MaxEntries == 12:
-                        if i in [1, 2, 3, 17, 18, 19]:
-                            continue
-                    else:
-                        if i in [1, 2, 3, 14, 15, 16, 17]:
-                            continue
-
-                    # Regular expression to match hex colors
-                    hex_color_pattern = r'\b[A-Fa-f0-9]{6}\b'
-
-                    hex_colors = re.findall(hex_color_pattern, line)
-
-                    # Remove hex colors from the line
-                    for color in hex_colors:
-                        line = line.replace(color, '').strip()
-
-                    # Ignore "ROMS"
-                    if line.strip() == "ROMS":
-                        continue
-
-                    filtered_foldername.append(line.strip())
-                
-                # Get the number of menu entries from the first number of the third to last line
-                num_newlines = 0
-                with open(index_path_foldername, 'rb') as f:
-                    try:
-                        f.seek(-2, os.SEEK_END)    
-                        while num_newlines < 3:
-                            f.seek(-2, os.SEEK_CUR)
-                            if f.read(1) == b'\n':
-                                num_newlines += 1
-                    except OSError:
-                        f.seek(0)
-                    third_to_last_line = f.readline().decode()
-                    entries = int(third_to_last_line.split()[0]) - 1 # Extract the first number
-                            
-            # Replace with folder names from foldername.ini
-            for i, key_to_pop in enumerate(list(frogtool.systems_default.keys())):
-                if i < len(filtered_foldername):
-                    tadpole_functions.systems[filtered_foldername[i]] = tadpole_functions.systems.pop(key_to_pop)
-                    frogtool.systems[filtered_foldername[i]] = frogtool.systems.pop(key_to_pop) 
-
-            # Remove any menu greater than the specified menu entries 
-            if entries < MaxEntries:
-                for key in list(frogtool.systems.keys()):
-                    menu_number = int(key[4:])  # Extract number from "MENUx"
-                    if menu_number > entries:
-                        tadpole_functions.systems.pop(key)
-                        frogtool.systems.pop(key)
-        
-        except Exception:
-            # Not sf2000 drive
-            frogtool.systems = frogtool.systems_old_default
-            tadpole_functions.systems = tadpole_functions.systems_old_default
+        tadpole_functions.menu_sections = tadpole_functions.load_foldername_sections(
+            base_path=newDrive,
+            update_systems=True,
+            window=self
+        )
         window.combobox_console.clear()
         for console in tadpole_functions.systems.keys():
             window.combobox_console.addItem(QIcon(), console, console)
@@ -1647,7 +1581,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
 
                 newDrive = self.combobox_drive.currentText()
                 current_device = tadpole_functions.setDeviceType(newDrive)
-                if current_device != "GB300V1":
+                if current_device == "SF2000_8" or current_device == "SF2000_13" or current_device == "GB300V2":
                     # Add to Shortcuts-
                     shortcut_comboBox = QComboBox()
                     shortcut_comboBox.addItem("")
@@ -1680,7 +1614,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
 
                     self.btn_update_shortcuts_images.setEnabled(True)
                 else:                    
-                    shortcut_null = QTableWidgetItem(f"No shortcut in GB300V1")
+                    shortcut_null = QTableWidgetItem(f"Shortcuts unsupported")
                     shortcut_null.setTextAlignment(Qt.AlignCenter)
                     self.tbl_gamelist.setItem(i, 3, shortcut_null)
                 # View Delete Button 
@@ -1714,7 +1648,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
 
         cwd = tpConf.getLocalUserDirectory()
         current_device = tadpole_functions.setDeviceType(cwd)
-        if current_device == "GB300V1":
+        if current_device == "GB300V1" or current_device == "DY19":
             return
         if self.combobox_drive.currentText().strip():
             cwd = self.combobox_drive.currentText().strip()
@@ -1724,51 +1658,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
         #mshortConfigFile = os.path.join(self.getLocalUserDirectory, 'mshortcuts.ini')
         #print(" the current drive is " + self.combobox_drive.currentText())
         #print("the ini path is " + mshortConfigFile)
-        #print(mshortConfigFile)
-        try:
-            FoldernamX = 0
-            if os.path.exists(os.path.join(cwd,"Resources","FoldernamX.ini")):
-                index_path_foldername = os.path.join(cwd,"Resources","FoldernamX.ini")
-                FoldernamX = 1
-            elif os.path.exists(os.path.join(cwd,"Resources","Foldername.ini")):
-                print("Could not find", os.path.join(cwd,"Resources","FoldernamX.ini"))
-                index_path_foldername = os.path.join(cwd,"Resources","Foldername.ini")
-            else:
-                print("Could not find", os.path.join(cwd,"Resources","Foldername.ini"))
-
-            # Initialize an empty list to store the filtered data
-            sects = []
-
-            # Open the file for reading
-            with open(index_path_foldername, "r") as file:
-            # Read each line
-                for i, line in enumerate(file, start=1):  # start=1 to count lines from 1 instead of 0
-
-                    # Skip irrelevant data
-                    if FoldernamX == 1:
-                        if i in [1, 2, 3, 17, 18, 19]:
-                            continue
-                    else:
-                        if i in [1, 2, 3, 14, 15, 16]:
-                            continue
-
-                    # Regular expression to match hex colors
-                    hex_color_pattern = r'\b[A-Fa-f0-9]{6}\b'
-
-                    hex_colors = re.findall(hex_color_pattern, line)
-
-                    # Remove hex colors from the line
-                    for color in hex_colors:
-                        line = line.replace(color, '').strip()
-
-                    # Ignore "ROMS"
-                    if line.strip() == "ROMS":
-                        continue
-
-                    sects.append(line.strip())                      
-        except Exception:
-            # Not sf2000 drive
-            sects = ["ARCADE" , "FC" , "SFC" , "GB" , "GBC" , "GBA" , "MD"]
+        #print(mshortConfigFile)        
 
         if not os.path.exists(mshortConfigFile):
             #Config file not found, create a new one            
@@ -1783,7 +1673,7 @@ Note: You can change in settings to either pick your own or try to downlad autom
             raise Exception
 
         sconfig.read(mshortConfigFile)
-        for s in sects:
+        for s in tadpole_functions.menu_sections:
             if not sconfig.has_section(s):
                 sconfig[s] = {}
                 #sconfig.add_section(s)

@@ -74,11 +74,7 @@ class BootLogoViewer(QLabel):
         self.path = ""  # Used to store path to the currently-displayed file
         self.device = device
         self.setStyleSheet("background-color: white;")
-
-        if device == 'SF2000':
-            self.setMinimumSize(512, 200)  # resize to SF2000 boot logo dimensions
-        elif device == 'GB300V2':
-            self.setMinimumSize(248, 249)  # resize to GB300 V2 boot logo dimensions
+        self.setMinimumSize(tadpole_functions.console_firmware_width, tadpole_functions.console_firmware_height) 
 
         if self.changeable:
             self.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -92,11 +88,7 @@ class BootLogoViewer(QLabel):
             file_name = QFileDialog.getOpenFileName(self, 'Open file', '',
                                                     "Images (*.jpg *.png *.webp);;RAW (RGB565 Little Endian) Images (*.raw)")[0]
             if len(file_name) > 0:  # confirm if user selected a file
-                if self.device == 'SF2000':
-                    self.load_image(file_name, 512, 200)
-                elif self.device == 'GB300V2':
-                    self.load_image(file_name, 248, 249)
-
+                self.load_image(file_name, tadpole_functions.console_firmware_width, tadpole_functions.console_firmware_height)
 
     def load_from_bios(self, drive: str, device: str):
         """
@@ -110,20 +102,16 @@ class BootLogoViewer(QLabel):
         with open(os.path.join(drive, "bios", "bisrv.asd"), "rb") as bios_file:
             bios_content = bytearray(bios_file.read())
 
-        if(device == 'SF2000'):
-            width = 512
-            height = 200
+        if device == 'SF2000_8' or device == 'SF2000_13' or device == 'DY19':
             offset = tadpole_functions.findSequence(tadpole_functions.offset_sf2000_logo_presequence, bios_content) + 16
         elif(device == 'GB300V2'):
-            width = 248
-            height = 249
             offset = tadpole_functions.findSequence(tadpole_functions.offset_gb300v2_logo_multi_core_presequence, bios_content) + 16
 
         # TODO switch this to be in memory
         with open(os.path.join(self.basedir, "bios_image.raw"), "wb") as image_file:
-            image_file.write(bios_content[offset:offset+((width*height)*2)])
+            image_file.write(bios_content[offset:offset+((tadpole_functions.console_firmware_width*tadpole_functions.console_firmware_height)*2)])
 
-        self.load_image(os.path.join(self.basedir, "bios_image.raw"), width, height)
+        self.load_image(os.path.join(self.basedir, "bios_image.raw"), tadpole_functions.console_firmware_width, tadpole_functions.console_firmware_height)
 
     def load_image(self, path: str, width: int, height: int) -> bool:
         """

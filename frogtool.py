@@ -14,18 +14,22 @@ except ImportError:
     ImageDraw = None
     image_lib_avail = False
 
-systems_old_default = {
-    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"], # default = FC
-    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"], # default = SFC (PCE for gb300V1)
-    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"], # default = MD (SFC for gb300V1)
-    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"], # default = GB (MD for gb300V1)
-    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"], # default = GBC (GB for gb300V1)
-    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"], # default = GBA (GBC for gb300V1)
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"], # default = ARCADE (GBA for gb300V1)
-    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"] # default = PCE (GB300V2 only)
+# Last two are DY19 only, hacky solution is to just leave the main menu slot blank as DY19 only has 1 main menu
+# It's interesting that these all use the same rom lists based on the menu number
+systems_default = {
+    "MENU1":    ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],   # FC 
+    "MENU2":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],   # SFC (PCE for gb300V1)
+    "MENU3":    ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],   # MD (SFC for gb300V1)
+    "MENU4":    ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],   # GB (MD for gb300V1)
+    "MENU5":    ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],   # GBC (GB for gb300V1)
+    "MENU6":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],   # GBA (GBC for gb300V1)
+    "MENU7":    ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],   # ARCADE (GBA for gb300V1) (CPS1 for dy19)
+    "MENU8":    ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"], # PCE for gb300V2 (CPS2 for dy19)
+    "MENU9":    ["rmapi.tax", "pcadm.nec", "ntdll.bvs", ""],            # NEO GEO for dy19
+    "MENU10":   ["subst.tax", "aepic.nec", "sensc.bvs", ""]             # IGS for dy19
 }
 
-systems_default = {
+systems_13_menu = {
     "MENU1":   ["m01.ta", "m01.ne", "m01.bv", "m01.mm"],
     "MENU2":   ["m02.ta", "m02.ne", "m02.bv", "m02.mm"],
     "MENU3":   ["m03.ta", "m03.ne", "m03.bv", "m03.mm"],
@@ -41,14 +45,16 @@ systems_default = {
 }
 
 systems = {
-    "MENU1":  ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],
-    "MENU2":  ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],
-    "MENU3":  ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],
-    "MENU4":  ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],
-    "MENU5":  ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],
-    "MENU6":  ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],
-    "MENU7":  ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],
-    "MENU8":  ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"]
+    "MENU1":    ["rdbui.tax", "fhcfg.nec", "nethn.bvs", "fixas.ctp"],   # FC 
+    "MENU2":    ["urefs.tax", "adsnt.nec", "xvb6c.bvs", "drivr.ers"],   # SFC (PCE for gb300V1)
+    "MENU3":    ["scksp.tax", "setxa.nec", "wmiui.bvs", "icuin.cpl"],   # MD (SFC for gb300V1)
+    "MENU4":    ["vdsdc.tax", "umboa.nec", "qdvd6.bvs", "xajkg.hsp"],   # GB (MD for gb300V1)
+    "MENU5":    ["pnpui.tax", "wjere.nec", "mgdel.bvs", "qwave.bke"],   # GBC (GB for gb300V1)
+    "MENU6":    ["vfnet.tax", "htuiw.nec", "sppnp.bvs", "irftp.ctp"],   # GBA (GBC for gb300V1)
+    "MENU7":    ["mswb7.tax", "msdtc.nec", "mfpmp.bvs", "hctml.ers"],   # ARCADE (GBA for gb300V1) (CPS1 for dy19)
+    "MENU8":    ["kjbyr.tax", "djoin.nec", "ke89a.bvs", "knczwaq.phd"], # PCE for gb300V2 (CPS2 for dy19)
+    "MENU9":    ["rmapi.tax", "pcadm.nec", "ntdll.bvs", ""],            # NEO GEO for dy19
+    "MENU10":   ["subst.tax", "aepic.nec", "sensc.bvs", ""]             # IGS for dy19
 }
 
 supported_rom_ext = [ #TODO: add the rest of these to ROMArt_console and zxx_ext_romext also cleanup the order so it makes more sense
