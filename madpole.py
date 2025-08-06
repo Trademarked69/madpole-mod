@@ -196,12 +196,13 @@ class MainWindow (QMainWindow):
 
         # Add Shortcut button
         self.btn_update_shortcuts_images = QPushButton("Change Shortcut Icons")
+        self.btn_update_shortcuts_images.setEnabled(False)
         selector_layout.addWidget(self.btn_update_shortcuts_images )
         self.btn_update_shortcuts_images.clicked.connect(self.addShortcutImages)
 
 
         # Change Core
-        self.btn_changecore = QPushButton("Change Selcted Core")
+        self.btn_changecore = QPushButton("Change Selected Core")
         self.btn_changecore.setEnabled(False)
         selector_layout.addWidget(self.btn_changecore)
         self.btn_changecore.clicked.connect(self.ChangeSelectedCore)
@@ -246,7 +247,6 @@ class MainWindow (QMainWindow):
         """Toggles program features on or off"""
         features = [window.btn_update_thumbnails,
                     window.btn_update,
-                    window.btn_update_shortcuts_images,
                     window.combobox_console,
                     window.combobox_drive,
                     window.menu_os,
@@ -411,7 +411,10 @@ class MainWindow (QMainWindow):
         addmroms_action = QAction("Add Multicore Roms", self, triggered=self.MulticoreRoms)
         self.menu_mc.addAction(addmroms_action)
 
-        makezfbs_action = QAction("Create ZFBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
+        if device != "GB300V1":
+            makezfbs_action = QAction("Create ZFBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
+        else:
+            makezfbs_action = QAction("Create ZGBs for existing Multicore Roms", self, triggered=self.MulticoreZfbs)
         self.menu_mc.addAction(makezfbs_action)
 
         makestubs_action = QAction("Create STUBS for Multicore Roms", self, triggered=self.MulticoreStubs)
@@ -1641,35 +1644,45 @@ Note: You can change in settings to either pick your own or try to downlad autom
                     cell_viewthumbnail.setTextAlignment(Qt.AlignCenter)
                     cell_viewthumbnail.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEnabled)
                     self.tbl_gamelist.setItem(i, 2, cell_viewthumbnail)   
-                # Add to Shortcuts-
-                shortcut_comboBox = QComboBox()
-                shortcut_comboBox.addItem("")
-                shortcut_comboBox.addItem("1")
-                shortcut_comboBox.addItem("2")
-                shortcut_comboBox.addItem("3")
-                shortcut_comboBox.addItem("4")
 
-                """
-                change_mcore = QComboBox()
-                change_mcore.addItem("nesq")
-                change_mcore.addItem("nes")
-                self.tbl_gamelist.setCellWidget(i, 4, change_mcore)
-                """
+                newDrive = self.combobox_drive.currentText()
+                current_device = tadpole_functions.setDeviceType(newDrive)
+                if current_device != "GB300V1":
+                    # Add to Shortcuts-
+                    shortcut_comboBox = QComboBox()
+                    shortcut_comboBox.addItem("")
+                    shortcut_comboBox.addItem("1")
+                    shortcut_comboBox.addItem("2")
+                    shortcut_comboBox.addItem("3")
+                    shortcut_comboBox.addItem("4")
 
-                # set previously saved shortcuts
+                    """
+                    change_mcore = QComboBox()
+                    change_mcore.addItem("nesq")
+                    change_mcore.addItem("nes")
+                    self.tbl_gamelist.setCellWidget(i, 4, change_mcore)
+                    """
 
-                mstemp = self.getMulticoreShortcuts(system)
-                #print("game name is " + game)
-                if game in mstemp:
-                    position = int(mstemp.index(game)) + 1
-                    #print("index found in list")
-                else:
-                    position = tadpole_functions.getGameShortcutPosition(drive, system, game)
+                    # set previously saved shortcuts
 
-                shortcut_comboBox.setCurrentIndex(position)
-                self.tbl_gamelist.setCellWidget(i, 3, shortcut_comboBox)
-                # get a callback to make sure the user isn't setting the same shortcut twice
-                shortcut_comboBox.activated.connect(self.validateGameShortcutComboBox)
+                    mstemp = self.getMulticoreShortcuts(system)
+                    #print("game name is " + game)
+                    if game in mstemp:
+                        position = int(mstemp.index(game)) + 1
+                        #print("index found in list")
+                    else:
+                        position = tadpole_functions.getGameShortcutPosition(drive, system, game)
+
+                    shortcut_comboBox.setCurrentIndex(position)
+                    self.tbl_gamelist.setCellWidget(i, 3, shortcut_comboBox)
+                    # get a callback to make sure the user isn't setting the same shortcut twice
+                    shortcut_comboBox.activated.connect(self.validateGameShortcutComboBox)
+
+                    self.btn_update_shortcuts_images.setEnabled(True)
+                else:                    
+                    shortcut_null = QTableWidgetItem(f"No shortcut in GB300V1")
+                    shortcut_null.setTextAlignment(Qt.AlignCenter)
+                    self.tbl_gamelist.setItem(i, 3, shortcut_null)
                 # View Delete Button 
                 cell_delete = QTableWidgetItem(f"Delete")
                 cell_delete.setTextAlignment(Qt.AlignCenter)
@@ -1700,6 +1713,9 @@ Note: You can change in settings to either pick your own or try to downlad autom
         sconfig = configparser.ConfigParser()
 
         cwd = tpConf.getLocalUserDirectory()
+        current_device = tadpole_functions.setDeviceType(cwd)
+        if current_device == "GB300V1":
+            return
         if self.combobox_drive.currentText().strip():
             cwd = self.combobox_drive.currentText().strip()
             #print("USed combobox drive")

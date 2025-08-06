@@ -14,7 +14,7 @@ cores = ["a26", "a5200" , "a78" , "a800" , "amstrad", "arduboy", "c64" , "c64f" 
          "m2k" , "mgba", "msx" , "nes" , "nesq" , "nest" , "ngpc" , "o2em" , "outrun",
          "pc8800" , "pce" , "pcesgx" , "pcfx" , "pokem" , "prboom" , "quake" , "retro8" ,
          "sega" , "snes" , "snes02" , "spec" , "testadv" , "testwav" , "thom" , "vapor",
-         "vb" , "vec" , "vic20" , "wolf3d" , "wsv" , "wswan" , "xmil" , "xrick"
+         "vb" , "vec" , "vic20" , "wolf3d" , "wsv" , "wswan" , "xmil" , "xrick", "zx81"
         ]
 
 

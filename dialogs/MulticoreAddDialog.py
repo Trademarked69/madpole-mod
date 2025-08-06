@@ -193,7 +193,7 @@ class MulticoreAddDialog(QDialog):
                     new_zipped_rom_path = os.path.join(wdir, sdir, core + ";" + file_name + '.zip')
                     tadpole_functions.zip_file(New_File, new_zipped_rom_path)
                     file_ext = os.path.splitext(file_name)[1][1:]
-                    tadpole_functions.changeZIPThumbnail(new_zipped_rom_path, Image_File_New_Path, file_ext)
+                    tadpole_functions.changeZIPThumbnail(new_zipped_rom_path, Image_File_New_Path, 'gba')
                     os.remove(New_File) 
         else:
             zfb.create_zfb_files(self ,wdir ,sdir , pdir , core, apptxt , pretxt , doRef , doExt , filenames ,doMove , ifexist , prg , prgT , False)

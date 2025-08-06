@@ -70,9 +70,10 @@ class ThumbnailDialog(QDialog):
         if self.current_viewer.path == "":
             QMessageBox.warning(self, "Save ROM Cover", "This file was not detected as having a ROM cover.\n If you think this is an error please create an Issue on the Github repository.")
             return
+        name_img = self.current_viewer.path.split("/")[-1].split(";")[1].split(".")[0]
         newCoverFileName = QFileDialog.getSaveFileName(self,
                                                        'Save Cover',
-                                                       'c:\\',
+                                                       name_img,
                                                        "Image files (*.png)")[0]
         
         if newCoverFileName is None or newCoverFileName == "":
